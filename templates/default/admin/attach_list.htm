@@ -1,0 +1,49 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<strong>附件管理</strong>
+    </div>
+    <div class="table-hd">
+    <form method="post" action="">
+    <input type="hidden" name="formsubmit" value="yes" />
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+    <thead>
+      <tr>
+        <th width="30" class="center">删?</th>
+        <th>附件名称</th>
+        <th width="100">大小</th>
+        <th width="180">类型</th>
+        <th width="120">上传时间</th>
+      </tr>
+     </thead>
+     <tbody>
+      <!--{loop $attachlist $attach}-->
+      {eval $attach[attachtime]=formatTime($attach[attachtime],'Y-m-d H:i')}
+      {eval $attach[attachsize]=formatsize($attach[attachsize])}
+      <tr>
+        <td><input type="checkbox" class="checkbox" name="delete[]" value="$attach[attachid]"></td>
+        <th>$attach[attachname]</th>
+        <td>$attach[attachsize]</td>
+        <td>$attach[attachtype]</td>
+        <td>$attach[attachtime]</td>
+      </tr>
+      <!--{/loop}-->
+      </tbody>
+      <tfoot>
+      <tr>
+      		<td colspan="10"><label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'delete[]')"> 全选</label></td>
+      </tr>
+      <tr>
+          <td colspan="10">
+              <span class="pages">$pagination</span>
+              <input type="submit" class="submit" value="删除">
+              <input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+          </td>
+      </tr>
+     </tfoot>
+    </table>
+	</div>
+ </form>
+</div>
+{template footer_admin}

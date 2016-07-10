@@ -1,0 +1,54 @@
+{template header_common}
+{template detail_common}
+<div class="area">
+    <h1 class="video-detail-title">视频: $article[title]</h1>
+    <div class="video-detail-wrap">
+    	<div class="video-detail-player">
+        	<embed src="$video[swf]" allowFullScreen="true" quality="high" width="980" height="640" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+        </div>
+        <div class="video-detail-left">
+        	<div class="video-detail-bar">
+            	  <span>$article[pubtime]</span>
+                <span>播放:$article[viewnum]</span>
+                <span>评论:($article[commentnum])</span>
+                <a href="javascript:;" onclick="Favorite($article[id])">收藏本视频</a>
+                {if $allowdelpost}<a href="javascript:;" onclick="deletePost($article[id])">删除</a>{/if}
+                {if $G[uid]}<a href="/?mod=post&ac=edit&id=$article[id]">编辑</a>{/if}
+                {if $allowauditpost}<a href="javascript:;" onclick="setPostState($article[id],0)">通过审核</a> <a href="javascript:;" onclick="setPostState($article[id],2)">取消审核</a>{/if}
+            </div>
+            <div class="video-detail-content">$video[content]</div>
+            <!--评论-->
+            {if $article[allowcomment]}
+            {if $allowcomment}
+            <div class="post-comment-form">
+            	<form method="post" name="formcomment">
+            	<textarea class="comment-textarea" name="message" id="comment-text" placeholder="在这里输入评论内容"{if !$G[islogin]} disabled{/if}></textarea>
+                <div class="comment-toolbar"><input type="button" class="comment-publish" id="comment-publish" value="发布"><span>已有<font node="comments">$article[commentnum]</font>条评论</span></div>
+            	</form>
+                {if !$G[islogin]}<div class="errortips" style="display:block;"><i class="icon">&#xf0142;</i>登录后才能发评论哦，亲.</div>{/if}
+                <div class="errortips" id="comment-tips"><i class="icon">&#xf0142;</i>不能发空评论哦，亲.</div>
+            </div>
+            {/if}
+            <h3 class="post-comment-title">最新评论</h3>
+            <div class="comment-loading" id="comment-loading"><img src="/static/images/common/loading16.gif"> 正在加载评论...</div>
+            <div id="post-comment-list-content"></div>
+            {/if}
+        </div>
+        <div class="video-detail-right">
+        		{eval $videolist=articlelist(array('type'=>'video','num'=>5));}
+        	   {loop $videolist $list}
+              {eval $list[pubtime]=@date('Y-m-d',$list[dateline]);}
+              <dl class="video-item">
+              		<dd><a href="/?m=post&c=detail&id=$list[id]" title="$list[title]"><img src="$list[pic]"></a></dd>
+                    <dt>
+                    	<h3><a href="/?m=post&c=detail&id=$list[id]">$list[title]</a></h3>
+                        <p>$list[pubtime]</p>
+                        <p>播放:$list[viewnum]</p>
+                    </dt>
+              </dl>
+              {/loop}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+{template footer_common}

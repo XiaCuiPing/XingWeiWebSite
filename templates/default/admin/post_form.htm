@@ -1,0 +1,104 @@
+{template header_admin}
+<style type="text/css">
+.swithContent{display:none;}
+</style>
+<script type="text/javascript" src="/static/js/newpost.js"></script>
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<a class="baritem" href="/?m=$G[m]&c=postcat">分类管理</a>
+        	<a class="baritem" href="/?m=$G[m]&c=$G[c]&a=showlist">返回列表</a>
+        </div>
+    	<strong>发布文章</strong>
+    </div>
+
+    <div class="area">
+        <form method="post" id="postForm" action="">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td><input type="text" class="input-text input-title" placeholder="在这里输入标题" name="newpost[title]" value="$article[title]" id="postTitle"></td>
+        </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td width="80">目录分类</td>
+          <td><select name="newpost[catid]" class="w200">$categoryoptions</select></td>
+          <td width="80">文章来源</td>
+          <td><input type="text" class="input-text" name="newpost[from]" value="$article[from]"></td>
+          <td rowspan="4" width="160">
+            <input type="hidden" id="postImage" name="newpost[pic]" value="$article[pic]">
+            <div class="post-image-box" title="点击更换图片">
+            <img src="$article[picurl]" onclick="setImage(this,'#postImage')"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>文章别名</td>
+          <td><input type="text" class="input-text" name="newpost[alias]" value="$article[alias]"></td>
+          <td>来源地址</td>
+          <td><input type="text" class="input-text" name="newpost[fromurl]" value="$article[fromurl]"></td>
+          </tr>
+        <tr>
+          <td>评论设置</td>
+          <td><label><input type="checkbox" class="checkbox" name="newpost[allowcomment]" value="1"{if $article[allowcomment]} checked{/if}> 允许评论</label></td>
+          <td>文章标签</td>
+          <td><input type="text" class="input-text" name="newpost[tags]" value="$article[tags]"></td>
+          </tr>
+        <tr>
+          <td>文章作者</td>
+          <td><input type="text" class="input-text" name="newpost[author]" value="$article[author]"></td>
+          <td>文章形式</td>
+          <td>
+                <label><input type="radio" class="radio" name="newpost[type]" onclick="switchContent('article')" value="article"{if $type=='article'} checked{/if}> 文章</label>
+                <label><input type="radio" class="radio" name="newpost[type]" onclick="switchContent('image')" value="image"{if $type=='image'} checked{/if}> 相册</label>
+                <label><input type="radio" class="radio" name="newpost[type]" onclick="switchContent('video')" value="video"{if $type=='video'} checked{/if}> 视频</label>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td width="80">内容摘要</td>
+          <td><textarea style="width:100%;" name="newpost[summary]">$article[summary]</textarea></td>
+          <td width="200"><input type="submit" class="submit button-publish f-right" value="{if $G[a]=='edit'}更新{else}发布{/if}" id="publishButton"></td>
+        </tr>
+      </table>
+      {eval $editorname='content';}
+      {eval $editorcontent=$content;}
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable swithContent" id="content-article">
+        <tr>
+          <td><div style="box-sizing:border-box">{template editor}</div></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable swithContent" id="content-image">
+        <tr>
+          <td>
+               <div class="post-swfupload-wrap">
+                <div class="post-swfupload-title">
+                    仅支持jpg,gif,png格式的图片，大小不要能超过10MB。
+                    <div class="button-hd"><div id="swfuploadButton"></div></div>
+                </div>
+                <div class="post-swfupload-queue" id="swfuploadqueue"></div>
+               </div>
+          </td>
+        </tr>
+      </table>
+      {eval $token=sha1($G[uid].$G[username].formhash());}
+      <script src="/static/uploadify/jquery.uploadify-3.1.min.js" type="text/javascript"></script>
+      <script type="text/javascript">initSwfUpload({uid:'$G[uid]',username:'$G[username]',token:'$token'});</script>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable swithContent" id="content-video">
+        <tr>
+          <td width="80">视频地址</td>
+          <td>
+            <input type="text" class="input-text input-title" name="videourl" value="$videodata[url]" style="width:100%;">
+            <p>请输入QQ视频，优酷网、酷6网、56网的视频播放页链接</p>
+          </td>
+        </tr>
+      </table>
+      </form>
+    </div>
+</div>
+<script type="text/javascript">
+$("#content-$type").show();
+</script>
+{template footer_admin}

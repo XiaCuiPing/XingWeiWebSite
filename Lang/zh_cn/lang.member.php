@@ -1,0 +1,31 @@
+<?php
+return array(
+		'login'=>'登录',
+		'register'=>'注册',
+		'username'=>'用户名',
+		'password'=>'密码',
+		'captchacode_verify_failed'=>'验证码错误',
+		'username_verify_failed'=>'用户名输入错误',
+		'password_verfy_failed'=>'密码输入错误',
+		'login_verify_failed'=>'用户名和密码不匹配',
+		'login_succeed'=>'登录成功',
+		'username_exist'=>'用户名已被他人使用',
+		'email_exist'=>'邮箱已被他人使用',
+		'mobile_exist'=>'手机号码已被人使用',
+		'email_verify_failed'=>'邮箱输入错误',
+		
+		'register_succeed'=>'注册成功',
+		'member_register_error'=>array(
+				1=>'你输入的用户名已被他人使用',
+				2=>'你输入的手机号码已被人使用',
+				3=>'你输入的邮箱已被人使用',
+				4=>'用户名输入错误',
+				5=>'密码输入错误',
+				6=>'参数错误'
+		),
+		'member_login_error'=>array(
+				1=>'账号不存在',
+				2=>'账号或密码不匹配',
+				3=>'未知错误'
+		)
+);

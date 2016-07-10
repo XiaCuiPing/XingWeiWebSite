@@ -1,0 +1,92 @@
+{template header_admin}
+<div id="pagecontainer">
+    <div class="toolbar">
+    	<div class="f-right"><a href="/?m=$G[m]&c=$G[c]&a=showlist" class="baritem">返回列表</a></div>
+        <strong>编辑分类</strong>
+    </div>
+    <div class="area">
+    <form method="post" onSubmit="return checkSubmit();">
+    <input type="hidden" name="formsubmit" value="yes">
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+    	<tbody>
+          <tr><th colspan="2">分类名称</th></tr>
+          <tr>
+            <td width="320"><input type="text" class="input-text w300" name="categorynew[cname]" value="$category[cname]" id="cname"></td>
+            <td class="tips">分类名称，20个字符以内，不要使用特殊字符和符号</td>
+          </tr>
+           <tr><th colspan="2">上级分类</th></tr>
+          <tr>
+            <td>
+                <select name="categorynew[fid]" class="w300">
+                    <option value="0">无上级分类</option>
+                    {loop $categorylist[0] $lv1}
+                    {if $lv1[catid]!=$catid}
+                    <option value="$lv1[catid]"{if $category[fid]==$lv1[catid]} selected{/if}>$lv1[cname]</option>
+                        {loop $categorylist[$lv1[catid]] $lv2}
+                        {if $lv2[catid]!=$catid}
+                        <option value="$lv2[catid]"{if $category[fid]==$lv2[catid]} selected{/if}>|--$lv2[cname]</option>
+                        {/if}
+                        {/loop}
+                    {/if}
+                    {/loop}
+                </select>
+            </td>
+            <td class="tips">父级分类，最多只能有3级分类</td>
+          </tr>
+          <tr><th colspan="2">可发布内容</th></tr>
+          <tr>
+            <td>
+            	<input type="radio" class="radio" name="categorynew[available]" value="1"{if $category[available]} checked{/if}> 是 
+                <input type="radio" class="radio" name="categorynew[available]" value="0"{if !$category[available]} checked{/if}> 否
+            </td>
+            <td class="tips">在发布内容是分类是否可选</td>
+          </tr>
+          <tr><th colspan="2">首页模板</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="categorynew[template_index]" value="$category[template_index]"></td>
+            <td class="tips">分类首页模板,留空将使用系统默认模板</td>
+          </tr>
+          <tr><th colspan="2">列表页模板</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="categorynew[template_list]" value="$category[template_list]"></td>
+            <td class="tips">分类列表页模板,留空将使用系统默认模板</td>
+          </tr>
+           <tr><th colspan="2">详细页模板</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="categorynew[template_detail]" value="$category[template_detail]"></td>
+            <td class="tips">分类详细页模板,留空将使用系统默认模板</td>
+          </tr>
+           <tr><th colspan="2">SEO关键字</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="categorynew[keywords]" value="$category[keywords]"></td>
+            <td class="tips">分类关键字,留空将使用系统默认</td>
+          </tr>
+           <tr><th colspan="2">SEO描述</th></tr>
+          <tr>
+            <td><textarea class="textarea w300" name="categorynew[description]">$category[description]</textarea></td>
+            <td class="tips">分类描述,留空将使用系统默认</td>
+          </tr>
+      </tbody>
+      <tfoot>
+          <tr>
+            <td colspan="5">
+                <input type="submit" class="submit" value="提交"> &nbsp;
+                <input type="button" class="button" value="刷新" onclick="window.location.reload()">
+            </td>
+          </tr>
+      </tfoot>
+    </table>
+    </form>
+    </div>
+</div>
+<script type="text/javascript">
+function checkSubmit(){
+	if(!$("#cname").val()){
+		alert('分类名称不能为空');
+		return false;
+	}
+	return true;
+}
+</script>
+{template footer_admin}

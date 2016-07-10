@@ -1,0 +1,28 @@
+{template header_common}
+<div class="area sitepath">
+	<a href="/">首页</a> > 
+    <a href="/">手机通讯</a> > 
+    <a href="/">手机</a> > 
+    <a href="/">商品详情</a>
+</div>
+<div class="area goodsDetail">
+	<div class="picBox">
+    	<div class="image">
+        	{loop $piclist $pic}
+            <img src="$pic[image]">
+            {/loop}
+        </div>
+    </div>
+    
+    <div class="goodsInfo">
+    	<h1 class="h1-title">$goods[name]</h1>
+        <div class="goodsAttr">
+        	<div class="price">
+            	<p class="p1">原价:<s>$goods[price]</s></p>
+            	<p class="p2">折扣价:<strong>$goods[discount_price]</strong></p>
+            </div>
+            <div class="discounting">正在促销 可返现20%</div>
+        </div>
+    </div>
+</div>
+{template footer_common}

@@ -1,0 +1,79 @@
+{template header_admin}
+<div id="pagecontainer">
+    <div class="toolbar">
+    	<div class="f-right">
+        	<form name="search" id="form_search" action="">
+            <input type="hidden" name="m" value="$G[m]">
+            <input type="hidden" name="c" value="$G[c]">
+            <input type="hidden" name="a" value="$G[a]">
+            <select name="catid" id="catid" class="w200">
+            	<option value="0">所有分类</option>
+            	{loop $categorylist $clist}
+            	<option value="$clist[pageid]"{if $catid==$clist[pageid]} selected="selected"{/if}>$clist[title]</option>
+            	{/loop}
+            </select>
+        </form>
+        </div>
+        <strong>页面管理</strong>
+        <a href="/?m=$G[m]&c=$G[c]&a=publish&catid=$catid" class="baritem">添加页面</a>
+    </div>
+    <div class="table-hd">
+    <form method="post" action="">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+        <thead>
+          <tr>
+            <th width="20" class="center">删?</th>
+            <th>标题</th>
+            <th>别名</th>
+            <th width="80">分类</th>
+            <th width="80">排序</th>
+            <th width="120">发布时间</th>
+            <th width="120">最后修改</th>
+            <th width="40">编辑</th>
+          </tr>
+         </thead>
+         <tbody>
+          <!--{loop $pagelist $key $list}-->
+          {eval $list[pubtime]=formatTime($list[pubtime],'Y-m-d H:i')}
+          {eval $list[modified]=formatTime($list[modified],'Y-m-d H:i')}
+          <tr>
+            <td><input type="checkbox" class="checkbox" name="delete[]" value="$list[pageid]"></td>
+            <th><a href="/?m=admin&c=page&a=edit&pageid=$list[pageid]">$list[title]</a></th>
+            <td>$list[alias]</td>
+            <td>$categorylist[$list[catid]][title]</td>
+            <td><input type="text" class="text w60" name="neworder[{$list[pageid]}]" value="$list[displayorder]" /></td>
+            <td>$list[pubtime]</td>
+            <td>$list[modified]</td>
+            <td><a href="/?m=admin&c=page&a=edit&pageid=$list[pageid]">编辑</a></td>
+          </tr>
+          <!--{/loop}-->
+          </tbody>
+          <tfoot>
+          	<tr>
+            	<td colspan="10">
+            	<input type="checkbox" class="checkbox" name="delete[]" value="0" node="checkall"> 全选
+                </td>
+            </tr>
+          	<tr>
+              <td colspan="10">
+                  <span class="pages">$pages</span>
+                  <input type="submit" class="submit" value="提交">　 
+                  <input type="button" class="button" value="刷新" onclick="window.location.reload()">
+              </td>
+          	</tr>
+         </tfoot>
+    </table>
+ </form>
+ </div>
+</div>
+<script type="text/javascript">
+$("input[node=checkall]").click(function(){
+	$("input[name='delete[]']").attr('checked',$(this).is(":checked"));
+});
+$("#catid").change(function(){
+	$("#form_search").submit();
+});
+</script>
+{template footer_admin}

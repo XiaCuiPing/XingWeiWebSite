@@ -1,0 +1,132 @@
+{template header_admin}
+<div id="pagecontainer">
+<h2>导航管理</h2>
+<div class="nav-left">
+	<form method="post" name="formcat" id="formcat">
+	<div class="menu-header">分类目录</div>
+    <div class="content">
+    	<select multiple="true" size="10" name="cids[]" style="font-size:14px;">$categoryoptions</select>
+    </div>
+    <div class="content">
+    	<p style="padding:5px 0;">提示:按住Control键可同时选中多个选项</p>
+    	<input type="button" id="addToNav" class="button submit" value="添加到导航">
+    </div>
+    </form>
+</div>
+<div class="nav-right">
+	<div class="menu-header">拖放各个项目到您喜欢的顺序</div>
+    <div class="nav-class">顶部导航</div>
+    <div class="nav-item">
+    	<div class="nav-title">标题</div>
+        <div class="nav-url">URL</div>
+        <div class="nav-position">位置</div>
+        <div class="nav-target">打开方式</div>
+        <div class="nav-available">可用</div>
+    </div>
+    <form method="post" name="formnav" id="formNav">
+    <input type="hidden" name="formsubmit" value="yes">
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <div id="navTop">
+   		{loop $navlist[top] $nav}
+        <div class="nav-item" id="nav_item_$nav[nid]">
+            <div class="nav-title"><input type="text" name="navnew[{$nav[nid]}][title]" class="input-text w100" value="$nav[title]"></div>
+            <div class="nav-url"><input type="text" name="navnew[{$nav[nid]}][url]" class="input-text" value="$nav[url]"{if $nav[type]=='system'} disabled{/if}></div>
+            <div class="nav-position">
+            	<select name="navnew[{$nav[nid]}][position]">
+            		<option value="top"{if $nav[position]=='top'} selected{/if}>顶部</option>
+                    <option value="bottom"{if $nav[position]=='bottom'} selected{/if}>底部</option>
+                </select>
+            </div>
+            <div class="nav-target">
+            	<select name="navnew[{$nav[nid]}][target]">
+                	<option value="_self"{if $nav[target]=='_self'} selected{/if}>本窗口</option>
+                    <option value="_blank"{if $nav[target]=='_blank'} selected{/if}>新窗口</option>
+                    <option value="_top"{if $nav[target]=='_top'} selected{/if}>顶层框架</option>
+                </select>
+            </div>
+            <div class="nav-available"><input type="checkbox" name="navnew[{$nav[nid]}][available]" value="1"{if $nav[available]==1} checked{/if}></div>
+            {if $nav[type]=='custom'}<span class="delete"><a href="javascript:;" onclick="deleteNav(this,$nav[nid])">删除</a></span>{/if}
+            <input type="hidden" name="navnew[{$nav[nid]}][displayorder]" node="order" value="0">
+        </div>
+        {/loop}
+    </div>
+    <div class="nav-class">底部导航</div>
+    <div id="navBottom">
+    	{loop $navlist[bottom] $nav}
+        <div class="nav-item" id="nav_item_$nav[nid]">
+            <div class="nav-title"><input type="text" name="navnew[{$nav[nid]}][title]" class="input-text w100" value="$nav[title]"></div>
+            <div class="nav-url"><input type="text" name="navnew[{$nav[nid]}][url]" class="input-text" value="$nav[url]"{if $nav[type]=='system'} disabled{/if}></div>
+            <div class="nav-position">
+            	<select name="navnew[{$nav[nid]}][position]">
+            		<option value="top"{if $nav[position]=='top'} selected{/if}>顶部</option>
+                    <option value="bottom"{if $nav[position]=='bottom'} selected{/if}>底部</option>
+                </select>
+            </div>
+            <div class="nav-target">
+            	<select name="navnew[{$nav[nid]}][target]">
+                	<option value="_self"{if $nav[target]=='_self'} selected{/if}>本窗口</option>
+                    <option value="_blank"{if $nav[target]=='_blank'} selected{/if}>新窗口</option>
+                    <option value="_top"{if $nav[target]=='_top'} selected{/if}>顶层框架</option>
+                </select>
+            </div>
+            <div class="nav-available"><input type="checkbox" name="navnew[{$nav[nid]}][available]" value="1"{if $nav[available]==1} checked{/if}></div>
+            {if $nav[type]=='custom'}<span class="delete"><a href="javascript:;" onclick="deleteNav(this,$nav[nid])">删除</a></span>{/if}
+            <input type="hidden" name="navnew[{$nav[nid]}][displayorder]" node="order" value="0">
+        </div>
+        {/loop}
+    </div>
+    <div id="newNavContent"></div>
+    <div class="nav-class"><a href="javascript:;" onclick="addNav()"><i class="icon">&#xf0154;</i>添加导航</a></div>
+    <div class="menu-header" style="border:0;"><input type="submit" class="button submit" value="保存菜单"></div>
+    </form>
+ </div>
+ <div class="clearfix"></div>
+</div>
+<script type="text/template" id="tplNav">
+<div class="nav-item">
+	<div class="nav-title"><input type="text" name="newnav[nkey][title]" class="input-text w100"></div>
+	<div class="nav-url"><input type="text" name="newnav[nkey][url]" class="input-text"></div>
+	<div class="nav-position"><select name="newnav[nkey][position]"><option value="top">顶部</option><option value="bottom">底部</option></select></div>
+	<div class="nav-target"><select name="newnav[nkey][target]"><option value="_self">本窗口</option><option value="_blank">新窗口</option><option value="_top">顶层框架</option></select></div>
+	<div class="nav-available"><input type="checkbox" name="newnav[nkey][available]" value="1" checked></div>
+	<input type="hidden" name="newnav[nkey][displayorder]" node="order" value="0">
+</div>
+</script>
+<script type="text/javascript">
+$("#newNavContent").sortable();
+$("#navTop").sortable();
+$("#navBottom").sortable();
+$("#formNav").submit(function(){
+	$("#formNav").find(".nav-item").each(function(index, element) {
+        $(element).find("input[node=order]").val(index);
+    });
+	return true;
+});
+$("#addToNav").click(function(){
+	$("#formcat").ajaxSubmit({
+		url:'/?m=admin&c=nav&a=addcat&index='+$("#formNav").find(".nav-item").length,
+		dataType:'json',
+		success:function(json){
+			if(json.state) window.location.reload();
+		}
+	});
+});
+var nkey = 1000;
+function addNav(){
+	nkey++;
+	$("#newNavContent").append($("#tplNav").html().replace(/nkey/g,nkey));
+}
+function deleteNav(o,nid){
+	if(!nid||!o) return false;
+	if(confirm('你确定要删除吗?')){
+		$.ajax({
+			url:'/?m=admin&c=nav&a=delete&nid='+nid,
+			dataType:"json",
+			success: function(json){
+				$("#nav_item_"+nid).slideUp('slow',function(){$(this).remove();});
+			}
+		});
+	}
+}
+</script>
+{template footer_admin}

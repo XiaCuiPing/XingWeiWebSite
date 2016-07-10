@@ -1,0 +1,74 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/member.css">
+<div class="signbox">
+	<div class="left">
+    	<h3>登录立即拿返利</h3>
+        <form method="post" autocomplete="off" action="/?m=member&c=login" id="loginForm">
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <input type="hidden" name="formsubmit" value="yes">
+        <div class="row">
+        	<div class="cell cell-name">账号</div>
+            <div class="cell"><input type="text" name="account_{FORMHASH}" class="text" placeholder="用户名/手机号/邮箱"></div>
+        </div>
+        <div class="row">
+        	<div class="cell cell-name">密码</div>
+            <div class="cell"><input type="password" name="password_{FORMHASH}" class="text" placeholder="密码"></div>
+        </div>
+        <div class="row">
+        	<div class="cell cell-name">验证码</div>
+            <div class="cell">
+            	<input type="text" name="captchacode" class="text" placeholder="验证码" style="width:100px; margin-right:5px; float:left;">
+                <img src="/?m=common&c=index&a=captcha" onclick="this.src='/?m=common&c=index&a=captcha&'+Math.random()" height="28">
+            </div>
+        </div>
+        <div class="row-expire"><input type="checkbox" class="checkbox"> 两周内免登录 <a href="">忘记密码?</a></div>
+        <div class="btn-hd">
+        	<input type="submit" class="btn-submit" value="登录">
+        </div>
+        </form>
+    </div>
+    
+    <div class="line"></div>
+    
+    <div class="right">
+    	<div class="rowitem">还没有账号? 请先注册</div>
+        <div class="rowitem"><a href="/?m=member&c=register" class="btn">账号注册</a></div>
+        <div class="rowitem">用其他方式登录</div>
+        <div class="rowitem">
+        	<div class="ico"><a href=""><img src="/static/images/xinwei/icon-qq.png"></a></div>
+            <div class="ico"><a href=""><img src="/static/images/xinwei/icon-weibo.png"></a></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$("#loginForm").submit(function(e) {
+    var account = $("[name=account_{FORMHASH}]").val();
+	if(account.length < 2){
+		$("#input-account").addClass('err');
+		DSXUI.error('请输入账号');
+		return false;
+	}else {
+		$("#input-account").removeClass('err');
+	}
+	
+	var password = $("[name=password_{FORMHASH}]").val();
+	if(password.length < 6){
+		$("#input-password").addClass('err');
+		DSXUI.error('密码输入错误');
+		return false;
+	}else {
+		$("#input-password").removeClass('err');
+	}
+	
+	var captchacode = $("[name=captchacode]").val();
+	if(captchacode.length !== 4){
+		$("#input-captcha").addClass('err');
+		DSXUI.error('请输入验证码');
+		return false;
+	}else {
+		$("#input-captcha").removeClass('err');
+	}
+	return true;
+});
+</script>
+{template footer_common}

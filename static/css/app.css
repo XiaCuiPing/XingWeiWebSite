@@ -1,0 +1,137 @@
+/* CSS Document */
+@charset "UTF-8";
+/* CSS Document */
+@font-face {font-family: 'iconfont';
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg#uxiconfont') format('svg'); /* iOS 4.1- */
+}
+/* CSS Document */
+* {outline: 0px solid transparent; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-touch-callout: none;}
+html,body{padding:0; margin:0; font: 16px/1.5;
+background:#fff; color:#333; word-break:break-all; word-wrap:break-word;}
+html *{word-wrap:break-word; word-break:break-all;}
+ul,li,p,form,dd,dl,dt,h1,h2,h3,h4,h5{padding:0; margin:0; list-style:none;}
+a:link,a:visited,a:active{color:#333; text-decoration:none;}
+a:hover{text-decoration:none; color:#333; outline:none;}
+img{border:0;}
+input[type="checkbox"], input[type="radio"]{height:18px; width:18px; display:inline-block;}
+.clearfix{height:0; line-height:0; clear:both;}
+.blank{height:20px; line-height:20px; clear:both;}
+.icon{font-family:iconfont; font-style:normal; margin-right:5px;}
+/**灰色按钮**/
+.button{line-height:1.2; overflow:hidden; clear:both; display:block; background:#e5e5e5; text-align:center; font-size:18px; text-align:center; margin:15px 0; border-radius:40px; overflow:hidden;}
+.button span,.button a{display:block; padding:12px 20px; border-radius:40px;}
+
+/**common**/
+.slider{width:100%; padding:0; margin:0; overflow:hidden; height:180px;}
+.slider ul{display:block; padding:0;}
+.slider ul li{height:180px;}
+.slider ul li img{width:100%; display:block;}
+
+/* 焦点图css -------------------------------------- */
+.focus{ width:100%; height:300px;  margin:0 auto; position:relative; overflow:hidden;}
+.focus .hd{ width:100%; height:11px;  position:absolute; z-index:1; bottom:20px; text-align:center;}
+.focus .hd ul{display:inline-block; height:5px; padding:3px 5px; font-size:0; vertical-align:top;}
+.focus .hd ul li{ display:inline-block; width:8px; height:8px; -webkit-border-radius:8px; -moz-border-radius:8px; border-radius:8px; background:#fff; margin:0 5px;  vertical-align:top; overflow:hidden;   }
+.focus .hd ul .on{ background:#FE6C9C;  }
+.focus .bd{ position:relative; z-index:0; }
+.focus .bd li img{ width:100%;  height:300px; background:url(images/loading.gif) center center no-repeat;  }
+.focus .bd li a{ -webkit-tap-highlight-color:rgba(0, 0, 0, 0); /* 取消链接高亮 */  }
+
+#travel{background:#fff; clear:both; overflow:hidden; padding:10px 10px 60px 10px;}
+#travel .title{font-size:18px; line-height:1.5; font-weight:normal; margin:0; padding:3px 0;}
+#travel .p{font-size:14px; color:#666; padding:0; margin:4px 0;}
+#travel .content{text-align:justify; font-size:16px; line-height:1.5; clear:both; overflow:hidden; color:#555;}
+#travel .content img{display:block; max-width:100%; border:0;}
+#travel .content p{padding:0; margin:5px 0;}
+#travel .content *{text-align:justify; max-width:100%;}
+
+#travel .travel-info{font-size:16px; margin:5px 0; color:#060;}
+#travel .travel-button{line-height:1.2; overflow:hidden; clear:both; display:block; background:#e5e5e5; text-align:center; font-size:18px; text-align:center; margin:15px 0; border-radius:40px; overflow:hidden;}
+#travel .travel-button span,.travel-button a{display:block; padding:12px 20px; border-radius:40px;}
+#travel .travel-button a:link,.travel-button a:visited,.travel-button a:active{color:#333;}
+
+#travel .titlediv{height:20px; line-height:20px; border-left:5px #3DC0AE solid; padding:0 10px;}
+#travel .titlediv strong{font-size:16px;}
+#travel .titlediv .more{float:right; font-weight:normal;}
+#travel .collectionView{width:120%; clear:both; margin-top:20px;}
+#travel .collectionView li{width:145px; margin:0 10px 10px 0; float:left; height:170px; overflow:hidden;}
+#travel .collectionView li .pic{height:100px; overflow:hidden;}
+#travel .collectionView li .pic img{display:block; width:100%; height:100px;}
+#travel .collectionView li .title{height:30px; line-height:30px; font-size:18px; overflow:hidden; color:#3DC0AE;}
+#travel .collectionView li .summary{font-size:14px; color:#666; height:18px; line-height:18px; overflow:hidden;}
+#travel .tableView{margin-top:10px;}
+#travel .tableView li{height:85px; overflow:hidden; background:#f0f0f0; margin:15px 0;}
+#travel .tableView li .pic{width:110px; height:85px; float:left; margin-right:10px; overflow:hidden;}
+#travel .tableView li .pic img{display:block; width:110px; height:85px;}
+#travel .tableView li dl{overflow:hidden; padding:0; margin:0;}
+#travel .tableView li dl h3{font-size:16px; height:30px; line-height:30px; overflow:hidden;}
+#travel .tableView li dl dd{color:#666; font-size:14px; height:30px; overflow:hidden;}
+#travel .tableView li dl dt{font-size:12px; height:20px; overflow:hidden; color:#666;}
+#travel .tableView li a:active{background:#e5e5e5; outline:#CCC;}
+#travel .moreButton{border:1px #e0e0e0 solid; height:40px; line-height:40px; width:180px; margin:20px auto; text-align:center;}
+#travel .moreButton a{display:block; text-align:center;}
+
+#article{padding:10px 10px 100px 10px;}
+#article .pubtime{font-size: 12px; color: #999; height: 30px; line-height: 30px; text-align:center; overflow:hidden;}
+#article .title{font-size:18px; padding: 10px 0; line-height: 1.2; margin: 0;}
+#article .attr{font-size:14px; color:#666; height:26px; line-height:26px;}
+#article .content{font-size:17px; overflow:hidden; text-align:justify; line-height:1.6; padding:5px 0; word-break: break-all; word-wrap: break-word; box-sizing: border-box;}
+#article .content *{margin:0; padding:0; max-width:100%;}
+#article .content img{max-width:100%; display:block; border:0;}
+#article .content p{margin:0; padding:7px 0; text-indent:1.5em;}
+
+/**商品详细页**/
+#goods{background:#f2f2f2; padding:0 0 80px 0;}
+#goods .pics{width:100%; height:200px; overflow:hidden; display:block; background-size:100% auto; position:relative;}
+#goods .pics .barbg,
+#goods .pics .bar{position:absolute; width:100%; display:block; color:#fff; bottom:0; height:40px; box-sizing:border-box;}
+#goods .pics .barbg{background:#000; opacity:0.4;}
+#goods .pics .bar{line-height:40px; font-size:17px; padding:0 10px;}
+#goods .pics .bar .sold{float:right; opacity:1.0;}
+#goods .price{background:#fff; border-bottom:1px #e5e5e5 solid; padding:0 10px; height:60px; line-height:60px;}
+#goods .price .priceNum{font-size:20px; color:#3DC0AD; font-weight:bold;}
+#goods .price .button-buy{
+	height:35px; line-height:35px; border-radius:35px;
+	background:#3DC0AD; width:120px; float:right; margin-top:13px;
+	color:#fff; font-size:16px; text-align:center;
+}
+#goods .price .button-buy a{display:block; color:#fff; text-decoration:none; border-radius:40px;}
+#goods .address{background:#fff; border-bottom:1px #e5e5e5 solid; padding:12px 10px; line-height:1.2; font-size:14px;}
+#goods .content{overflow:hidden; margin-top:15px; background:#fff; border-bottom:1px #e5e5e5 solid; border-top:1px #e5e5e5 solid;}
+#goods .content .title{padding:0 10px; height:50px; line-height:50px; font-size:18px; font-weight:bold; border-bottom:1px #e5e5e5 solid;}
+#goods .content .p{text-align:justify; font-size:16px; line-height:1.5; overflow:hidden; padding:10px; box-sizing:border-box;}
+#goods .content .p *{max-width:100%;}
+#goods .content .p img{max-width:100% !important; display:block; margin:0; border:none; box-sizing:border-box;}
+#goods .content .p p{margin:5px 0; padding:0;}
+
+#goods .button-line{margin:15px 6px 0 6px; text-align:center; font-size:16px; background:#fff; border-radius:40px;}
+#goods .button-line a,#goods .button-line span{ padding:10px 20px; border-radius:40px; display:block; text-decoration:none;}
+#goods .button-line a:hover{color:#000; background:#f0f0f0;}
+#goods .button-line a:active,#goods .button-line a:visited,#goods .button-line a:link{background:#fff;}
+#goods .tableView{margin:10px;}
+#goods .tableView li{height:85px; overflow:hidden; padding:15px 0;}
+#goods .tableView li .pic{width:110px; height:85px; float:left; margin-right:10px; overflow:hidden;}
+#goods .tableView li .pic img{display:block; width:110px; height:85px;}
+#goods .tableView li dl{overflow:hidden; padding:0; margin:0;}
+#goods .tableView li dl dd{font-size:16px; height:30px; line-height:30px; overflow:hidden; font-weight:bold;}
+#goods .tableView li dl dt{font-size:18px; height:20px; overflow:hidden; color:#666; margin-top:30px; color:#F30; font-weight:bold;}
+#goods .tableView li dl dt span{float:right; color:#333; font-size:16px; font-weight:normal;}
+#goods .tableView li a:active{background:#e5e5e5; outline:#CCC;}
+
+/**评论**/
+#comment{padding:10px 10px 40px 10px;}
+#comment .noaccess{text-align:center; font-size:16px; color:#333; clear:both; margin-top:20px;}
+#comment .h3-title{border-bottom:1px #ddd solid; padding:7px 0; font-size:18px; clear:both; margin:0;}
+#comment .commitem{clear:both; border-bottom:1px #ddd dotted; padding:15px 0; margin:10px 0;}
+#comment .commitem .avatar{width:50px; height:50px; float:left; margin:2px 10px 0 0;}
+#comment .commitem .avatar img{width:50px; height:50px; border-radius:50px; display:block; border:0;}
+#comment .commitem .content{overflow:hidden;}
+#comment .commitem .username {font-size:16px; font-weight:bold;}
+#comment .commitem .pubtime{color:#888; font-size:13px;}
+#comment .commitem .message{overflow:hidden; font-size:16px; color:#333; line-height:1.6; text-align:justify; padding-top:5px;}
+
+

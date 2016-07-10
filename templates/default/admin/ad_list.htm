@@ -1,0 +1,63 @@
+{template header_admin}
+<div id="pagecontainer">
+    <div class="toolbar">
+        <div class="f-right">
+        
+        </div>
+        <strong>广告管理</strong>
+        <a href="/?m=$G[m]&c=$G[c]&a=publish" class="baritem">添加广告</a>
+    </div>
+    <div class="table-hd">
+    <form method="post" autocomplete="off">
+    <input type="hidden" name="formsubmit" value="yes" />
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+    <thead>
+      <tr>
+        <th width="30" class="center">删?</th>
+        <th>广告名称</th>
+        <th width="100">类型</th>
+        <th width="100">开始时间</th>
+        <th width="100">结束时间</th>
+        <th width="80" class="center">点击数</th>
+        <th width="80">状态</th>
+        <th width="40">编辑</th>
+      </tr>
+     </thead>
+     <tbody id="mainbody">
+      <!--{loop $adlist $list}-->
+      <tr>
+        <td><input type="checkbox" class="checkbox" name="id[]" value="$list[id]"></td>
+        <td>$list[title]</td>
+        <td>$lang[adtypes][$list[type]]</td>
+        <td>$list[starttime]</td>
+        <td>$list[endtime]</td>
+        <td class="center">$list[clicknum]</td>
+        <td>$lang[adstatus][$list[status]]</td>
+        <td><a href="/?m=$G[m]&c=$G[c]&a=edit&id=$list[id]">编辑</a></td>
+      </tr>
+      <!--{/loop}-->
+      </tbody>
+      <tfoot>
+      <tr>
+      	<td colspan="2">
+        	<label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'id[]')"> 全选</label>
+            <label><input type="radio" class="radio" name="option" value="delete" checked> 删除</label>
+            <label><input type="radio" class="radio" name="option" value="enable"> 启用</label>
+            <label><input type="radio" class="radio" name="option" value="disable"> 停用</label>
+            <label><input type="radio" class="radio" name="option" value="unaudit"> 审核未通过</label>
+        </td>
+      </tr>
+      <tr>
+          <td colspan="8">
+              <span class="pages">$pages</span>
+              <input type="submit" class="submit" value="$lang[submit]">
+              <input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+          </td>
+      </tr>
+     </tfoot>
+    </table>
+    </form>
+    </div>
+</div>
+{template footer_admin}

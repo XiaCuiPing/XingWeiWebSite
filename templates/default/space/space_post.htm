@@ -1,0 +1,27 @@
+{template space_top}
+<div id="profile">
+  	<div class="w_profile_main">
+    	<div class="pf_blog_top">
+            <strong>文章 (共{$totalnum}篇)</strong>
+        </div>
+        {if $articlelist}
+        {loop $articlelist $article}
+        <div class="blog_list_item" id="list_$article[id]">
+            <h3 class="title"><a href="/?mod=post&ac=detail&id=$article[id]" target="_blank">$article[title]</a></h3>
+            <div class="summary">$article[summary]</div>
+            <div class="info">
+                $article[pubtime]
+                <a href="/?mod=post&ac=detail&id=$article[id]" target="_blank">查看全文</a>
+                <a href="/?mod=post&ac=detail&id=$article[id]" target="_blank">阅读($article[viewnum])</a>
+                <a href="/?mod=post&ac=detail&id=$article[id]" target="_blank">评论($article[commentnum])</a>
+            </div>
+        </div>
+        {/loop}
+        <div class="page">$pages</div>
+        {else}
+        <div style="text-align:center; clear:both; padding:30px 0; color:#666;">当前还没有日志</div>
+        {/if}
+        <div class="blank50"></div>
+    </div>
+</div>
+{template footer}

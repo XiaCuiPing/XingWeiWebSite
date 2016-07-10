@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<title>$article[title]</title>
+<link rel="stylesheet" type="text/css" href="/static/css/app.css?{TIMESTAMP}">
+{eval $articlejson=json_encode($article)}
+<script type="text/javascript">
+function getArticle(){
+	return '$articlejson';
+}
+</script>
+
+</head>
+
+<body id="article">
+{eval $article[pubtime]=@date('Y-m-d H:i',$article[pubtime]);}
+{eval $content[content]=cleanUpStyle($content[content]);}
+<h1 class="title">$article[title]</h1>
+<div class="pubtime">
+    $article[pubtime] &nbsp;&nbsp;
+    阅读: $article[viewnum] &nbsp;&nbsp;
+    评论: $article[commentnum]
+    {if $article[from]}&nbsp;&nbsp;{$article[from]}{/if}
+</div>
+<div class="content">$content[content]</div>
+</body>
+</html>

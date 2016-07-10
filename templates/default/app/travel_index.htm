@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<link rel="stylesheet" type="text/css" href="/static/css/app.css?{TIMESTAMP}">
+<script src="/static/js/jquery.js"></script>
+<script src="/static/js/common.js"></script>
+<script src="/static/js/TouchSlide.1.1.js"></script>
+<title>$G[title]</title>
+</head>
+
+<body>
+<div class="focus" id="focus">
+	<div class="hd"><ul></ul></div>
+    <div class="bd">
+    	<ul>
+    	{loop $slidelist $list}
+       <li><a href="zwapp://showdetail/?id=$list[dataid]&title=$list[title]"><img src="$list[pic]"></a></li>
+       {/loop}
+    </ul>
+    </div>
+</div>
+<script type="text/javascript">
+TouchSlide({ 
+	slideCell:"#focus",
+	titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+	mainCell:".bd ul", 
+	effect:"left", 
+	autoPlay:true,//自动播放
+	autoPage:true, //自动分页
+	switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+});
+</script>
+<div class="blank"></div>
+<div id="travel">
+	<div class="titlediv"><strong>最适合12月旅游的景点</strong></div>
+    <ul class="collectionView">
+    	{loop $recommendlist $list}
+       <li>
+       		<a href="zwapp://showdetail/?id=$list[id]&title=$list[title]">
+       		<div class="pic"><img src="$list[pic]"></div>
+           <div class="title">$list[title]</div>
+           <div class="summary">$list[address]</div>
+           </a>
+       </li>
+       {/loop}
+    </ul>
+    <script type="text/javascript">
+	$(".collectionView li").css({'width':($(document).width()-30)/2});
+	</script>
+    <div class="blank"></div>
+    <div class="titlediv"><strong>热门景点推荐</strong></div>
+    <ul class="tableView">
+    	{loop $travellist $list}
+       <li>
+       		<a href="zwapp://showdetail/?id=$list[id]&title=$list[title]">
+       		<div class="pic"><img src="$list[pic]"></div>
+           <dl>
+           	<h3>$list[title]</h3>
+            	<dd>本地热门景点介绍</dd>
+              <dt>$list[address]</dt>
+           </dl>
+           </a>
+       </li>
+       {/loop}
+    </ul>
+    <div class="moreButton"><a href="zwapp://showmore">查看更多</a></div>
+</div>
+</body>
+</html>

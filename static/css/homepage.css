@@ -1,0 +1,213 @@
+/* CSS Document */
+.redback{background-color:#F43E36; height:410px; display:block; width:100%;}
+.slideHD{height:410px; position:relative;}
+.multimenu{position:absolute; left:0; top:0; padding:0; margin:0; display:block; z-index:100; width:180px; height:410px; background:#F7F7F7;}
+.multimenu li{display:block; padding:8px 0 8px 10px; font-size:12px; border-top:1px #e8e8e8 solid; margin-top:-1px;}
+.multimenu li a{display:inline-block; white-space:nowrap; margin-right:8px;}
+
+.appDown{position:absolute; right:0; top:0; background:#fff; width:180px; height:410px;}
+.appDown .tab{height:30px; padding:0 10px; line-height:30px; border-bottom:1px #e7e7e7 solid;}
+.appDown ul{display:block; margin:20px; overflow:hidden;}
+.appDown ul li{text-align:center;}
+.appDown ul .qrcode{width:100%; display:block;}
+.appDown ul .qrcode img{width:100%; height:auto; display:block;}
+.appDown ul .title{padding:5px; text-align:center; font-size:14px;}
+
+.slideDiv{position:absolute; left:180px; top:0; height:410px; width:640px; display:block;}
+/* 焦点图幻灯片 */
+.slideBox{ width:640px; height:410px; overflow:hidden; position:relative;}
+.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:5px; bottom:5px; z-index:1;}
+.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  }
+.slideBox .hd ul li{ float:left; margin-right:2px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; }
+.slideBox .hd ul li.on{ background:#f00; color:#fff; }
+.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+.slideBox .bd ul,.slideBox .bd li{width:100%; height:100%;}
+.slideBox .bd li{ zoom:1; vertical-align:middle; }
+.slideBox .bd img{ width:100%; height:100%; display:block;  }
+
+/* 下面是前/后按钮代码，如果不需要删除即可 */
+.slideBox .prev,
+.slideBox .next{ position:absolute; left:3%; top:50%; margin-top:-25px; display:block; width:32px; height:40px; background:url(../images/common/slider-arrow.png) -110px 5px no-repeat; filter:alpha(opacity=50);opacity:0.5;   }
+.slideBox .next{ left:auto; right:3%; background-position:8px 5px; }
+.slideBox .prev:hover,
+.slideBox .next:hover{ filter:alpha(opacity=100);opacity:1;  }
+.slideBox .prevStop{ display:none;  }
+.slideBox .nextStop{ display:none;  }
+
+/**滚动横幅**/
+.scrollBanner{display:block; overflow:hidden;}
+.scrollBanner ul{overflow:hidden; zoom:1;}
+.scrollBanner li{float:left; margin-right:20px; width:235px; height:160px; display:inline;}
+.scrollBanner li img{width:100%; height:100%; display:block;}
+
+.titleDiv{display:block; padding:10px 0; border-bottom:1px #DDD solid;}
+.titleDiv .ico{width:10px; height:30px; display:inline-block; margin-right:10px; background:#D41D6D; float:left;}
+.titleDiv strong{font-size:20px; color:#D41D6D; line-height:30px;}
+.titleDiv h3{font-size:18px; color:#333; line-height:30px;}
+.goodsList-5{display:block; clear:both; width:1100px; margin-top:10px;}
+.goodsList-5 li{width:199px; border:1px #DDD solid; margin:0 0px 10px -1px; float:left; position:relative;}
+.goodsList-5 li .pic{margin:10px; width:178px; height:178px; display:block; overflow:hidden;}
+.goodsList-5 li .pic img{width:100%; height:100%; display:block;}
+.goodsList-5 li .name{margin:0 10px; line-height:1.2; font-size:12px; height:28px; overflow:hidden; color:#444; font-weight:bold;}
+.goodsList-5 li .fan{height:30px; margin:10px 10px 5px; font-size:16px; color:#666; font-weight:bold; clear:both; overflow:hidden;}
+.goodsList-5 li .fan i{font-style:normal; background:#F00; color:#fff; font-size:12px; padding:2px 8px; float:right;}
+
+.brandDiv{display:block; clear:both; margin-top:10px;}
+.brandFocus{width:333px; height:324px; float:left; margin-right:10px;}
+.brandFocus img{width:100%; height:100%; display:block;}
+.brandHD{overflow:hidden;}
+.brandHD .brandList{width:680px;}
+.brandHD .brandList li{width:102px; height:102px; margin:0 9px 9px 0; float:left; box-sizing:border-box; border:1px #ddd solid;}
+.brandHD .brandList li img{display:block; width:100%; height:100%;}
+
+.bannerAD{display:block; margin:20px auto;}
+.bannerAD img{width:100%; height:100%; display:block;}
+
+.likeList{display:block;}
+.likeList ul{width:1010px;}
+.likeList ul li{float:left; width:165.5px; border:1px #DDD solid; margin-left:-1px;}
+.likeList ul li .pic{margin:10px; width:145px; height:145px; display:block; overflow:hidden;}
+.likeList ul li .pic img{width:100%; height:100%; display:block;}
+.likeList ul li .name{margin:0 10px; line-height:1.2; font-size:12px; height:30px; overflow:hidden; color:#444; font-weight:bold;}
+.likeList ul li .fan{height:30px; margin:10px 10px 2px; font-size:14px; color:#F00; font-weight:bold; clear:both; overflow:hidden;}
+.likeList ul li .fan i{font-style:normal; background:#F00; color:#fff; font-size:12px; padding:2px 8px; float:right;}
+
+.lianmengDiv{display:block; margin-top:10px; overflow:hidden;}
+.lianmengDiv ul{display:block; width:1010px;}
+.lianmengDiv ul li{width:240.5px; float:left; border:1px #DDD solid; margin:0 10px 10px 0;}
+.lianmengDiv ul li .pic{height:240.5px; display:block;}
+.lianmengDiv ul li .pic img{width:100%; height:100%; display:block;}
+.lianmengDiv ul li .name{margin:10px 10px 5px; font-size:14px; height:20px; overflow:hidden;}
+.lianmengDiv ul li .comm{height:20px; margin:0 10px; clear:both; color:#999;}
+.lianmengDiv ul li .comm .stars{height:18px; float:left; margin-right:6px;}
+.lianmengDiv ul li .address{font-size:12px; color:#999; margin:0 10px;}
+.lianmengDiv ul li .fan{font-size:14px; color:#F00; padding:8px 10px; background:#F7F7F7; border-top:1px #DDD solid;
+font-weight:bold; clear:both; overflow:hidden; margin-top:5px;}
+.lianmengDiv ul li .fan i{font-style:normal; background:#F00; color:#fff; font-size:12px; padding:2px 8px; float:right;}
+
+/**========联盟商家=========**/
+.lianmengpage{}
+.lianmengpage .menudiv{display:block; height:320px; position:relative;}
+.lianmengpage .menudiv .menulist{width:160px; height:320px; background:#F7F7F7; float:left; overflow:hidden; margin-right:30px;}
+.lianmengpage .menudiv .menulist li{padding:0px 10px; display:block; border-bottom:0.5px #DDD solid; 
+font-size:12px; font-weight:bold; box-sizing:border-box; height:40px; line-height:40px; overflow:hidden;}
+.lianmengpage .menudiv .menulist li a{display:block;}
+.lianmengpage .menudiv .menulist li span{color:#777; float:right; margin:0;}
+.lianmengpage .menudiv .hot{overflow:hidden; border-bottom:1px DDD solid; height:310px; overflow:hidden; padding-top:10px;}
+.lianmengpage .menudiv .hot ul{display:block; width:820px; margin-top:10px;}
+.lianmengpage .menudiv .hot ul li{float:left; width:263px; margin-right:10px;}
+.lianmengpage .menudiv .hot ul .pic{width:263px; height:180px; display:block; overflow:hidden;}
+.lianmengpage .menudiv .hot ul .pic img{width:100%; height:100%; display:block;}
+.lianmengpage .menudiv .hot ul .name{padding:0px 8px; font-size:14px; height:24px; line-height:24px; overflow:hidden;}
+.lianmengpage .menudiv .hot ul p{padding:0px 8px; font-size:10px; color:#888; height:18px; line-height:18px; overflow:hidden;}
+.lianmengpage .menudiv .hot ul .fan{font-size:14px; color:#F00; padding:0px 8px; height:20px; line-height:20px; overflow:hidden;}
+.lianmengpage .titlediv{display:block; clear:both; padding:7px 0px; border-bottom:1px #ddd solid;}
+.lianmengpage .titlediv strong{border-left:5px #D41D6D solid; float:left; font-size:14px; padding-left:10px;}
+
+.lianmengpage .mdlist{display:block; margin-top:10px; padding-bottom:10px; border-bottom:1px #DDD solid; width:1050px;}
+.lianmengpage .mdlist li{width:184px; float:left; margin-right:20px;}
+.lianmengpage .mdlist .pic{display:block; height:120px; overflow:hidden;}
+.lianmengpage .mdlist .pic img{display:block; width:100%; height:100%;}
+.lianmengpage .mdlist .name{height:24px; line-height:24px; font-size:14px; overflow:hidden;}
+.lianmengpage .mdlist .fan{height:24px; line-height:24px; font-size:13px; color:#F00; overflow:hidden;}
+.lianmengpage .mdlist .fan i{float:right; font-size:11px; color:#888; font-style:normal;}
+.lianmengpage .mdbd{display:block; overflow:hidden;}
+
+.lianmengpage .shangHD{display:block; overflow:hidden; margin-top:10px;}
+.lianmengpage .shangList{width:1010px; display:block;}
+.lianmengpage .shangList li{float:left; margin:0 9px 9px 0; width:243px;}
+.lianmengpage .shangList li .pic{display:block; height:160px; overflow:hidden;}
+.lianmengpage .shangList li .pic img{display:block; width:100%; height:100%;}
+.lianmengpage .shangList li .name{height:30px; line-height:30px; font-size:12px;}
+.lianmengpage .shangList li .name span{font-size:14px; color:#F00; float:right; font-weight:100;}
+
+
+/**超市首页**/
+.marketpage{}
+.marketpage .slideDiv,.marketpage .slideBox{width:820px;}
+.marketpage .hotbest{background:#D41D6D; padding:10px; display:block;}
+.marketpage .hotbest h3{overflow:hidden; color:#fff; font-size:14px; margin-bottom:10px;}
+.marketpage .hotbest h3 i{float:right; font-size:12px; font-style:normal;}
+.marketpage .hotbest .container{background:#fff; display:block;}
+.marketpage .hotbest  dl{width:160px; height:330px; float:left; border-right:1px #DDD solid; position:relative;}
+.marketpage .hotbest  dl dd{padding:10px;}
+.marketpage .hotbest  dl dd h2{font-size:12px; line-height:1.2;}
+.marketpage .hotbest  dl dd p{font-size:14px; color:#F00; margin-top:5px; display:block;}
+.marketpage .hotbest  dl dt{width:140px; height:140px; display:block; bottom:10px; left:10px; overflow:hidden; position:absolute;}
+.marketpage .hotbest  dl dt img{width:100%; height:100%; display:block;}
+.marketpage .hotbest .listHD{overflow:hidden;}
+.marketpage .hotbest .listHD ul{display:block; width:840px;}
+.marketpage .hotbest .listHD ul li{float:left; width:165px; height:165px; position:relative;
+border-left:1px #DDD solid; border-top:1px #DDD solid; margin:-1px 0 0 -1px; box-sizing:border-box;}
+.marketpage .hotbest .listHD ul li .name{padding:10px 10px 0; font-size:12px; line-height:1.0; font-weight:400;}
+.marketpage .hotbest .listHD ul li .price{color:#F00; font-size:14px; padding:0 10px; display:block;}
+.marketpage .hotbest .listHD ul li .pic {position:absolute; display:block; width:100px; height:100px;
+right:10px; bottom:10px; overflow:hidden; z-index:10;}
+.marketpage .hotbest .listHD ul li .pic img{width:100%; height:100%; display:block;}
+
+.marketpage .titlediv{display:block; clear:both; padding:7px 0px; border-bottom:2px #333 solid;}
+.marketpage .titlediv strong{float:left; font-size:14px;}
+.marketpage .goodsLeft{width:200px; height:400px; float:left;}
+.marketpage .goodsLeft .pic{display:block; height:340px; overflow:hidden;}
+.marketpage .goodsLeft .pic img{width:100%; height:100%; display:block;}
+.marketpage .goodsLeft .menus{height:60px; display:block; padding:5px 0 0 10px; overflow:hidden; box-sizing:border-box;}
+.marketpage .goodsLeft .menus a{color:#fff; line-height:25px; margin-right:10px;}
+.marketpage .goodsListHD{overflow:hidden;}
+.marketpage .goodsList{width:810px; display:block;}
+.marketpage .goodsList li{width:200px; height:200px; float:left; border-right:1px #DDD solid; border-bottom:1px #DDD solid;
+margin:-1px 0 0 -1px; overflow:hidden;}
+.marketpage .goodsList li .pic{margin:30px 30px 20px; width:140px; height:100px;}
+.marketpage .goodsList li .pic img{width:100%; height:100%; display:block;}
+.marketpage .goodsList li .name,.marketpage .goodsList li .price{height:20px;
+line-height:20px; font-size:12px; padding:0 20px; overflow:hidden;}
+.marketpage .goodsList li .price{color:#F00;}
+
+
+/**======酒店旅行=====**/
+.travelpage{}
+.travelpage .banner{display:block; height:300px; overflow:hidden; margin:0 auto;}
+.travelpage .banner img{display:block; width:100%; height:100%;}
+.travelpage .searchdiv{display:block; background-color:#D41D6D; padding:10px;}
+.travelpage .searchdiv .tit{border-left:5px #FFF solid; padding-left:10px; font-size:14px; 
+display:block; margin-bottom:10px; color:#fff;}
+.travelpage .searchdiv .box{padding:10px; display:block; background:#fff; position:relative;}
+.travelpage .searchdiv .box .row{display:block;}
+.travelpage .searchdiv .box .cell{padding:8px 0; float:left; line-height:28px;}
+.travelpage .searchdiv .box .cell-name{width:80px; text-align:right; margin-right:10px;}
+.travelpage .searchdiv .box .text{border:0.5px #999 solid; height:28px; box-sizing:border-box; font-weight:bold; padding:0 5px;}
+.travelpage .searchdiv .box .pic{position:absolute; top:10px; right:10px; width:315px; height:130px;}
+.travelpage .searchdiv .box .pic img{width:100%; height:100%; display:block;}
+.travelpage .searchdiv .box .btn-search{height:28px; background-color:#D41D6D; color:#fff; border:0; box-sizing:border-box;
+padding:0 20px; font-size:14px; position:absolute; right:132px; bottom:10px;}
+
+.travelpage .filterdiv{display:block; border:0.5px #CCC solid;}
+.travelpage .filterdiv .row{display:block; border-bottom:0.5px #CCC solid;}
+.travelpage .filterdiv .row .cell{padding:10px; float:left; font-size:14px;}
+.travelpage .filterdiv .row .cell .tit{border-left:5px #D41D6D solid; font-weight:bold; padding-left:10px;}
+.travelpage .filterdiv .row .cell-name{width:40px; color:#999; text-align:right; line-height:18px;}
+.travelpage .filterdiv .row .cell a{display:inline-block; padding:3px 7px; margin-right:5px;}
+.travelpage .filterdiv .row .cell a.cur{background:#D41D6D; color:#fff;}
+
+.travelpage .viewList{display:block; border:0.5px #CCC solid;}
+.travelpage .viewList .tit{padding:10px; display:block; background:#EEEEEF; border-bottom:0.5px #CCC solid;}
+.travelpage .viewList .LList{width:750px; float:left; overflow:hidden; border-right:0.5px #CCC solid;}
+.travelpage .viewList .LList ul{display:block; width:755px;}
+.travelpage .viewList .LList ul li{width:375px; float:left; margin:-1px 0 0 -1px; border-top:0.5px #CCC solid;
+border-left:0.5px #CCC solid;}
+.travelpage .viewList .LList ul li .bd{padding:20px 20px 10px; display:block;}
+.travelpage .viewList .LList ul li .pic{width:335px; height:200px; display:block; overflow:hidden;}
+.travelpage .viewList .LList ul li .pic img{display:block; width:100%; height:100%;}
+.travelpage .viewList .LList ul li .title{height:30px; line-height:30px; font-size:14px; overflow:hidden;}
+.travelpage .viewList .LList ul li .fan{height:20px; line-height:20px; color:#999; overflow:hidden; display:block; font-size:12px;}
+.travelpage .viewList .LList ul li .price{font-size:16px; color:#F00; height:24px; line-height:24px; overflow:hidden;}
+
+.travelpage .viewList .RList{overflow:hidden;}
+.travelpage .viewList .RList ul{}
+.travelpage .viewList .RList li{display:block; border-top:0.5px #CCC solid; margin-top:-1px;}
+.travelpage .viewList .RList li .bd{padding:20px 20px 10px; display:block;}
+.travelpage .viewList .RList li .pic{width:210px; height:140px; display:block; overflow:hidden;}
+.travelpage .viewList .RList li .pic img{display:block; width:100%; height:100%;}
+.travelpage .viewList .RList li .title{height:30px; line-height:30px; font-size:14px; overflow:hidden;}
+.travelpage .viewList .RList li .fan{height:20px; line-height:20px; color:#F00; overflow:hidden; display:block; font-size:13px;}
+.travelpage .viewList .RList li .fan span{float:right; color:#999; font-size:12px;}
+

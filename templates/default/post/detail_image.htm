@@ -1,0 +1,32 @@
+{template header_common}
+{template detail_common}
+<script type="text/javascript" src="/static/js/postdetail.js"></script>
+<div class="area" id="detail">
+	<h1 class="title">$article[title]</h1>
+   <div class="info">
+   	   <span>$article[pubtime]</span>
+      <span>播放:$article[viewnum]</span>
+      <span>评论:($article[commentnum])</span>
+      <span>{if $article[from]}$article[from]{else}{$G[setting][sitename]}{/if}</span>
+    </div>
+    <div class="piclist">
+    	{loop $piclist $pic}
+        <div class="pic"><img src="$pic[attachment]" class="pic"></div>
+        <p>$pic[description]</p>
+      {/loop}
+    </div>
+    <div class="blank"></div>
+    <div class="morepics">
+    	<h3>相关图片</h3>
+       <div class="pics">
+       		{eval $articlelist=articlelist(array('type'=>'image','num'=>6));}
+           {loop $articlelist $list}
+           <div class="item">
+           	<div class="pic"><a href="/?m=post&c=detail&id=$list[id]"><img src="$list[pic]"></a></div>
+            	<div class="title"><a href="/?m=post&c=detail&id=$list[id]">$list[title]</a></div>
+           </div>
+           {/loop}
+       </div>
+    </div>
+</div>
+{template footer_common}

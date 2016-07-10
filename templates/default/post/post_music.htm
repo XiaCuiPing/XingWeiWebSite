@@ -1,0 +1,14 @@
+{template post_title}
+<div class="newpost-content" id="p-content-postdata">
+    <h3 class="content-sub-title">歌曲地址</h3>
+    <div class="content-body">
+    <textarea class="textarea-summary" name="songs">$musiccontent[songs]</textarea>
+    <p>请输入歌曲列表，格式:"艺术家|歌曲标题|歌曲地址"<br>
+    如:"刘德华|男人哭吧不是罪|http://mp3.dsxcms.com/男人哭吧不是罪.mp3"，每行一个。</p>
+   </div>
+</div>
+<div class="newpost-content">
+    <h3 class="content-sub-title">专辑介绍</h3>
+    <div class="content-body"><textarea class="textarea-summary" name="$content" style="height:150px;">$musiccontent[content]</textarea></div>
+</div>
+{template post_attribute}

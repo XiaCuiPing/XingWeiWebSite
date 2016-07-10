@@ -1,0 +1,14 @@
+@charset "UTF-8";
+.goodsDetail{border:1px #ccc solid;}
+.goodsDetail .picBox{width:400px; float:left; border-right:1px #CCC solid;}
+.goodsDetail .picBox .image{height:400px; display:block; overflow:hidden;}
+.goodsDetail .picBox .image img{width:100%; height:100%; display:block;}
+.goodsDetail .picBox .thumbs{}
+.goodsDetail .goodsInfo{overflow:hidden;}
+.goodsDetail .goodsInfo .h1-title{padding:20px; font-size:16px; line-height:1.2; border-bottom:1px #CCC solid;}
+.goodsDetail .goodsAttr{width:400px; float:left; border-right:1px #CCC solid;}
+.goodsDetail .goodsAttr .price{background:#D41D6D; color:#fff; padding:20px; position:relative;}
+.goodsDetail .goodsAttr .price .p1{font-size:12px; height:30px;}
+.goodsDetail .goodsAttr .price .p2{display:block; font-size:14px;}
+.goodsDetail .goodsAttr .price .p2 strong{font-size:16px;}
+.goodsDetail .goodsAttr .discounting{background:#efefef; padding:5px 10px; font-size:14px; margin-top:10px; font-weight:500;}

@@ -1,0 +1,51 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/member.css">
+<div class="area userinfo">
+	<div class="box box-avatar">
+    	<div class="u-avatar"><img src="{echo avatar($G[uid]);}"></div>
+        <div class="u-info">
+        	<h3>$G[username]</h3>
+            <div>更换头像</div>
+            <p>等级:注册会员</p>
+        </div>
+    </div>
+    
+    <div class="box">
+    	<h3 class="u-title">账户余额</h3>
+        <div class="u-amount">1500</div>
+        <div class="u-status">充值</div>
+    </div>
+    
+    <div class="box">
+    	<h3 class="u-title">我的积分</h3>
+        <div class="u-amount">1500</div>
+        <div class="u-status">获取积分</div>
+    </div>
+    
+    <div class="box">
+    	<h3 class="u-title">邀请奖励</h3>
+        <div class="u-amount">500</div>
+        <div class="u-status">邀请人数20</div>
+    </div>
+    
+    <div class="box" style="border:none;"><a href="" class="btn-sign">签到</a></div>
+</div>
+
+<div class="blank"></div>
+<div class="area">
+	<div class="leftNav">
+    	<ul class="menu">
+        	<li><a href="" class="cur">个人中心</a></li>
+            <li><a href="">全部订单</a></li>
+            <li><a href="">进入排队返现</a></li>
+            <li><a href="">我的返现</a></li>
+            <li><a href="">积分兑换</a></li>
+            <li><a href="">修改资料</a></li>
+            <li><a href="">账户绑定</a></li>
+            <li><a href="">账号安全</a></li>
+            <li><a href="">退出登录</a></li>
+            <li><a href="" class="cur">我的店铺</a></li>
+            <li><a href="/?m=$G[m]&c=shop">我的店铺</a></li>
+            <li><a href="/?m=$G[m]&c=goods">商品管理</a></li>
+        </ul>
+    </div>

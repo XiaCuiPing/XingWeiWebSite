@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<title>$goods[name]</title>
+<link rel="stylesheet" type="text/css" href="/static/css/app.css?{TIMESTAMP}">
+<script type="text/javascript">
+function getGoods(){
+	return '$json';
+}
+</script>
+</head>
+
+<body id="goods">
+<div class="pics" style="background-image:url({$shop[pic]});">
+	<div class="barbg"></div>
+	<div class="bar">
+    	<span class="sold">已售$goods[sold]份</span>
+       <strong>$goods[name]</strong>
+    </div>
+</div>
+<div class="price">
+	<!--<div class="button-buy"><a href="zwapp://buy/?goods_id=$goods[id]">立即订购</a></div>-->
+    <div style="float:right;">$distance</div>
+    <div class="priceNum">￥$goods[price]</div>
+</div>
+{if $goods[address]}<div class="address">地址:$goods[address]</div>{/if}
+
+<div class="button-line"><a href="zwapp://showmap/?address=$goods[address]"><i class="icon">&#xf014a;</i>查看商家位置</a></div>
+{if $goods[tel]}<div class="button-line"><span><i class="icon">&#xf01ef;</i>$goods[tel]</span></div>{/if}
+
+<div class="content">
+	 <div class="title">产品介绍</div>
+    <div class="p">$description[description]</div>
+</div>
+</body>
+</html>

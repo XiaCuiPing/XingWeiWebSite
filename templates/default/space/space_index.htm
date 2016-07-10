@@ -1,0 +1,76 @@
+{template space_top}
+<div id="profile">
+ <div class="w_profile_main">
+ 	<div class="infoblock">
+    	<form class="infotitle">
+        	<fieldset>
+            	<legend>基本信息</legend>
+            </fieldset>
+        </form>
+        <div>
+        	<div class="pf_item">
+            	<div class="label">显示名称</div>
+                <div class="con">$member[username]</div>
+            </div>
+            <div class="pf_item">
+            	<div class="label">性别</div>
+                <div class="con">$lang[sexitems][$profile[usersex]]</div>
+            </div>
+            <div class="pf_item">
+            	<div class="label">生日:</div>
+                <div class="con">$profile[birthday]</div>
+            </div>
+            <div class="pf_item">
+            	<div class="label">血型</div>
+                <div class="con">$lang[blooditems][$profile[blood]]</div>
+            </div>
+            <div class="pf_item">
+            	<div class="label">所在地</div>
+                <div class="con">$profile[province]  $profile[city]  $profile[county]</div>
+            </div>
+            <div class="pf_item">
+            	<div class="label">个人简介</div>
+                <div class="con">$profile[introduction]</div>
+            </div>
+        </div>
+    </div>
+    <!--联系信息-->
+    <div class="infoblock">
+    	<form class="infotitle">
+        	<fieldset>
+            	<legend>联系信息</legend>
+            </fieldset>
+        </form>
+        <div>
+        	<div class="pf_item">
+            	<div class="label">QQ</div>
+                <div class="con">$profile[qq]</div>
+            </div>
+            <div class="pf_item">
+            	<div class="label">微信</div>
+                <div class="con">$profile[weixin]</div>
+            </div>
+            <div class="pf_item">
+            	<div class="label">邮箱</div>
+                <div class="con">$member[email]</div>
+            </div>
+        </div>
+    </div>
+    <!--个人标签-->
+    <div class="infoblock">
+    	<form class="infotitle">
+        	<fieldset>
+            	<legend>个人标签</legend>
+            </fieldset>
+        </form>
+        <div>
+        	<div class="pf_item">
+            	<div class="label">标签</div>
+                <div class="con">{loop $tags $tag}<a href="javascript:;">$tag</a>&nbsp;&nbsp;{/loop}</div>
+            </div>
+        </div>
+    </div>
+    <div style="height:50px; clear:both;"></div>
+ </div>
+ </div>
+{template footer}

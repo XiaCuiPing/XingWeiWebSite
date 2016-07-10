@@ -1,0 +1,53 @@
+@charset "UTF-8";
+/* CSS Document */
+.diy{min-height:30px !important; border:1px #00FFFF solid;}
+.diyhead{position:relative; height:161px; margin-bottom:20px;}
+.diyfix{position:fixed; top:0; left:0; width:100%; box-shadow:0 0 3px #ccc; background:#fff; z-index:2000; display:block; background:#f0f0f0;}
+.diyfix .inner{padding:10px 20px;}
+.diyfix .tab{height:30px; clear:both; position:relative;}
+.diyfix .tab span{border:1px #f0f0f0 solid; display:inline-block; height:27px; line-height:27px; padding:0 20px; cursor:pointer; border-radius:3px 3px 0 0; font-weight:bold;}
+.diyfix .tab span.cur{background:#fff; height:29px; margin-bottom:-2px; border-color:#ccc; border-bottom:none;}
+.diyfix .tab span.buttons{float:right; margin-top:-5px; padding:0;}
+.diyfix .tab .button{display:inline-block; margin-left:10px; background:#fefefe; height:28px; line-height:28px; padding:0 15px; border:1px #ccc solid; border-radius:3px;}
+.diyfix .tab .button:hover{border:1px #999 solid; background:#d5d5d5;}
+.diyfix ul{clear:both; background:#fff; border:1px #ccc solid; border-radius:5px; padding:10px; height:90px; margin-top:-1px;}
+.diyfix ul li{float:left; margin-right:10px; text-align:center;}
+.diyfix ul li:after{clear:both; display:block; content:" ";}
+.diyfix ul li img{display:block; margin:0 auto;}
+.diyfix ul li a{display:block; border:1px #fff solid; border-radius:5px; cursor:move;}
+.diyfix ul li a p{text-align:center; padding:5px 0;}
+.frame{border:1px #0066FF dashed; clear:both; overflow:hidden; position:static;}
+.frame .frame-title{height:32px; line-height:32px; padding:0 10px; overflow:hidden; background:#C9F2F1; cursor:move; position:relative;}
+.frame .frame-title .titletext{display:inline-block;}
+.frame .frame-title .delete{width:30px; height:30px; text-align:center; float:right; margin-right:-10px; font-size:16px; cursor:pointer;}
+.frame .column{min-height:30px !important;}
+.block{position:relative; border:1px dashed #fff;}
+.block:hover{border:1px #0CF dashed;}
+.block .block-edit{position:absolute; display:block; width:50px; top:0; right:0; background:#C30; color:#fff; display:none;}
+.block .block-edit span{padding:5px; text-align:center; display:block; cursor:pointer;}
+.block-tab{border-bottom:1px #ccc solid; height:28px; padding-top:10px; position:relative; margin-bottom:10px;}
+.block-tab span{background:#ddd; cursor:pointer; border:1px #ccc solid; border-bottom:0; display:inline-block; margin-right:5px; height:28px; line-height:28px; padding:0 10px;}
+.block-tab span.cur{background:#fff; margin-bottom:-1px;}
+
+.block-form{clear:both; padding:0 20px; max-height:400px; min-height:300px; overflow-y:auto;}
+.block-form .item{clear:both; line-height:40px;}
+.block-form .item:after{display:block; line-height:0; clear:both; content:" "; overflow:hidden;}
+.block-form .item-name{width:20%; float:left; overflow:hidden;}
+.block-form .item-input{overflow:hidden;}
+.block-form .item-image{width:100px; height:100px; background:#bbb; margin:10px 10px 0 0; position:relative; float:left;}
+.block-form .item-image img.preview{width:100px; height:100px; display:block;}
+.block-form .item-image .close{color:#fff; background:#222; position:absolute; z-index:50; left:0; top:0; width:18px; height:18px; font-size:18px; display:block; line-height:1.0; cursor:pointer;}
+.block-form .item-image .loading{width:32px; line-height:32px; position:absolute; left:34px; top:34px; z-index:50;}
+.block-form .item-content{overflow:hidden;}
+.block-form .upload-button{background:#0074a2; display:inline-block; height:28px; line-height:28px; padding:0; text-align:center; color:#fff; border:1px #0066CC solid; border-radius:2px;}
+.block-form #slide-upload-button{line-height:1.0;}
+.block-form input[type=text]{height:24px; width:260px; box-sizing:border-box;}
+.block-form select {font-size:14px; width:260px; line-height:24px; box-sizing:border-box;}
+.block-form .textarea{border:1px #999 solid; height:150px; font-size:12px; width:100%; box-sizing:border-box;}
+.block-form input[type=text],.block-form textarea,.block-form select{padding:2px 3px; background:#fff; border-color:#666 #bbb #bbb #666; border-width:1px; border-style:solid;}
+.block-form .tips{margin:10px 0; clear:both;}
+.block-form .tips li{line-height:40px; clear:both; border-bottom:1px #ccc solid;}
+.block-form .tips li div{width:49%; float:left;}
+.block-form .tips li p{width:49%; overflow:hidden;}
+.dragObj{border:1px #09F dashed; background:#6FF; min-height:30px; width:400px; cursor:pointer; display:block; opacity:0.6; filter:alpha(opacity=0.6);}
+.ui-sortable-placeholder {border:2px #0099CC dashed !important; visibility: visible !important; display:block !important; background:none !important;}

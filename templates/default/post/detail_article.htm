@@ -1,0 +1,72 @@
+{template header_common}
+{template detail_common}
+<div class="area yourpos">当前位置:<a href="/">首页</a> > <a href="/?m=post&c=list&catid=$category[catid]">$category[cname]</a> > 正文</div>
+<div class="area post-detail-wrap">
+	<div class="post-detail-main">
+        <div class="post-content-body">
+            <h1 class="post-title-h1">$article[title]</h1> 
+            <div class="post-info">        
+            <span>{$article[pubtime]}</span>
+            <span>阅读:{$article[viewnum]}</span>
+            <a href="#dsxcomment">评论:($article[commentnum])</a>
+            <a href="javascript:;" onclick="Favorite($article[id])">收藏本文</a>
+            {if $G[account][adminid]}<a href="javascript:;" onclick="deletePost($article[id])">删除</a>{/if}
+            {if $G[account][adminid]||$article[uid]==$G[uid]}<a href="/?mod=home&ac=post&op=edit&id=$article[id]">编辑</a>{/if}
+            {if $G[account][adminid]}<a href="javascript:;" onclick="setPostState($article[id],0)">通过审核</a> <a href="javascript:;" onclick="setPostState($article[id],2)">取消审核</a>{/if}
+
+            </div>
+            <div class="post-body">$content[content]</div>
+            {if $article[type]=='attach'} 
+            <div class="post-attach-down"> 
+                <h3>下载附件</h3>
+                <div class="urls">
+                     {loop $article[postdata] $attach} 
+                     <a href="$attach[attachurl]" target="_blank">$attach[attachname]</a>
+                    {/loop}
+                </div>
+            </div>
+            
+            {/if}
+            {if $article[tags]}
+            <div class="post-tags">标签:
+            	  {loop $article[tags] $tag}
+                <a href="/?mod=post&act=search&tag=$tag">$tag</a>
+                {/loop}
+            </div>
+            {/if}
+            <div class="post-related-div">
+                  <h3 class="post-title-h3">相关文章</h3> 
+                  <ul class="post-list-ul">
+                  	  {eval $articlelist[related]=post_get_new(array('catid'=>$article[catid]),10);}
+                      {loop $articlelist[related] $list}
+                      {eval $list[pubtime]=date('Y-m-d H:i',$list[pubtime])}
+                      <li><span>$list[pubtime]</span><a href="$list[url]">$list[title]</a></li>
+                      {/loop}
+                  </ul>
+            </div>
+        </div>
+    </div>
+    <div class="column-right">
+        <div class="contentdiv">
+           <h3 class="title">最新动态</h3>
+           {eval $articlelist['new']=post_get_new(0,10);}
+           <ul>
+           {loop $articlelist['new'] $list}
+           <li><a href="$list[url]">$list[title]</a></li>
+           {/loop}
+           </ul>
+        </div>
+        <div class="contentdiv">
+        	<h3 class="title">热点导读</h3>
+           {eval $articlelist[hot]=post_get_hot(0,10);}
+           <ul>
+           {loop $articlelist[hot] $list}
+           <li><a href="$list[url]">$list[title]</a></li>
+           {/loop}
+           </ul>
+        </div>
+    </div>
+    <div class="clearfix"></div>  
+</div>
+<script type="text/javascript" src="/static/js/postdetail.js"></script>
+{template footer_common}

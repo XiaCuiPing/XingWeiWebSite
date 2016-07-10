@@ -1,0 +1,50 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<a class="baritem" href="/?m=$G[m]&c=$G[c]&a=category">分类管理</a>
+        	<a class="baritem" href="/?m=$G[m]&c=$G[c]&a=showlist&catid=$catid">返回列表</a>
+        </div>
+    	<strong>{if $G[a]=='publish'}添加页面{else}编辑页面{/if}</strong>
+    </div>
+
+    <div class="area">
+        <form method="post" id="postForm" action="">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td>标题</td>
+          <td><input type="text" class="input-text w300" name="newpage[title]" value="$page[title]"></td>
+          <td>别名</td>
+          <td><input type="text" class="input-text w300" name="newpost[alias]" value="$page[alias]"></td>
+        </tr>
+        <tr>
+          <td width="60">分类</td>
+          <td>
+          		<select name="newpage[catid]" class="w300">
+				{loop $categorylist $clist}
+                <option value="$clist[pageid]"{if $page[catid]==$clist[pageid]} selected{/if}>$clist[title]</option>
+                {/loop}
+            	</select>
+          </td>
+          <td width="60">模板</td>
+          <td><input type="text" class="input-text w300" name="newpage[template]" value="$page[template]"></td>
+        </tr>      
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td width="60">摘要</td>
+          <td><textarea style="width:100%;" name="newpage[summary]">$page[summary]</textarea></td>
+          <td width="200"><input type="submit" class="submit button-publish f-right" value="{if $G[a]=='edit'}更新{else}发布{/if}" id="publishButton"></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td><div style="box-sizing:border-box">{template editor}</div></td>
+        </tr>
+      </table>
+      </form>
+    </div>
+</div>
+{template footer_admin}

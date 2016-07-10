@@ -1,0 +1,74 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<form name="search" action="/?">
+                <input type="hidden" name="m" value="$G[m]">
+                <input type="hidden" name="c" value="$G[c]">
+                <input type="hidden" name="a" value="$G[a]">
+                <select name="catid" id="catid">
+                    <option value="0" class="bold">所有分类</option>
+                    $categoryoptions
+                </select>
+                <input type="text" class="input-text" name="keyword" value="$keyword">
+                <input type="submit" class="button search" value="$lang[search]">
+            </form>
+        	
+        </div>
+    	<strong>店铺管理</strong>
+	</div>
+    <div class="table-hd">
+        <form method="post">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+        <thead>
+          <tr>
+            <th width="20" class="center">选?</th>
+            <th width="50">图片</th>
+            <th>店铺名称</th>
+            <th width="160">店掌柜</th>
+            <th width="100">省</th>
+            <th width="100">市</th>
+            <th width="100">县</th>
+            <th width="100">开店时间</th>
+            <th width="40">编辑</th>
+          </tr>
+         </thead>
+         <tbody>
+          {loop $shoplist $shopid $shop}
+          {eval $opentime=@date('Y-m-d', $shop[dateline]);}
+          <tr>
+            <td><input type="checkbox" class="checkbox" name="shopid[]" value="$shopid"></td>
+            <td><img src="{echo image($shop[thumb]);}" width="50" height="50" style="display:block;"></td>
+            <th><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">$shop[shopname]</a></th>
+            <td>{$userlist[$shop[uid]][username]}</td>
+            <td>{$shop[province]}</td>
+            <td>{$shop[city]}</td>
+            <td>{$shop[county]}</td>
+            <td>{$opentime}</td>
+            <td><a href="/?m=$G[m]&c=$G[c]&a=edit&shopid=$shopid">编辑</a></td>
+          </tr>
+          {/loop}
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="10">
+                <label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'id[]')"> $lang[selectall]</label>
+                <label><input type="radio" class="radio" name="option" value="delete" checked="checked"> 删除</label>
+                <label><input type="radio" class="radio" name="option" value="closed"> 关闭</label>
+            </td>
+          </tr>
+          <tr>
+              <td colspan="10">
+                  <span class="pages">$pages</span>
+                  <input type="submit" class="submit" value="$lang[submit]">
+                  <input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+              </td>
+          </tr>
+         </tfoot>
+        </table>
+        </form>
+     </div>
+</div>
+{template footer_admin}

@@ -1,0 +1,87 @@
+{template header_admin}
+<div id="pagecontainer">
+    <div class="area">
+    <form method="post" name="settings" action="/?m=$G[m]&c=$G[c]&a=save">
+    <input type="hidden" name="formsubmit" value="yes">
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" class="formtable">
+        <tbody>
+        <tr>
+          <th colspan="2">开放用户注册：</th>
+        </tr>
+        <tr>
+          <td>
+        	<input type="radio" value="1" class="radio" name="settingnew[regallowed]"{if $setting[regallowed]} checked{/if}>是 
+          	<input type="radio" value="0" class="radio" name="settingnew[regallowed]"{if !$setting[regallowed]} checked{/if}>否			
+          </td>
+          <td>设置是否允许游客注册成为网站会员。</td>
+        </tr>
+        <tr>
+          <th colspan="2">新用户注册验证:</th>
+        </tr>
+        <tr>
+          <td>
+            <select class="w200" name="settingnew[regverify]">
+            <option value="0"{if $setting[regverify]=='0'} selected{/if}>无</option>
+            <option value="1"{if $setting[regverify]=='1'} selected{/if}>Email验证</option>
+            <option value="2"{if $setting[regverify]=='2'} selected{/if}>人工审核</option>
+            </select>
+          </td>
+          <td>选择“无”用户可直接注册成功；选择“Email 验证”将向用户注册 Email 发送一封验证邮件以确认邮箱的有效性；
+          选择“人工审核”将由管理员人工逐个确定是否允许新用户注册</td>
+        </tr>
+        <tr>
+          <th colspan="2">发送欢迎信息：</th>
+        </tr>
+        <tr>
+          <td>
+            <ul>
+            <li><input type="radio" value="0" class="radio" name="settingnew[wellcomemsg]"{if $setting[wellcomemsg]=='0'} checked{/if}> 不发送</li>
+            <li><input type="radio" value="1" class="radio" name="settingnew[wellcomemsg]"{if $setting[wellcomemsg]=='1'} checked{/if}> 发送欢迎短信息</li>
+            <li><input type="radio" value="2" class="radio" name="settingnew[wellcomemsg]"{if $setting[wellcomemsg]=='2'} checked{/if}> 发送欢迎Email</li>
+            </ul>		 	
+        	</td>
+          <td>可选择是否自动向新注册用户发送一条欢迎信息</td>
+         </tr>
+        <tr>
+          <th colspan="2">欢迎邮件标题：</th>
+        </tr>
+        <tr>
+          <td><input type="text" value="$setting[wellcomemsgtitle]" class="input-text w300" name="settingnew[wellcomemsgtitle]"></td>
+          <td>系统发送的欢迎信息的标题，不支持 HTML，不超过 75 字节。</td>
+          </tr>
+        <tr>
+          <th colspan="2">欢迎邮件内容：</th>
+        </tr>
+        <tr>
+          <td><textarea class="textarea w300" name="settingnew[wellcomemsgtxt]">$setting[wellcomemsgtxt]</textarea></td>
+          <td>系统发送的欢迎信息的内容。标题内容均支持变量替换，可以使用如下变量:<br>{username} : 用户名<br>{time} : 发送时间<br>{sitename} : 站点名称<br>{adminemail} : 管理员email</td>
+          </tr>
+        <tr>
+          <th colspan="2">显示许可协议：</th>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" value="1" class="radio" name="settingnew[sysrules]"{if $setting[sysrules]} checked{/if}> 是 
+            <input type="radio" value="0" class="radio" name="settingnew[sysrules]"{if !$setting[sysrules]} checked{/if}> 否			
+        </td>
+          <td>新用户注册时显示许可协议</td>
+        </tr>
+        <tr>
+          <th colspan="2">许可协议内容：</th>
+        </tr>
+        <tr>
+          <td><textarea class="textarea w300" name="settingnew[sysrulestxt]">$setting[sysrulestxt]</textarea></td>
+          <td>注册许可协议的详细内容</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="2"><input type="submit" value="提交" class="button submit" name="button-submit"></td>
+          </tr>
+        </tfoot>
+        </table>
+        </form>
+    </div>
+</div>
+{template footer_admin}

@@ -1,0 +1,115 @@
+{template header_admin}
+<script src="/static/DatePicker/WdatePicker.js"></script>
+<div id="pagecontainer">
+    <div class="toolbar">
+    	<div class="f-right"><a class="baritem" href="/?m=$G[m]&c=$G[c]&a=showlist">返回列表</a></div>
+        <strong>添加广告</strong>
+    </div>
+    <div class="area">
+    <form method="post" enctype="multipart/form-data" onSubmit="return checkSubmit();">
+    <input type="hidden" name="formsubmit" value="yes">
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+      <tbody>
+      <tr><th colspan="2">广告名称</th></tr>
+      <tr>
+        <td width="320"><input type="text" class="input-text w300" name="adnew[title]" value="$ad[title]" id="title"></td>
+        <td class="tips">区分不同广告位的名称</td>
+      </tr>
+      <tr><th colspan="2">开始时间</th></tr>
+      <tr>
+        <td><input type="text" class="input-text w300" name="adnew[starttime]" value="$ad[starttime]" onclick="WdatePicker()"></td>
+        <td class="tips">广告开始有效时间</td>
+      </tr>
+      <tr><th colspan="2">结束时间</th></tr>
+      <tr>
+        <td><input type="text" class="input-text w300" name="adnew[endtime]" value="$ad[endtime]" onclick="WdatePicker()"></td>
+        <td class="tips">广告失效时间</td>
+      </tr>
+      <tr><th colspan="2">广告类型</th></tr>
+      <tr>
+        <td>
+            <select name="adnew[type]" class="w300" onChange="changeType(this.value)">
+                {loop $lang[adtypes] $k $v}
+                <option value="$k"{if $ad[type]==$k} selected{/if}>$v</option>
+                {/loop}
+            </select>
+        </td>
+        <td class="tips"></td>
+      </tr>
+      </tbody>
+      <tbody id="adtext" class="adtype" style="display:none;">
+		  <tr><th colspan="2">文字</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="addata[text][text]" value="$addata[text][text]"></td>
+            <td class="tips"></td>
+          </tr>
+          <tr><th colspan="2">链接</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="addata[text][link]" value="$addata[text][link]"></td>
+            <td class="tips"></td>
+          </tr>
+      </tbody>
+      <tbody id="adimage" class="adtype" style="display:none;">
+		  <tr><th colspan="2">图片</th></tr>
+          <tr>
+            <td>
+            	{if $addata[image][image]}
+                <p><img src="{$addata[image][image]}" style="width:100%; display:block;"></p>
+                {/if}
+            	<input type="file" name="filedata">
+                <input type="hidden" name="addata[image][image]" value="$addata[image][image]">
+            </td>
+            <td class="tips">上传新图片将会替换原有图片</td>
+          </tr>
+          <tr><th colspan="2">宽度(可选)</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="addata[image][width]" value="$addata[image][width]"></td>
+            <td class="tips">图片显示宽度</td>
+          </tr>
+          <tr><th colspan="2">高度(可选)</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="addata[image][height]" value="$addata[image][height]"></td>
+            <td class="tips">图片显示高度</td>
+          </tr>
+          <tr><th colspan="2">链接</th></tr>
+          <tr>
+            <td><input type="text" class="input-text w300" name="addata[image][link]" value="$addata[image][link]"></td>
+            <td class="tips">图片链接</td>
+          </tr>
+      </tbody>
+      <tbody id="adcode" class="adtype" style="display:none;">
+          <tr><th colspan="2">广告代码</th></tr>
+          <tr>
+            <td><textarea class="textarea w300" name="addata[code]">$addata[code]</textarea></td>
+            <td class="tips">广告HTML代码</td>
+          </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="2">
+            <input type="submit" class="button submit" value="提交"> &nbsp;
+            <input type="button" class="button" value="刷新" onclick="window.location.reload()">
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+    </form>
+    </div>
+</div>
+<script type="text/javascript">
+changeType('$ad[type]');
+function changeType(type){
+	if(!type) type = 'text';
+	$(".adtype").hide();
+	$("#ad"+type).show();
+}
+function checkSubmit(){
+	if(!$("#title").val()){
+		alert('标题不能为空');
+		return false;
+	}
+	return true;
+}
+</script>
+{template footer_admin}

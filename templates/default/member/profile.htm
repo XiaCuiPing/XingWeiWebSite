@@ -1,0 +1,135 @@
+{template header_member}
+<script type="text/javascript" src="/static/DatePicker/WdatePicker.js"></script>
+<div id="mainFrame" class="tableView">
+	<div class="topbar">
+        <span>修改资料</span>
+    </div>
+  <form id="form" method="post" action="" autocomplete="off">
+  <input type="hidden" name="formsubmit" value="yes" />
+  <input type="hidden" name="formhash" value="{FORMHASH}" />
+    <div class="itemRow">
+        <div class="item-name">手机号</div>
+        <div class="item-input"><input type="text" class="input-text" maxlength="11"  name="accountnew[mobile]" value="$account[mobile]" node="mobile"></div>
+        <div class="item-tips">仅支持13,15,18开头的11位手机号码。</div>
+    </div>
+    <div class="itemRow">
+        <div class="item-name">邮箱</div>
+        <div class="item-input"><input type="text" class="input-text" maxlength="50" name="accountnew[email]" value="$account[email]" node="email"></div>
+        <div class="item-tips">标准邮箱格式，长度不能超过50位字符。</div>
+    </div>
+    <div class="itemRow bc">
+        <div class="item-name">性别</div>
+        <div class="item-input">
+            {loop $lang[sexitems] $k $v}
+            <input type="radio" value="$k" name="profilenew[usersex]"{if $k==$profile[usersex]} checked="checked"{/if}{if $profile[locked]} disabled="disabled"{/if}> $v
+            {/loop}
+        </div>
+        <div class="item-tips">选择你的性别</div>
+    </div>
+    <div class="itemRow">
+        <div class="item-name">生日</div>
+        <div class="item-input"><input type="text" class="input-text" name="profilenew[birthday]" onclick="WdatePicker()" value="$profile[birthday]" readonly></div>
+        <div class="item-tips">填写你的出生年月</div>
+    </div>
+    <div class="itemRow">
+        <div class="item-name">星座</div>
+        <div class="item-input">
+            <select class="input-select" name="profilenew[star]">
+                  {loop $lang[staritems] $k $v}
+                <option value="$k"{if $k==$profile[star]} selected="selected"{/if}>$v</option>
+                {/loop}
+            </select>
+        </div>
+        <div class="item-tips">选择你的星座</div>
+    </div>
+    <div class="itemRow">
+        <div class="item-name">血型</div>
+        <div class="item-input">
+            <select class="input-select" name="profilenew[blood]">
+                  {loop $lang[blooditems] $k $v}
+                <option value="$k"{if $k==$profile[blood]} selected="selected"{/if}>$v</option>
+                {/loop}
+            </select>
+        </div>
+        <div class="item-tips">选择你的血型</div>
+    </div>
+    <div class="itemRow">
+        <div class="item-name">QQ</div>
+        <div class="item-input"><input type="text" class="input-text" name="profilenew[qq]" value="$profile[qq]"></div>
+        <div class="item-tips">填写你的QQ号</div>
+    </div>
+    <div class="itemRow">
+        <div class="item-name">微信</div>
+        <div class="item-input"><input type="text" class="input-text" name="profilenew[weixin]" value="$profile[weixin]"></div>
+        <div class="item-tips">填写你的微信号</div>
+    </div>
+    <div class="itemRow">
+        <div class="item-name">国籍</div>
+        <div class="item-input">
+            <select class="input-select" name="profilenew[country]">
+               <option value="中国">中国</option>
+            </select>
+        </div>
+        <div class="item-tips">填写你的国籍</div>
+    </div>
+    <div class="itemRow">
+        <div class="item-name">所在地</div>
+        <div class="item-content" id="district" style="width:80%;">
+           <select class="input-select dist select" id="province" name="profilenew[province]">
+            <option value="">请选择</option>
+          </select>
+          <select class="input-select dist select" id="city" name="profilenew[city]">
+              <option value="">请选择</option>
+          </select>
+          <select class="input-select dist select" id="county" name="profilenew[county]">
+              <option value="">请选择</option>
+          </select>
+        </div>
+        <!--<div class="item-tips">你当前所工作或生活的地方</div>-->
+    </div>
+    <div class="itemRow">
+        <div class="item-name">个人描述</div>
+        <div class="item-input"><textarea name="profilenew[introduction]" class="textarea" draggable="false">$profile[introduction]</textarea></div>
+        <div class="item-tips">简单地介绍一下自己，不超过300个字。</div>
+    </div>
+    <div class="itemRow item-button">
+        <div class="item-name">&nbsp;</div>
+        <div class="item-input"><button type="submit" class="button" node="button">保存资料</button></div>
+    </div>
+    </form>
+</div>
+<script type="text/javascript">
+DSXCMS.showDistrict(0, '#province', '$profile[province]', '选择省份');
+$("#province").change(function(e) {
+	var fid = parseInt($(this).find(":selected").attr("idvalue"));
+    if(fid) DSXCMS.showDistrict(fid, '#city', '$profile[city]', '选择城市');
+});
+$("#city").change(function(e) {
+	var fid = parseInt($(this).find(":selected").attr("idvalue"));
+    if(fid) DSXCMS.showDistrict(fid, '#county', '$profile[county]', '选择区县');
+});
+
+;(function(){
+	$("#form").submit(function(){
+		$("#form").find("input").removeClass("focus");
+		var mobile = $("[node=mobile]");
+		if(mobile.val() && !DSXCMS.IsMobile(mobile.val())){
+			mobile.addClass("focus").focus();
+			DSXUI.error('手机号码输入有误');
+			return false;
+		}
+		var email = $("[node=email]");
+		if(email.val() && !DSXCMS.IsEmail(email.val())){
+			mobile.addClass("focus").focus();
+			DSXUI.error('手机号码输入有误');
+			return false;
+		}
+		if(!mobile.val() && !email.val()){
+			DSXUI.error('手机号码和邮箱至少填一个');
+			return false;
+		}
+		return true;
+	});
+})();
+</script>
+{template footer_member}

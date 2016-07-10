@@ -1,0 +1,87 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<form method="get" name="formsearch">
+            <select name="province" onchange="this.form.city.value=0;this.form.county.value=0;refreshdistrict()">
+                <option>--省份--</option>
+                {loop $provincelist $pro}
+                <option value="$pro[id]"{if $pro[id]==$province} selected="selected"{/if}>$pro[name]</option>
+                {/loop}
+            </select>
+            <select name="city" onchange="this.form.county.value='';refreshdistrict()">
+                <option value="0">--城市--</option>
+                {loop $citylist $ct}
+                <option value="$ct[id]"{if $ct[id]==$city} selected="selected"{/if}>$ct[name]</option>
+                {/loop}
+            </select>
+            <select name="county" onchange="refreshdistrict()">
+                <option value="0">--州县--</option>
+                {loop $countylist $cot}
+                <option value="$cot[id]"{if $cot[id]==$county} selected="selected"{/if}>$cot[name]</option>
+                {/loop}
+            </select>
+        </form> 
+        </div>
+        <strong>区域管理</strong>
+    </div>
+    <div class="table-hd">
+        <form method="post" action="">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+        <thead>
+            <th width="30" class="center">删?</th>
+            <th>名称</th>
+        </thead>
+        <tbody id="districtlist">
+        <!--{loop $districtlist $dst}-->
+        <tr>
+          <td><input type="checkbox" class="checkbox" name="delete[]" value="$dst[id]" /></td>
+          <td><input type="text" class="text text200" name="districtnew[{$dst[id]}][name]" value="$dst[name]" maxlength="10"></td>
+        </tr>
+        <!--{/loop}-->
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="2">
+            	<label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'delete[]');" /> 全选</label>
+            	<a href="javascript:;" id="addnew"><i class="icon">&#xf0154;</i>添加区域</a>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" class="submit" value="提交" />
+                <input type="button" class="button" value="刷新" onclick="window.location.reload()" />
+            </td>
+        </tr>
+        </tfoot>
+      </table>
+     </form>
+ 	</div>
+</div>
+<script type="text/template" id="tplDistrict">
+<tr>
+	<td><input type="hidden" name="newdistrict[#keynum#][fid]" value="$fid" />
+	<input type="hidden" name="newdistrict[#keynum#][level]" value="$level" /></td>
+	<td><input type="text" class="text text200" name="newdistrict[#keynum#][name]" value=""></td>
+</tr>
+</script>
+<script type="text/javascript">
+var keynum = 0;
+$("#addnew").click(function(){
+	var html = $("#tplDistrict").html().replace(/#keynum#/g,keynum);
+	$("#districtlist").append(html);
+	keynum--;
+});
+
+
+function refreshdistrict(){
+	var form = $("form[name=formsearch]");
+	var province = form.find("[name=province]").val();
+	var city = form.find("[name=city]").val();
+	var county = form.find("[name=county]").val();
+	window.location = '/?m=$G[m]&c=$G[c]&province='+province+'&city='+city+'&county='+county;
+}
+</script>
+{template footer_admin}

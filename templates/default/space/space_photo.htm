@@ -1,0 +1,27 @@
+{template space_top}
+<script type="text/javascript" src="/static/js/jquery.waterfall.js"></script>
+<div id="profile">
+ <div class="w_profile_main">
+    <div class="pf_photo_title">
+    	<span></span>
+        <strong>照片墙</strong>
+        <i>(共{$totalnum}张)</i>
+    </div>
+    <div class="pf_photo_hd">
+    <div class="m_waterfall" id="waterfall">
+    	 {loop $piclist $pic}
+        {eval $pic[uptime]=formatTime($pic[uptime])}
+        <dl class="m_pin_box">
+        	<dd class="photo"><img src="$G[config][output][attachurl]{$pic[attachment]}"></dd>
+            <dt class="comment">$pic[uptime]</dt>
+        </dl>
+        {/loop}
+    </div>
+    </div>
+    <div class="blank50"></div>
+ </div>
+ <script type="text/javascript">
+ $("#waterfall").waterfall({column_width:238});
+ </script>
+</div>
+{template footer}

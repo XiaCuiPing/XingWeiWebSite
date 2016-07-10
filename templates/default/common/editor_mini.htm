@@ -1,0 +1,24 @@
+{eval $token=sha1($G['uid'].$G['username'].formhash());}
+<textarea name="$editorname" id="kindeditor" style="width:100%;height:400px;visibility:hidden; display:none;">$editorcontent</textarea>
+<link rel="stylesheet" href="/static/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="/static/kindeditor/kindeditor-min.js"></script>
+<script charset="utf-8" src="/static/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript">
+var editor;
+KindEditor.ready(function(K) {
+	editor = K.create('#kindeditor', {
+		allowFileManager : true,
+		items : [
+		'justifyleft', 'justifycenter', 'justifyright',
+		'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 
+		'clearhtml', 'quickformat', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+		'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'multiimage',
+		'table', 'hr', 'emoticons', 'baidumap', 'link', 'unlink'
+		],
+		afterBlur: function () {this.sync();},
+		uploadJson : '/?m=common&c=editorapi&a=uploadimage',
+		extraFileUploadParams:{uploadtype:'swfupload',uid:'$G[uid]',username:'$G[username]',token:'$token'}
+	});
+	
+});
+</script>

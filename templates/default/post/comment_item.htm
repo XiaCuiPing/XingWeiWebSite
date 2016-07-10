@@ -1,0 +1,14 @@
+{if $comments}
+{loop $comments $comm}
+<div class="comment-content-item" id="comment_item_$comm[commid]">
+	<div class="avatar"><a href="/?mod=member&act=space&uid=$comm[uid]" target="_blank"><img src="/?mod=member&act=face&uid=$comm[uid]&size=middle"></a></div>
+	<div class="comment-content">
+		<div class="username">$comm[username]</div>
+		<div class="content">$comm[message]</div>
+		<div class="pubtime">{if $G[account][admincp]}<span class="delete"><a href="javascript:;" onClick="deleteComment(this,$comm[commid]);">删除</a></span>{/if}$comm[pubtime]</div>
+	</div>
+</div>
+{/loop}
+{else}
+<div style="padding:30px; font-size:16px; color:#666; text-align:center;">沙发空缺中。。。</div>
+{/if}

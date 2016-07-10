@@ -1,0 +1,41 @@
+{template header}
+<link rel="stylesheet" type="text/css" href="/static/css/profile.css"/>
+<div id="profile">
+	<div class="profile_header">
+    	<div class="pf_banner"></div>
+    	<div class="pf_head">
+        	<div class="face"><img src="/?mod=common&ac=avatar&size=big&uid=$member[uid]"></div>
+            <ul class="user_stat">
+            	<li><a href="/?mod=space&ac=post&uid=$G[uid]"><strong>$member[postnum]</strong><span>文章</span></a></li>
+                <li><a href="/?mod=space&ac=comment&uid=$G[uid]"><strong>$member[commentnum]</strong><span>评论</span></a></li>
+                <li><a href="/?mod=space&ac=photo&uid=$G[uid]"><strong>$member[photonum]</strong><span>照片</span></a></li>
+            </ul>
+        </div>
+        <div class="pf_info">
+        	<div class="pf_name">
+            	<strong>$member[username]</strong>
+                <span><a href="/?mod=space&uid=$G[uid]">http://$_SERVER[HTTP_HOST]/?mod=space&uid=$member[uid]</a></span>
+            </div>
+            <div class="pf_intro"><span title="$profile[introduction]">$config[introduction] </span></div>
+            <div class="tags">
+            	$profile[province] $profile[city] $profile[county]
+                {loop $profile[tags] $k $tag}
+                <span class="m_line">|</span>
+                <a href="javascript:;">$tag </a>
+                {/loop}
+            </div>
+            {if $G[uid]==$member[uid]}
+            <div class="btn_edit">
+            	<a href="/?mod=home#profile"><span>编辑个人资料</span></a>
+            </div>
+            {/if}
+        </div>
+    </div>
+    <!--切换菜单-->
+    <ul class="profile_tab">
+    	<li><a href="/?mod=space&ac=index&uid=$member[uid]"{if $G[ac]=='index'} class="current"{/if}>资料</a></li>
+        <li><a href="/?mod=space&ac=post&uid=$member[uid]"{if $G[ac]=='post'} class="current"{/if}>文章</a></li>
+        <li><a href="/?mod=space&ac=comment&uid=$member[uid]"{if $G[ac]=='comment'} class="current"{/if}>评论</a></li>
+        <li><a href="/?mod=space&ac=photo&uid=$member[uid]"{if $G[ac]=='photo'} class="current"{/if}>照片</a></li>
+    </ul>
+</div>

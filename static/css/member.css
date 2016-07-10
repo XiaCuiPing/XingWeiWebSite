@@ -1,0 +1,114 @@
+/* CSS Document */
+html,body{-moz-osx-font-smoothing: grayscale;}
+.signbox{width:800px; margin:30px auto; display:block; border:1px #D41D6D solid; padding:20px;}
+.signbox .left{width:500px; float:left;}
+.signbox .left h3{font-size:14px; padding:7px 0;}
+.signbox .left .row{display:block;}
+.signbox .left .cell{padding:10px 0; float:left; line-height:28px; position:relative;}
+.signbox .left .cell-name{width:60px; margin-right:10px; text-align:right; font-size:14px;}
+.signbox .left .cell .err{color:#F00; position:absolute; left:0; top:-15px; font-size:12px; display:none;}
+.signbox .left .text{height:28px; box-sizing:border-box; border:1px #D41D6D solid; padding:0 5px; width:200px; font-size:12px;}
+.signbox .left .row-expire{width:270px; text-align:right; display:block; line-height:26px; 
+color:#888; text-align:right; font-size:12px;}
+.signbox .left .row-expire .checkbox{width:14px; height:14px; display:inline-block; vertical-align:middle;}
+.signbox .left .btn-hd{width:270px; text-align:right; display:block; text-align:right; padding:10px 0;}
+.signbox .left .btn-submit{width:120px; height:28px; background-color:#D41D6D; color:#fff; 
+font-size:14px; border:0; cursor:pointer;}
+.signbox .right{overflow:hidden; padding-top:30px;}
+.signbox .right .rowitem{display:block; text-align:center; padding:5px 0;}
+.signbox .right .btn{background:#8DC21F; color:#fff; font-size:12px; width:120px; 
+height:30px; line-height:30px; display:block; margin:0 auto;}
+.signbox .right .ico{width:32px; height:32px; display:inline-block; margin:0 5px;}
+.signbox .right .ico img{width:100%; height:100%; border-radius:5px;}
+.signbox .line{height:150px; width:1px; border-left:1px #DDD solid; margin-top:50px; float:left;}
+.userinfo{display:block; padding:20px 0; border-bottom:0.5px #CCC solid; position:relative;}
+.userinfo .box{width:18%; float:left; height:70px; border-right:0.5px #CCC solid; margin-left:-1px;}
+.userinfo .box .u-avatar{width:62px; height:62px; float:left; margin:3px 10px 0 20px;}
+.userinfo .box .u-avatar img{width:100%; height:100%; display:block;}
+.userinfo .box .u-info{overflow:hidden;}
+.userinfo .box .u-info h3{font-size:16px; height:26px;}
+.userinfo .box .u-info div{color:#D41D6D; font-size:14px;}
+.userinfo .box .u-info p{display:block; font-size:12px; margin-top:5px; color:#666;}
+.userinfo .box .u-title{font-size:16px; height:26px; display:block; text-align:center;}
+.userinfo .box .u-amount{color:#D41D6D; font-size:14px; text-align:center; margin-top:3px; font-weight:800;}
+.userinfo .box .u-status{font-size:12px; margin-top:5px; color:#888; text-align:center;}
+.userinfo .box .btn-sign{background:#D41D6D; width:100px; height:30px; line-height:30px; 
+display:block; text-align:center; font-size:14px; color:#fff; margin:20px auto 0 auto;}
+.userinfo .box-avatar{width:28%;}
+
+.leftNav{width:180px; float:left;}
+.leftNav .menu{display:block;}
+.leftNav .menu li{display:block; margin-bottom:3px; position:relative;}
+.leftNav .menu li a{display:block; background-color:#EEEEEF; font-size:14px; padding:7px 10px 7px 40px;}
+.leftNav .menu li a:hover{background-color:#E0E0E0; color:#000;}
+.leftNav .menu li a.cur{background-color:#D41D6D; color:#fff;}
+
+.mainFrame{overflow:hidden; border-left:0.5px #CCC solid; border-top:0.5px #CCC solid; min-height:600px; padding:20px 0 0 20px;}
+.ptips{display:block; margin-bottom:10px; border:0.5px #CCC solid; padding:7px 20px; font-size:12px; background:#fefefe;}
+.htitle{display:block; margin-bottom:10px; font-size:16px; color:#D41D6D;}
+.noticelist{display:block; padding:0 0 0 20px;}
+.noticelist li span{float:right;}
+.noticelist li{padding:7px 0; display:block; border-bottom:0.5px #CCC solid;}
+
+.mytab{display:block; border-bottom:0.5px #CCC solid; clear:both;}
+.mytab .item{width:120px; float:left; height:35px; line-height:35px; margin-right:30px; box-sizing:border-box;}
+.mytab .item a{display:block; font-size:14px; font-weight:800;}
+.mytab .cur a{border-bottom:3px solid #D41D6D; color:#D41D6D;}
+
+.table-record{background:#CCC; clear:both; margin-top:20px;}
+.table-record td,.table-record th{background:#fff; padding:5px;}
+
+.pages{float:right; padding:0;}
+.pages a,#member .pages span{background:#fff; height:21px; line-height:21px; 
+display:inline-block; padding:0 10px; margin:0 2px; border:1px #ddd solid; color:#333;}
+.pages a:hover{color:#000; border-color:#999; text-decoration:none;}
+.pages .cur{background:#049985; color:#fff; border-color:#049985;}
+
+/**列表表格**/
+.listtable{background:#fff; clear:both;}
+.listtable th,.listtable td{padding:5px; background:#fff; height:30px; text-align:left;}
+.listtable th{background:#F0f0f0; font-weight:bold;}
+.listtable td{border-top:1px #eee solid; background:#fafafa;}
+.listtable td .menu{margin-top:5px;}
+.listtable tbody tr:hover td{background:#EFEFEF;}
+.listtable tbody h3{font-size:14px; line-height:1.2;}
+.listtable tbody p{line-height:1.5; margin:0; padding:0; font-size:12px; margin-top:5px;}
+.listtable tbody .pic{width:90px; height:90px; display:block; overflow:hidden;}
+.listtable tbody .pic img{height:90px; display:block;}
+.listtable tfooter .bottom{padding:15px 10px;}
+.listtable tfooter .pages{padding:0; float:right;}
+
+/**表单表格**/
+.formtable{clear:both; table-layout:auto;}
+.formtable th,td{padding:10px; text-align:left; font-size:14px;}
+.formtable th{font-weight:bold;}
+.formtable tbody tr:hover td,#member .formtable tbody tr:hover th{color:#000;}
+.formtable .tips{color:#555; font-size:12px;}
+.formtable .err{color:#F00;}
+
+.tableView{}
+.tableView .itemRow{overflow:hidden; display:block; line-height:50px;}
+.tableView .itemRow:after{content:" "; display:block; clear:both; overflow:hidden;}
+.tableView .itemRow .item-name{width:80px; float:left; margin-right:20px; text-align:right;}
+.tableView .itemRow .item-input{width:350px; float:left; margin-right:10px;}
+.tableView .itemRow .item-tips{overflow:hidden; font-size:12px; display:none;}
+.tableView .itemRow .item-content{overflow:hidden; float:left; margin-right:10px;}
+.tableView .error{color:#F00; display:none;}
+.tableView #imageUploadQueue{width:auto; float:left;}
+.tableView #imageUploadQueue:after{display:block; overflow:hidden; content:" "; clear:both;}
+.tableView .imageUploadItem{width:100px; height:80px; float:left; margin-right:10px; display:block; 
+overflow:hidden; border:1px #ccc solid; position:relative; background-image:url(/static/images/common/loading32.gif); background-repeat:no-repeat; background-position:center center;}
+.tableView .imageUploadItem img{width:100%; height:100%; display:block;}
+.tableView .imageUploadItem .del{position:absolute; top:0px; right:0px; line-height:1.0; color:#333; font-size:14px; padding:3px; margin:0; width:auto; height:auto;}
+.tableView .imageUploadItem .del:hover{background:#333; color:#fff;}
+.tableView .selectImageButton{width:100px; height:80px; padding:0; position:relative; border:1px #ccc solid; background:#f0f0f0; float:left;}
+.tableView .selectImageButton a{line-height:80px; display:block; font-size:14px; text-align:center; color:#333;}
+
+.tableView .theader{}
+.tableView .row{display:block; overflow:hidden;}
+.tableView .row:after{content:" "; display:block; clear:both; overflow:hidden;}
+.tableView .cell{float:left; padding:7px 0; line-height:1.2; margin-right:10px; line-height:30px;}
+.tableView .cell-name{width:80px; text-align:right;}
+.tableView .cell-input{width:360px; overflow:hidden;}
+.tableView .tfooter{padding:20px 0;}
+.j-filedata{opacity:0; visibility:visible; position:absolute; z-index:200; cursor:pointer;}

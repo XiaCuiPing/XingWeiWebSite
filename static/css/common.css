@@ -1,0 +1,79 @@
+@charset "UTF-8";
+@import url(ui.css);
+html,body{padding:0; margin:0; height:100%; font-size:13px; font-family:arial,"宋体",sans-serif; 
+color:#333; word-break:break-all; word-wrap:break-word;}
+html *{word-wrap:break-word; word-break:break-all;}
+ul,li,p,form,dd,dl,dt,h1,h2,h3,h4,h5{padding:0; margin:0; list-style:none;}
+a:link,a:visited,a:active{color:#333; text-decoration:none;}
+a:hover{text-decoration:none; color:#F00;}
+img{border:0;}
+input[type="checkbox"], input[type="radio"],.checkbox,.radio
+{height:16px; width:16px; display:inline-block; vertical-align:0;}
+input,textarea,select{box-sizing:border-box;}
+div:after,p:after,ul:after,li:after,ol:after,dl:after,dd:after,dt:after,
+h1:after,h2:after,h3:after,h4:after,h5:after{display:block; clear:both; overflow:hidden; content:" ";}
+.clearfix{clear:both;}
+.blank{height:20px; line-height:20px; clear:both;}
+.f-right{float:right;}
+.f-left{float:left;}
+.input-text,textarea,select{border-width:1px; border-color:#666 #ccc #ccc #666; border-style:solid; box-sizing:border-box;}
+.input-text,select{height:26px; line-height:26px; padding:2px 3px; font-size:13px; width:200px;}
+select option{padding:5px; border-bottom:0.5px #DDD solid;}
+.w30{width:30px;}
+.w60{width:60px;}
+.w100{width:100px;}
+.w120{width:120px;}
+.w200{width:200px;}
+.w300{width:300px;}
+.w400{width:400px;}
+.w500{width:500px;}
+
+.area{clear:both; margin:0 auto; width:1000px;}
+.header-hd{width:100%; height:33px; line-height:32px; background:#f8f8f8; border-bottom:1px #e7e7e7 solid;}
+.header{font-size:12px;}
+.header .topnav{float:right; text-align:left;}
+.header .topnav .menu{float:left; padding:0; margin-left:10px;}
+
+.banner{margin:20px auto;}
+.banner .logo{float:left; margin-top:5px;}
+.banner .logo img{height:55px; border:0; display:block;}
+.banner .searchbox{float:right; text-align:left; margin-top:15px;}
+.banner .searchbox .input-hd{width:400px; border:3px #D41D6D solid; float:left; height:40px; padding:0; box-sizing:border-box;}
+.banner .searchbox .input-hd .text{height:20px; padding:0 10px; font-size:14px; width:280px; margin:7px 0; border:none;}
+.banner .searchbox .searchButton{height:40px; line-height:40px; background:#D41D6D; width:80px; text-align:center;
+color:#fff; float:left;}
+
+.navHD{height:40px; background:#D41D6D; position:relative;}
+.mainNav{height:40px; line-height:40px; color:#fff; position:relative;}
+.mainNav ul{display:block; width:1010px;}
+.mainNav li{float:left; height:40px; font-size:14px; font-weight:bold; color:#fff; width:167px;}
+.mainNav li a{display:block; color:#fff; text-align:center;}
+.mainNav li.cur a{background:#B41D6D;}
+.mainNav .shadow{position:absolute; left:-10px; top:0; width:10px; height:40px; background:#D41D6D; display:block;}
+.mainNav .shadow2{position:absolute; left:-10px; top:40px; width:10px; height:14px; background-image:url(/static/images/common/nav-shadow.png); background-repeat:no-repeat; display:block;}
+
+.sysmessage{background:#fff; clear:both; border:1px #ccc solid; padding:50px 0; margin:50px auto; border-radius:5px;}
+.sysmessage h3{text-align:center; font-size:16px; font-weight:bold; text-align:center;}
+.sysmessage h3.success{color:#060;}
+.sysmessage h3.error{color:#F00;}
+.sysmessage h3.infomation, .sysmessage h3.warning{color:#333;}
+.sysmessage .tips{text-align:center; font-size:12px; height:30px; line-height:30px; margin-top:20px;}
+.sysmessage .links{text-align:center; font-size:14px; height:30px; line-height:30px; margin-top:20px;}
+.sysmessage .links a{margin:0 3px;}
+
+.qrcodelist{display:block; margin-top:20px; border-top:0.5px #BBB solid; padding:20px 0;}
+.qrcodelist .item{width:33%; float:left; border-left:0.5px #BBB solid; margin-left:1px;}
+.qrcodelist .item .pic{width:80px; height:80px; float:left; margin:0 10px 0 30px;}
+.qrcodelist .item .pic img{width:100%; height:100%;}
+.qrcodelist .item .con{overflow:hidden;}
+.qrcodelist .item .con h3{font-size:16px; line-height:26px;}
+.qrcodelist .item .con div{font-size:14px; display:block;}
+.qrcodelist .item .con p{font-size:12px; margin-top:10px;}
+.footerHD{background:#555; width:100%; padding:20px 0; margin-top:30px; box-sizing:border-box;}
+#footer{clear:both; color:#fff;}
+#footer a{color:#fff;}
+#footer .bottomNav{text-align:center; color:#fff;}
+#footer .bottomNav a{color:#fff; margin:0 3px;}
+#footer .copyright{color:#fff; text-align:center; line-height:30px;}
+
+.sitepath{display:block; padding:10px 0; font-size:14px;}

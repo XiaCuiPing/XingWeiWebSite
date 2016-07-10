@@ -1,0 +1,22 @@
+{template header_member}
+<div id="mainFrame">
+	<form method="post" autocomplete="off">
+    <input type="hidden" name="formsubmit" value="yes">
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+	{if $piclist}
+    	<div class="photoList" style="width:120%;">
+        	{loop $piclist $pic}
+            {eval $pic[uptime]=formatTime($pic[uptime])}
+            <dl id="photo_item_$pic[photoid]">
+            	  <dd><img src="$pic[thumburl]"></dd>
+                 <dt>$pic[uptime]</dt>
+            </dl>
+            {/loop}
+        </div>
+        <div class="pages">$pages</div>
+        {else}
+        <div class="noaccess">您还没有上传过任何照片哦</div>
+        {/if}
+    </form>
+</div>
+{template footer_member}

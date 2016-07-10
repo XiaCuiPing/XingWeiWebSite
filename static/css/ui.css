@@ -1,0 +1,53 @@
+@font-face {font-family: 'iconfont';
+    src: url('../font/iconfont.eot'); /* IE9*/
+    src: url('../font/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../font/iconfont.svg#uxiconfont') format('svg'); /* iOS 4.1- */
+}
+.icon{width:24px; height:24px; display:inline-block; font-family:iconfont; font-style:normal; position:relative; font-size:16px;}
+.ui-overlayer{position:absolute; left:0; top:0; z-index:999; opacity:0.4; background:#000; width:100%; height:100%;}
+.ui-dialog {width:400px; background:#fff; box-shadow:3px 3px 7px #999; border-radius:3px; position:absolute; z-index:9999; overflow:hidden; border:1px #a0a0a0 solid;}
+.ui-dialog .dialog-title {font-size:16px; position:relative; padding:6px 10px; border-bottom:1px #ddd solid; background-image:linear-gradient(#fff, #eee); background-color:#f9f9f9;}
+.ui-dialog .dialog-title .close{font-size:16px; position:absolute; right:10px; top:8px; cursor:pointer; width:auto; height:auto; margin:0; padding:0;}
+.ui-dialog .dialog-title .close:hover{color:#930;}
+.ui-dialog .dialog-content {padding:10px; clear:both;}
+.ui-dialog .dialog-footer {padding:10px; position:relative; border-top:1px #f0f0f0 solid; background:#f8f8f8; text-align:right;}
+.ui-dialog .button {height:30px; line-height:30px; padding:0 20px; box-shadow:0 1px 1px #CCC; border-radius:3px; display:inline-block; cursor:pointer;}
+.ui-dialog .submit {background:#F03; color:#fff; border:1px #C33 solid; margin-right:20px;}
+.ui-dialog .submit:active{background:#C33;}
+.ui-dialog .cancel {background:#f2f2f2; border:1px #d2d2d2 solid; color:#444;}
+.ui-dialog .cancel:active{background:#d2d2d2;}
+.ui-dialog .content-confirm{text-align:center; font-size:14px; padding:20px 0;}
+.ui-dialog .content-success{font-size:14px; color:#060;}
+.ui-dialog .content-error{font-size:14px; color:#C30;}
+.ui-dialog .img-select-button{display:block; margin:20px; text-align:center; border:1px #e5e5e5 solid; background:#f9f9f9; font-size:16px; color:#666; font-weight:bold; position:relative; height:100px; line-height:100px;}
+.ui-dialog .img-upload-file{display:block; position:absolute; opacity:0; left:0; top:0; width:100%; height:100%; cursor:pointer;}
+
+.ui-message-box{border:1px #ddd solid; width:200px; line-height:1.5; padding:15px; display:block; position:absolute; z-index:10500; border-radius:3px; background:#fff; box-shadow:0 2px 5px 0 rgba(0,0,0,0.3);}
+.ui-message-box .ui-success {color:#363; font-size:14px; text-align:center;}
+.ui-message-box .ui-error {color:#C33; font-size:14px; text-align:center;}
+.ui-message-box .icon{margin-right:10px; vertical-align:2px;}
+.ui-confirm-box {width:180px; background:#fefefe; border:#d5d5d5 1px solid; border-radius:3px; box-shadow:0 1px 3px 0 rgba(0,0,0,0.2);}
+.ui-confirm-box dl{clear:both;}
+.ui-confirm-box dl dt{padding:20px 15px 0; font-size:12px; line-height:1.0; margin:0;}
+.ui-confirm-box dl dd{padding:15px; clear:both; text-align:center; margin:0;}
+.ui-confirm-box dl dd .button{display:inline-block; cursor:pointer; background:#f2f2f2; border:1px #e2e2e2 solid; height:22px; line-height:22px; padding:0 10px; border-radius:3px;}
+.ui-confirm-box dl dd .button:hover{background:#e2e2e2; border:1px #999 solid;}
+.ui-confirm-box dl dd .cancel{margin-left:10px;}
+.ui-loading-box{position:absolute; z-index:9999; background:#fff; border:2px #999 solid; border-radius:20px; padding:10px 20px; font-size:14px; text-align:center;}
+.ui-loading-box .ico{margin-right:5px; vertical-align:-2px; background:url(../images/common/loading16.gif) no-repeat; width:16px; height:16px; display:inline-block;}
+.ui-message-warp{width:980px; margin:40px auto 20px; clear:both; background:#fff; border:1px #ddd solid; border-radius:5px; min-height:300px; height:auto;}
+.ui-message-warp .message-content{margin:0 auto; min-height:200px; padding:50px 0;}
+.ui-message-warp .message-content:after{clear:both; display:block;}
+.ui-message-warp .message-detail{font-size:20px; padding:20px; clear:both; text-align:center;}
+.ui-message-warp .message-detail .icon{font-size:22px; margin-right:10px; vertical-align:1px;}
+.ui-message-warp .message-success{color:#363;}
+.ui-message-warp .message-error{color:#F00;}
+.ui-message-warp .meesage-warning{color:#666;}
+.ui-message-warp .message-information{color:#396;}
+.ui-message-warp .message-tips{width:80%; padding:7px 0; margin:0 auto; clear:both; line-height:1.6; font-size:12px; color:#444; text-align:center;}
+.ui-message-warp .message-links{padding:10px; text-align:center; font-size:14px; clear:both; margin-top:20px;}
+.ui-message-warp .message-links a{margin:0 5px;}
+.ui-message-warp .message-links a:hover{text-decoration:underline;}
+.ui-sortable-placeholder {border:2px #0099CC dashed !important; visibility: visible !important; display:block !important; background:none !important;}

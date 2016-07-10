@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<link rel="stylesheet" type="text/css" href="/static/css/app.css?{TIMESTAMP}">
+<title>$travel[title]</title>
+<script type="text/javascript">
+function getdata(){
+	return '$jsondata';
+}
+</script>
+</head>
+
+<body>
+{eval $travel[pubtime]=@date('Y-m-d H:i',$travel[pubtime]);}
+{eval $content[content]=cleanUpStyle($content[content]);}
+<div id="travel">
+	 <div class="content">$content[content]</div>
+    <div class="travel-info">地址:$travel[address]</div>
+    <div class="travel-info">交通:$travel[gettingthere]</div>
+    <div class="travel-button"><a href="zwapp://showmap/?address=$travel[address]"><i class="icon">&#xf014a;</i>查看地图</a></div>
+    {if $travel[tel]}<div class="travel-button"><span><i class="icon">&#xf01ef;</i>{$travel[tel]}</span></div>{/if}
+    <div class="travel-button"><span>门票:$travel[fare]</span></div>
+    <div class="travel-button"><a href="zwapp://showshop">附近商家</a></div>
+</div>
+</body>
+</html>

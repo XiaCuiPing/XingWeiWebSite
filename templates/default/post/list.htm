@@ -1,0 +1,57 @@
+{template header_common}
+<div class="area yourpos"><a href="/">首页</a> > <a href="/?m=post&c=list&catid=$category[catid]">$category[cname]</a></div>
+<div class="area post-list-wrap">
+    <div class="post-list-main"> 
+      {if $articlelist}
+      {loop $articlelist $k $list}
+      <dl class="post-list-item">
+      		{if $list[pic]}<dd><a href="$list[url]" target="_blank"><img src="$list[picurl]"></a></dd>{/if}
+            <dt>
+            	<h3><a href="$list[url]" target="_blank">$list[title]</a></h3>
+              <p>$list[summary]</p>
+            </dt>
+            <div>
+                <span>$list[pubtime]</span>
+                <span>阅读:$list[viewnum]</span>
+                <span>评论:$list[commentnum]</span>
+                <span><a href="$list[url]" target="_blank">查看详细</a></span>
+            </div>
+      </dl>
+      {/loop}
+      {else}
+      <div class="noaccess">该栏目下还没有文章</div>
+      {/if}
+      {if $pages}<div class="pages">$pages</div>{/if}
+  </div>
+  <div class="column-right">
+  		<div class="categorylist">
+           {eval $k=1;}
+           {loop $categorylist $list}
+           {if $list[fid]==$category[fid]&&$k<11}
+           <a href="/?m=post&c=list&catid=$list[catid]" class="item{if $k%2==0} item2{/if}">$list[cname]</a>
+           {eval $k++;}
+           {/if}
+           {/loop}
+        </div>
+		<div class="contentdiv">
+        	<h3 class="title">最新动态</h3>
+            {eval $postlist[new]=post_get_new(0,10);}
+           <ul>
+           {loop $postlist[new] $list}
+           <li><a href="$list[url]">$list[title]</a></li>
+           {/loop}
+           </ul>
+        </div>
+        <div class="contentdiv">
+           <h3 class="title">热点导读</h3>
+           {eval $postlist[hot]=post_get_hot(0,10);}
+           <ul>
+           {loop $postlist[hot] $list}
+           <li><a href="$list[url]">$list[title]</a></li>
+           {/loop}
+           </ul>
+        </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
+{template footer_common}

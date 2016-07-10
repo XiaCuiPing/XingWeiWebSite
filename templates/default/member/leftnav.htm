@@ -1,0 +1,26 @@
+<div id="leftNav">
+    <h3><span class="icon">&#xf013e;</span>个人设置</h3>
+    <ul>
+        <li><a href="/?m=$G[m]&c=profile" id="menu_profile">修改资料</a></li>
+        <li><a href="/?m=$G[m]&c=password" id="menu_password">修改密码</a></li>
+        <li><a href="/?m=$G[m]&c=headimg" id="menu_headimg">头像形象</a></li>
+    </ul> 
+    <h3><span class="icon">&#xf0135;</span>店铺管理</h3>
+    <ul>
+        <li><a href="/?m=$G[m]&c=shop" id="menu_shop">店铺设置</a></li>
+        <li><a href="/?m=$G[m]&c=goods" id="menu_goods">商品管理</a></li>
+        <li><a href="/?m=$G[m]&c=order" id="menu_order">订单管理</a></li>
+    </ul>
+    <h3><span class="icon">&#xf0034;</span>其他</h3>
+    <ul>
+        <li><a rel="ac" href="/?m=$G[m]&c=comment" id="menu_comment">我的评论</a></li>
+        <li><a rel="ac" href="/?m=$G[m]&c=favorite" id="menu_favorite">我的收藏</a></li>
+        <li><a rel="ac" href="/?m=$G[m]&c=photo" id="menu_photo">照片管理</a></li>
+        <!--<li><a rel="ac" href="/?m=$G[m]&c=message" node="message"><span class="icon">&#xf0142;</span>系统信息</a></li>-->
+    </ul>
+</div>
+{eval $tab=$_GET[menu]?$_GET[menu]:$G[c];}
+<script type="text/javascript">
+var cur_menu = '#menu_$tab';
+$(cur_menu).addClass('selected');
+</script>

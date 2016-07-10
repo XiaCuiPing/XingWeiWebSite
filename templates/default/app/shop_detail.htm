@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no" name="viewport" id="viewport" />
+<title>$shop[shopname]</title>
+<link rel="stylesheet" type="text/css" href="/static/css/app.css?{TIMESTAMP}">
+<script type="text/javascript">
+function getShop(){
+	return '$jsondata';
+}
+</script>
+</head>
+
+<body id="goods">
+<div class="pics" style="background-image:url({$shop[pic]});">
+	<div class="barbg"></div>
+	<div class="bar" style="text-align:center;">
+       <strong>$shop[shopname]</strong>
+    </div>
+</div>
+<div class="address">地址:$shop[province]  $shop[city]  $shop[address]</div>
+
+<div class="button-line"><a href="zwapp://showmap/?address=$shop[address]"><i class="icon">&#xf014a;</i>查看商家位置</a></div>
+{if $shop[tel]}<div class="button-line"><span><i class="icon">&#xf01ef;</i>$shop[tel]</span></div>{/if}
+
+<div class="content">
+	 <div class="title">商家简介</div>
+    <div class="p">$shop[description]</div>
+</div>
+
+<div class="content">
+	<div class="title">店家热卖</div>
+    <ul class="tableView">
+    	{loop $goodslist $list}
+    	<li>
+        	<a href="zwapp://showgoods/?id=$list[id]">
+        	<div class="pic"><img src="$list[pic]"></div>
+           <dl>
+        		<dd>$list[name]</dd>
+           	<dt>￥$list[price]</dt>
+           </dl>
+           </a>
+        </li>
+       {/loop}
+    </ul>
+</div>
+</body>
+</html>

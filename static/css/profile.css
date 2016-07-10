@@ -1,0 +1,98 @@
+@charset "UTF-8";
+/* CSS Document */
+strong{ font-family:'Hiragino Sans GB'}
+#profile{background:#fff; width:980px; overflow:hidden; margin:0  auto;}
+#profile .profile_header{position:relative; clear:both;}
+#profile .profile_header .pf_banner{background:url(../images/common/spacebanner.png) repeat-x #C1DEEC; height:240px; clear:both;}
+#profile .profile_header .pf_head {position:absolute;overflow:hidden; box-shadow:0 2px 4px rgba(0, 0, 0, 0.3); padding:3px; background:#fafafa; border:1px #d9d9d9 solid; bottom:12px; left:20px;}
+#profile .profile_header .pf_head .face{text-align:center; clear:both;}
+#profile .profile_header .pf_head .face img{width:150px; height:150px;}
+#profile .profile_header .pf_head .user_stat{height:40px; clear:both; overflow:hidden;}
+#profile .profile_header .pf_head .user_stat li{float:left; width:49px; text-align:center; display:inline-block; border-left:1px #d9d9d9 solid; margin-left:-1px;}
+#profile .profile_header .pf_head .user_stat li strong{line-height:20px; clear:both;}
+#profile .profile_header .pf_head .user_stat li span{font-size:14px; line-height:20px; display:block;}
+#profile .profile_header .pf_head .user_stat li a{color:#333; text-decoration:none;}
+#profile .profile_header .pf_head .user_stat li a:hover{color:#2595B7; text-decoration:none;}
+#profile .profile_header .pf_info{clear:both; margin-left:205px; padding:10px 0; line-height:22px; position:relative; color:#666;}
+#profile .profile_header .pf_info .pf_name{clear:both;}
+#profile .profile_header .pf_info .pf_name strong{font:20px/30px "Microsoft Yahei"; float:left; margin-right:5px;}
+#profile .profile_header .pf_info .pf_name span{margin-top:5px; display:inline-block;}
+#profile .profile_header .pf_info .pf_intro{color:#999; clear:both;}
+#profile .profile_header .pf_info .tags{padding:3px 0;}
+#profile .profile_header .pf_info .tags .m_line{display:inline-block; margin:0 5px; color:#d9d9d9;}
+#profile .profile_header .pf_info .btn_edit{clear:both;}
+#profile .profile_header .pf_info .btn_edit a{display:inline-block; color:#333; background:#f2f2f2; border:1px #d9d9d9 solid; border-radius:2px 2px 2px 2px;}
+#profile .profile_header .pf_info .btn_edit a:hover{color:#333; text-decoration:none; background:#fafafa;}
+#profile .profile_header .pf_info .btn_edit a span{display:inline-block; padding:0 20px; height:20px; line-height:20px; border:1px #fff solid;}
+#profile .profile_tab{clear:both; border-bottom:1px #d9d9d9 solid; background:#fafafa; position:relative; padding:0 20px; height:43px;}
+#profile .profile_tab li{float:left; border:1px #d9d9d9 solid; z-index:10; margin-left:-1px; height:40px; font: 16px/40px "Microsoft Yahei";}
+#profile .profile_tab li a{display:block; border:1px #fff solid; width:116px; text-align:center; background:#f2f2f2; color:#333;}
+#profile .profile_tab li a:hover{text-decoration:none;}
+#profile .profile_tab li a.current{height:42px; border-bottom:0; background:#fff;}
+#profile .w_profile_main {clear:both; padding:20px;}
+#profile .infotitle{margin:10px 0; display:block;}
+#profile .infoblock {clear:both; display:block; width:600px;}
+#profile .infoblock fieldset{border-color:#e6e6e6; border-style:solid; border-width:1px 0 0; display:block; padding:0; margin:5px 0;}
+#profile .infoblock legend{color:#333; font-weight:bold; font-size:14px; padding:0 5px 0 0;}
+#profile .infoblock .btns{float:right; border:1px #d9d9d9 solid; border-radius:10px 10px 10px 10px; margin:-22px 0 0;}
+#profile .infoblock .btns a{display:block; border:1px #fff solid; padding:0px 10px; height:20px; background:#f2f2f2; color:#333; border-radius:10px 10px 10px 10px; text-decoration:none;}
+#profile .infoblock .btns a:hover{text-decoration:none; color:#fff; background:#F93;}
+#profile .pf_item{clear:both; padding:5px 0; line-height:30px; margin-bottom:5px;}
+#profile .pf_item:after{clear:both; display:block; content:" ";}
+#profile .pf_item .label{width:52px; float:left; margin-right:20px; color:#777; text-align:right; display:block;}
+#profile .pf_item .con{line-height:30px; overflow:hidden;}
+#profile .pf_album_title{clear:both; display:block; background-color:#f2f2f2; border-radius:2px 2px 2px 2px; height:30px; line-height:30px; padding:0 10px;}
+#profile .pf_album_title strong{font-size:14px; float:left; margin-right:10px;}
+#profile .pf_album_title span{float:right;}
+#profile .pf_album_title i{font-style:normal; margin-right:10px; color:#999;}
+#profile .pf_album_hd{clear:both; overflow:hidden; padding:10px 0;}
+#profile .pf_album_list{width:1000px; padding-left:5px;}
+#profile .pf_album_list dl{width:197px; float:left; margin-right:48px;}
+#profile .pf_album_list dl dd{position:relative; border:1px #d9d9d9 solid;}
+#profile .pf_album_list dl dd .inner{position:relative; margin:-2px 1px 1px -3px; border:1px #d9d9d9 solid;}
+#profile .pf_album_list dl dd .cover_wrap{position:relative; padding:15px; margin:-2px 1px 1px -3px; border:1px #d9d9d9 solid; background:#fff;}
+#profile .pf_album_list dl dd .count{display:block; height:20px; line-height:20px; background-color:#333; color:#fff; border-radius:3px 3px 3px 3px; padding:0 10px; position:absolute; right:25px; bottom:25px;}
+#profile .pf_album_list dl dd img{width:166px; height:166px; display:block;}
+#profile .pf_album_list dl dt{line-height:24px; padding-top:15px;}
+#profile .pf_album_list dl dt strong{font-size:14px; display:block;}
+#profile .pf_album_list dl dt p{display:inline-block; color:#999; clear:both;}
+#profile .pf_photo_title{clear:both; display:block; height:30px; line-height:30px; padding:0 10px; border-bottom:1px #d9d9d9 solid;}
+#profile .pf_photo_title strong{font-size:14px; float:left; margin-right:10px;}
+#profile .pf_photo_title span{float:right;}
+#profile .pf_photo_title i{font-style:normal; margin-right:10px; color:#999;}
+#profile .pf_photo_hd{padding:10px 0; clear:both; display:block; overflow:hidden;}
+#profile .m_waterfall{clear:both; display:block; width:1000px;}
+#profile .m_waterfall .m_pin_box{margin-bottom:15px; border:1px #ddd solid; background:#f7f7f7; width:224px;}
+#profile .m_waterfall .m_pin_box .photo{width:200px; text-align:center; padding:11px 11px 5px;}
+#profile .m_waterfall .m_pin_box .photo img{width:200px; display:block;}
+#profile .m_waterfall .m_pin_box dt{clear:both; border-top:1px #ddd dotted; line-height:24px; color:#666; padding:10px 11px;}
+
+#profile .pf_blog_top{clear:both; padding:10px 0; display:block;}
+#profile .pf_blog_top span{float:right;}
+#profile .pf_blog_top strong{font-size:14px; margin:10px 10px 0 0; float:left;}
+#profile .btn_write_blog{background:#6ACDEA; font-size:14px; color:#fff; display:inline-block; height:32px; line-height:32px; padding:0 20px 0 40px; position:relative; text-decoration:none; border:1px solid; border-radius:5px 5px 5px 5px;}
+#profile .btn_write_blog b{position:absolute; left:20px; font-size:20px; color:#fff; font-family:"Times New Roman", Times, serif;}
+#profile .btn_write_blog:hover{background-image:-moz-linear-gradient(50...CDEB 0px,​ #61BCD7 100%); background-color:#63C3E0; text-decoration:none; color:#fff;}
+#profile .blog_list_item {clear:both; padding:20px 0; border-top:1px #CAE5EF dotted; margin-top:-1px;}
+#profile .blog_list_item .title{color:#2595B7; font-size:14px; line-height:100%; font-family:"Hiragino Sans GB";}
+#profile .blog_list_item .title a,
+#profile .blog_list_item .title a:hover,
+#profile .blog_list_item .title a:visited{color:#2595B7;}
+#profile .blog_list_item .summary{padding:15px 0; line-height:1.8; color:#666; font-size:14px;}
+#profile .blog_list_item .info{height:20px; line-height:20px; color:#999;}
+#profile .blog_list_item .info a{color:#999; text-decoration:none; margin:0 5px;}
+#profile .blog_list_item .info a:hover{text-decoration:underline; color:#666;}
+#profile .pf_ask_title{clear:both; display:block; padding:10px 0; border-bottom:1px #d9d9d9 solid;}
+#profile .pf_ask_title strong{font-size:14px; float:left; margin-right:10px;}
+#profile .pf_ask_title span{float:right;}
+#profile .pf_qa_list{clear:both; display:block; padding:10px 0;}
+#profile .pf_qa_list li{height:30px; line-height:30px; overflow:hidden;}
+#profile .pf_qa_list li .subject{float:left; margin-right:10px; font-size:14px;}
+#profile .pf_qa_list li i{font-style:normal; color:#999; margin-right:10px;}
+#profile .pf_answer_list {clear:both; padding:10px 0; display:block;}
+#profile .pf_answer_list dl{clear:both; padding-bottom:10px; margin-bottom:15px; border-bottom:1px #d9d9d9 solid;}
+#profile .pf_answer_list dl dd{font-size:14px; line-height:28px;}
+#profile .pf_answer_list dl dt{padding:5px 0;}
+#profile .pf_answer_list dl dt p{line-height:1.5; color:#555;}
+#profile .pf_answer_list dl dt div{line-height:28px; clear:both; color:#999;}
+#profile .blank50{height:50px; clear:both; display:block;}

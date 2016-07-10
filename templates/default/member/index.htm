@@ -1,0 +1,110 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/member.css">
+<div class="area userinfo">
+	<div class="box box-avatar">
+    	<div class="u-avatar"><img src="{echo avatar($G[uid]);}"></div>
+        <div class="u-info">
+        	<h3>$G[username]</h3>
+            <div>更换头像</div>
+            <p>等级:注册会员</p>
+        </div>
+    </div>
+    
+    <div class="box">
+    	<h3 class="u-title">账户余额</h3>
+        <div class="u-amount">1500</div>
+        <div class="u-status">充值</div>
+    </div>
+    
+    <div class="box">
+    	<h3 class="u-title">我的积分</h3>
+        <div class="u-amount">1500</div>
+        <div class="u-status">获取积分</div>
+    </div>
+    
+    <div class="box">
+    	<h3 class="u-title">邀请奖励</h3>
+        <div class="u-amount">500</div>
+        <div class="u-status">邀请人数20</div>
+    </div>
+    
+    <div class="box" style="border:none;"><a href="" class="btn-sign">签到</a></div>
+</div>
+
+<div class="blank"></div>
+<div class="area">
+	<div class="leftNav">
+    	<ul class="menu">
+        	<li><a href="" class="cur">个人中心</a></li>
+            <li><a href="">全部订单</a></li>
+            <li><a href="">进入排队返现</a></li>
+            <li><a href="">我的返现</a></li>
+            <li><a href="">积分兑换</a></li>
+            <li><a href="">修改资料</a></li>
+            <li><a href="">账户绑定</a></li>
+            <li><a href="">账号安全</a></li>
+            <li><a href="">退出登录</a></li>
+            <li><a href="" class="cur">我的店铺</a></li>
+            <li><a href="/?m=$G[m]&c=shop">我的店铺</a></li>
+            <li><a href="/?m=$G[m]&c=goods">商品管理</a></li>
+        </ul>
+    </div>
+    
+    <div class="mainFrame">
+    	<p class="ptips">亲！您今天还没有签到哦！签到可获得10积分，累积签到或更多积分。</p>
+        <p class="ptips">亲！您当前的可用余额为1500！可立即提现</p>
+        <div class="blank"></div>
+        <h3 class="htitle">网站公告</h3>
+        <ul class="noticelist">
+        	<li><span>2016-06-01</span><a href="">下载登录APP获取更多返利</a></li>
+            <li><span>2016-06-01</span><a href="">下载登录APP获取更多返利</a></li>
+            <li><span>2016-06-01</span><a href="">下载登录APP获取更多返利</a></li>
+            <li><span>2016-06-01</span><a href="">下载登录APP获取更多返利</a></li>
+            <li><span>2016-06-01</span><a href="">下载登录APP获取更多返利</a></li>
+        </ul>
+        
+        <div class="blank"></div>
+        <div class="mytab" id="mytab">
+        	<div class="item cur"><a href="javascript:;">我的返现记录</a></div>
+            <div class="item"><a href="javascript:;">我的邀请记录</a></div>
+            <div class="item"><a href="javascript:;">邀请好友赚钱</a></div>
+            <div class="item"><a href="javascript:;">我的提现记录</a></div>
+        </div>
+        
+        <table width="100%" cellspacing="1" cellpadding="0" width="100%" class="table-record">
+        	<tr>
+            	<td width="140">返利时间</td>
+                <td width="160">返利名称</td>
+                <td>返利明细</td>
+                <td width="80">返利金额</td>
+                <td width="50" class="center">状态</td>
+            </tr>
+            <tr>
+            	<td>2016-06-01 10:40</td>
+                <td>注册返利</td>
+                <td>注册赠送：金额1.00,积分10</td>
+                <td>1.00</td>
+                <td>已返</td>
+            </tr>
+            <tr>
+            	<td>2016-06-01 10:40</td>
+                <td>注册返利</td>
+                <td>注册赠送：金额1.00,积分10</td>
+                <td>1.00</td>
+                <td>已返</td>
+            </tr>
+            <tr>
+            	<td>2016-06-01 10:40</td>
+                <td>注册返利</td>
+                <td>注册赠送：金额1.00,积分10</td>
+                <td>1.00</td>
+                <td>已返</td>
+            </tr>
+        </table>
+    </div>
+
+<script type="text/javascript">
+$("#mytab .item").click(function(e) {
+    $(this).addClass('cur').siblings().removeClass("cur");
+});
+</script>

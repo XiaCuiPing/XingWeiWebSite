@@ -1,0 +1,144 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/member.css">
+<div class="signbox">
+	<div class="left">
+    	<h3>免费注册</h3>
+        <form method="post" autocomplete="off" action="/?m=member&c=register" id="registerForm">
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <input type="hidden" name="formsubmit" value="yes">
+        <div class="row">
+        	<div class="cell cell-name">昵称</div>
+            <div class="cell">
+            	<div class="err" id="err_username">用户名输入不正确</div>
+                <div class="err" id="err_username2">用户名已被人使用</div>
+            	<input type="text" name="username_{FORMHASH}" class="text" placeholder="昵称">
+            </div>
+        </div>
+        <div class="row">
+        	<div class="cell cell-name">邮箱</div>
+            <div class="cell">
+            	<div class="err" id="err_email">邮箱地址输入不正确</div>
+                <div class="err" id="err_email2">邮箱地址已被人使用</div>
+            	<input type="text" name="email_{FORMHASH}" class="text" placeholder="邮箱">
+            </div>
+        </div>
+        <div class="row">
+        	<div class="cell cell-name">密码</div>
+            <div class="cell">
+            	<div class="err" id="err_password">密码输入不正确</div>
+            	<input type="password" name="password_{FORMHASH}" class="text" placeholder="密码">
+            </div>
+        </div>
+        <div class="row">
+        	<div class="cell cell-name">确认密码</div>
+            <div class="cell">
+            	<div class="err" id="err_password2">两次密码输入不一致</div>
+            	<input type="password" id="password2" class="text" placeholder="确认密码">
+            </div>
+        </div>
+        <div class="row">
+        	<div class="cell cell-name">验证码</div>
+            <div class="cell">
+            	<div class="err" id="err_captcha">请输入验证码</div>
+            	<input type="text" name="captchacode" class="text" placeholder="验证码" style="width:100px; margin-right:5px; float:left;">
+                <img src="/?m=common&c=index&a=captcha" onclick="this.src='/?m=common&c=index&a=captcha&'+Math.random()" height="28">
+            </div>
+        </div>
+        <div class="btn-hd">
+        	<input type="submit" class="btn-submit" value="注册">
+        </div>
+        </form>
+    </div>
+    
+    <div class="line"></div>
+    
+    <div class="right">
+    	<div class="rowitem">已有账号,直接登录</div>
+        <div class="rowitem"><a href="/?m=member&c=login" class="btn">账号登录</a></div>
+        <div class="rowitem">用其他方式登录</div>
+        <div class="rowitem">
+        	<div class="ico"><a href=""><img src="/static/images/xinwei/icon-qq.png"></a></div>
+            <div class="ico"><a href=""><img src="/static/images/xinwei/icon-weibo.png"></a></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+$("#registerForm").submit(function(e) {
+    var username = $("[name=username_{FORMHASH}]").val();
+	if(!DSXCMS.IsUserName(username)){
+		$("#err_username").show();
+		return false;
+	}else {
+		$("#err_username").hide();
+	}
+	
+	var email = $("[name=email_{FORMHASH}]").val();
+	if(!DSXCMS.IsEmail(email)){
+		$("#err_email").show();
+		return false;
+	}else {
+		$("#err_email").hide();
+	}
+	
+	var password = $.trim($("[name=password_{FORMHASH}]").val());
+	if(password.length < 6){
+		$("#err_password").show();
+		return false;
+	}else {
+		$("#err_password").hide();
+	}
+	
+	var password2 = $("#password2").val();
+	if(password2 !== password){
+		$("#err_password2").show();
+		return false;
+	}else {
+		$("#err_password2").hide();
+	}
+	
+	var captchacode = $("[name=captchacode]").val();
+	if(captchacode.length !== 4){
+		$("#err_captcha").show();
+		return false;
+	}else {
+		$("#err_captcha").hide();
+	}
+	
+	var checkusername = true;
+	$.ajax({
+		url:'/?m=member&c=register&a=checkusername&username='+username,
+		dataType:"json",
+		async:false,
+		success: function(json){
+			if(json.errno !== 0){
+				checkusername = false;
+			}
+		}
+	});
+	if(!checkusername){
+		$("#err_username2").show();
+		return false;
+	}else {
+		$("#err_username2").hide();
+	}
+	
+	var checkemail = true;
+	$.ajax({
+		url:'/?m=member&c=register&a=checkemail&email='+email,
+		dataType:"json",
+		async:false,
+		success: function(json){
+			if(json.errno !== 0){
+				checkemail = false;
+			}
+		}
+	});
+	if(!checkemail){
+		$("#err_email2").show();
+	}else {
+		$("#err_email2").hide();
+	}
+	return true;
+});
+</script>
+{template footer_common}

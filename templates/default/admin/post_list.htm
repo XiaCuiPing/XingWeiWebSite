@@ -1,0 +1,76 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<form name="search" action="/?">
+                <input type="hidden" name="m" value="$G[m]">
+                <input type="hidden" name="c" value="$G[c]">
+                <input type="hidden" name="a" value="$G[a]">
+                <input type="hidden" name="status" value="$status">
+                <select name="catid" id="catid">
+                    <option value="0" class="bold">所有栏目</option>
+                    $categoryoptions
+                </select>
+                <input type="text" class="input-text" name="keyword" value="$keyword">
+                <input type="submit" class="button search" value="$lang[search]">
+            </form>
+        	
+        </div>
+    	<!--<strong>文章列表</strong>-->
+        <a class="baritem margin0" href="/?m=$G[m]&c=$G[c]&a=publish">发布文章</a>
+        <a class="baritem" href="/?m=$G[m]&c=postcat">分类管理</a>
+	</div>
+    <div class="table-hd">
+        <form method="post">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+        <thead>
+          <tr>
+            <th width="20" class="center">选?</th>
+            <th>$lang[article_title]</th>
+            <th width="80">形式</th>
+            <th width="80">目录分类</th>
+            <th width="50">$lang[article_views]</th>
+            <th width="130">$lang[pubtime]</th>
+            <th width="50">状态</th>
+            <th width="40">编辑</th>
+          </tr>
+         </thead>
+         <tbody>
+          {loop $postlist $key $list}
+          {eval $pubdate=@date('Y-m-d H:i', $list[pubtime]);}
+          <tr>
+            <td><input type="checkbox" class="checkbox" name="id[]" value="$list[id]"></td>
+            <th><a href="/?m=post&c=detail&id=$list[id]" target="_blank">$list[title]</a></th>
+            <td>{$lang[posttypes][$list[type]]}</td>
+            <td>{$categorylist[$list[catid]][cname]}</td>
+            <td>{$list[viewnum]}</td>
+            <td>{$pubdate}</td>
+            <td>{$lang[poststatus][$list[status]]}</td>
+            <td><a href="/?m=admin&c=post&a=edit&id=$list[id]">编辑</a></td>
+          </tr>
+          {/loop}
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="10">
+                <label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'id[]')"> $lang[selectall]</label>
+                <label><input type="radio" class="radio" name="option" value="delete" checked> 删除</label>
+                <label><input type="radio" class="radio" name="option" value="audit"> 通过审核</label>
+                <label><input type="radio" class="radio" name="option" value="unaudit"> 审核未通过</label>
+            </td>
+          </tr>
+          <tr>
+              <td colspan="10">
+                  <span class="pages">$pages</span>
+                  <input type="submit" class="submit" value="$lang[submit]">
+                  <input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+              </td>
+          </tr>
+         </tfoot>
+        </table>
+        </form>
+     </div>
+</div>
+{template footer_admin}

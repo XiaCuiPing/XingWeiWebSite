@@ -1,0 +1,22 @@
+{template space_top}
+<div id="profile">
+<div class="w_profile_main">
+    <div class="pf_ask_title">
+        <strong>我的评论 (共{$totalnum}条)</strong>
+        <div class="clearfix"></div>
+    </div>
+    <div class="pf_answer_list">
+    	{loop $commentlist $comm}
+        <dl>
+        	<dd></dd>
+            <dt>
+            	<p>$comm[message]</p>
+                <div>$comm[pubtime]&nbsp;&nbsp;<a href="/?mod=post&ac=detail&id=$comm[id]" target="_blank">查看原文</a></div>
+            </dt>
+        </dl>
+        {/loop}
+    </div>
+    <div class="blank50"></div>
+</div>
+</div>
+{template footer}

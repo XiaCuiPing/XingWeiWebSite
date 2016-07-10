@@ -1,0 +1,116 @@
+{template header_admin}
+<div id="pagecontainer">
+    <div class="toolbar">
+    	<div class="f-right"><a href="/?m=$G[m]&c=member" class="baritem">用户列表</a></div>
+    	<strong>用户分组管理</strong>
+    </div>
+    <div class="table-hd">
+    <form method="post" autocomplete="off">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}" />
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+        <thead>
+        <tr>
+          <th width="20" class="center">删?</th>
+          <th width="30">GID</th>
+          <th width="100">组名称</th>
+          <th width="100">积分下线</th>
+          <th width="110">积分上限</th>
+          <th width="60">类型</th>
+          <th>组权限</th>
+        </tr>
+        </thead>
+        <tbody id="grouplist">
+        {loop $usergrouplist[system] $list}
+        <tr>
+          <td><input type="checkbox" class="checkbox" disabled="disabled" /></td>
+          <td>$list[gid]</td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][title]" value="$list[title]" maxlength="10"></td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][creditslower]" value="$list[creditslower]" maxlength="10"></td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][creditshigher]" value="$list[creditshigher]" maxlength="10"></td>
+          <td>系统</td>
+          <td style="line-height:1.5;">
+          	{eval $permission=$list[perm]}
+            {loop $lang[member_perms] $k=>$v}
+            <label>
+            <input type="checkbox" value="1" name="grouplist[{$list[gid]}][perm][$k]"{if $permission[$k]} checked="checked"{/if}>$v
+            </label>
+            {/loop}
+          </td>
+        </tr>
+        {/loop}
+        {loop $usergrouplist[member] $list}
+        <tr>
+          <td><input type="checkbox" class="checkbox" disabled="disabled" /></td>
+          <td>$list[gid]</td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][title]" value="$list[title]" maxlength="10"></td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][creditslower]" value="$list[creditslower]" maxlength="10"></td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][creditshigher]" value="$list[creditshigher]" maxlength="10"></td>
+          <td>用户</td>
+          <td style="line-height:1.5;">
+          	{eval $permission=$list[perm]}
+            {loop $lang[member_perms] $k=>$v}
+            <label>
+            <input type="checkbox" value="1" name="grouplist[{$list[gid]}][perm][$k]"{if $permission[$k]} checked="checked"{/if}>$v
+            </label>
+            {/loop}
+          </td>
+        </tr>
+        {/loop}
+        {loop $usergrouplist[custom] $list}
+        <tr>
+          <td><input type="checkbox" class="checkbox" name="delete[]" value="$list[gid]" /></td>
+          <td>$list[gid]</td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][title]" value="$list[title]" maxlength="10"></td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][creditslower]" value="$list[creditslower]" maxlength="10"></td>
+          <td><input type="text" class="input-text w100" name="grouplist[{$list[gid]}][creditshigher]" value="$list[creditshigher]" maxlength="10"></td>
+          <td>自定义</td>
+          <td style="line-height:1.5;">
+          {eval $permission=$list[perm]}
+          {loop $lang[member_perms] $k=>$v}
+          <label>
+          <input type="checkbox" value="1" name="grouplist[{$list[gid]}][perm][$k]"{if $permission[$k]} checked="checked"{/if}>$v
+          </label>
+          {/loop}
+          </td>
+        </tr>
+        {/loop}
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="10"><a href="javascript:;" id="addgroup"><i class="icon">&#xf0154;</i>添加新分组</a></td>
+        </tr>
+        <tr>
+            <td colspan="10">
+                <input type="submit" class="submit" value="提交" />
+                <input type="button" class="button" value="刷新" onclick="window.location.reload()" />
+            </td>
+        </tr>
+        </tfoot>
+      </table>
+     </form>
+     </div>
+</div>
+<script type="text/html" id="rowtpl">
+<tr>
+  <td></td>
+  <td></td>
+  <td><input type="text" class="input-text w100" name="newgroup[nkey][title]" value="" maxlength="10"></td>
+  <td><input type="text" class="input-text w100" name="newgroup[nkey][creditslower]" value="" maxlength="10"></td>
+  <td><input type="text" class="input-text w100" name="newgroup[nkey][creditshigher]" value="" maxlength="10"></td>
+  <td>自定义</td>
+  <td>
+  	{loop $lang[member_perms] $k=>$v}
+	<input type="checkbox" value="1" name="newgroup[nkey][perm][$k]">$v 
+	{/loop}
+  </td>
+</tr>
+</script>
+<script type="text/javascript">
+var nkey = 0;
+$("#addgroup").click(function(){
+	$("#grouplist").append($("#rowtpl").html().replace(/nkey/g,nkey));
+	nkey--;
+});
+</script>
+{template footer_admin}

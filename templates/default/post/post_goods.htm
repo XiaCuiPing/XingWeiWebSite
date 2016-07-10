@@ -1,0 +1,50 @@
+{template post_title}
+<div class="newpost-content" id="p-content-postdata">
+    <h3 class="content-sub-title">商品属性</h3>
+    <div class="content-body">
+        <div id="goods-attr-content">
+              <div class="goods-atta-item">
+                <div class="delete"><span class="icon" title="删除">&#xf00b3;</span></div>
+                <div class="name">属性名</div>
+                <div class="value">属性值</div>
+              </div>
+              {if $G[ac]=='edit'}
+              {loop $attributes $attr}
+              {eval $key=$attr[attrid]}
+              <div class="goods-atta-item">
+              	  <div class="delete"><a href="javascript:;" title="删除" class="icon" onclick="$(this).parent().parent().remove()">&#xf00b3;</a></div>
+                <div class="name"><input type="text" class="input-text" name="attribute[$key][name]" value="$attr[name]"></div>
+                <div class="value"><input type="text" class="input-text" name="attribute[$key][value]" value="$attr[value]"></div>
+              </div>
+              {/loop}
+              {else}
+              <div class="goods-atta-item">
+              	  <div class="delete"><a href="javascript:;" title="删除" class="icon" onclick="$(this).parent().parent().remove()">&#xf00b3;</a></div>
+                <div class="name"><input type="text" class="input-text" name="attribute[0][name]"></div>
+                <div class="value"><input type="text" class="input-text" name="attribute[0][value]"></div>
+              </div>
+              {/if}
+        </div>
+        <p><a href="javascript:;" class="add-new" id="add-attr"><span class="icon">&#xf0154;</span>增加商品属性</a></p>
+   </div>
+</div>
+<script type="text/javascript">
+(function(){
+ var key = 0;
+ $("#add-attr").click(function(){
+	 key++;
+    $("#goods-attr-content").append('<div class="goods-atta-item"><div class="delete"><a href="javascript:;" class="icon" title="删除" onclick="$(this).parent().parent().remove()">&#xf00b3;</a></div>'+
+                '<div class="name"><input type="text" class="input-text" name="attribute['+key+'][name]"></div>'+
+              '<div class="value"><input type="text" class="input-text" name="attribute['+key+'][value]"></div>'+
+           '</div>');
+ });
+ })();
+</script>
+{eval $token = sha1($G[uid].$G[username].formhash());}
+<script type="text/javascript" src="/static/editor/jquery.UBBEditor.js?{TIMESTAMP}"></script>
+<script type="text/javascript" src="/static/uploadify/jquery.uploadify-3.1.min.js"></script>
+<div class="newpost-item" id="p-content-body">
+<script type="text/plain" id="ubbeditor" name="content">$content</script>
+<script type="text/javascript">var ubbeditor = new UBBEditor('#ubbeditor',{formdata:{'uid':'$G[uid]','username':'$G[username]','token':'$token'}});</script>
+</div>
+{template post_attribute}

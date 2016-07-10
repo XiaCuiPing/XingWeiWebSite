@@ -1,0 +1,24 @@
+{template post_title}
+<script src="/static/DatePicker/WdatePicker.js" type="text/javascript"></script>
+<div class="newpost-content" id="p-content-postdata">
+    <h3 class="content-sub-title">时间设置</h3>
+    <div class="content-body">
+    	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="50" width="70">开始时间:</td>
+            <td><input type="text" class="input-text" name="active[begin]" onclick="WdatePicker()" style="width:180px;"></td>
+            <td width="70">结束时间:</td>
+            <td><input type="text" class="input-text" name="active[end]" onclick="WdatePicker()" style="width:180px;"></td>
+          </tr>
+        </table>
+        <p style="font-size:12px;">选择活动开始和结束的时间。</p>
+   </div>
+</div>
+{eval $token = sha1($G[uid].$G[username].formhash());}
+<script type="text/javascript" src="/static/editor/jquery.UBBEditor.js?{TIMESTAMP}"></script>
+<script type="text/javascript" src="/static/uploadify/jquery.uploadify-3.1.min.js"></script>
+<div class="newpost-item" id="p-content-body">
+<script type="text/plain" id="ubbeditor" name="content">$content</script>
+<script type="text/javascript">var ubbeditor = new UBBEditor('#ubbeditor',{formdata:{'uid':'$G[uid]','username':'$G[username]','token':'$token'}});</script>
+</div>
+{template post_attribute}

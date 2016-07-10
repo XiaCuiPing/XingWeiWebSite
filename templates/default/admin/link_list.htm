@@ -1,0 +1,91 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<strong>链接管理</strong>
+    </div>
+	<div class="table-hd">
+	<form method="post" action="">
+      <input type="hidden" name="formsubmit" value="yes" />
+      <input type="hidden" name="formhash" value="{FORMHASH}">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+      <thead>
+          <tr>
+            <th width="30" class="center">删?</th>
+            <th width="50">图片</th>
+            <th width="60">显示顺序</th>
+            <th>名称</th>
+            <th width="360">网址</th>
+          </tr>
+      </thead>
+      {loop $categorylist $catid $cat}
+      <tbody id="tbcontent_$cat[linkid]">
+      <tr>
+        <td><input type="checkbox" class="checkbox" name="delete[]" value="$catid" /></td>
+        <td><input type="text" class="input-text w60" name="linklist[$catid][displayorder]" value="$cat[displayorder]" maxlength="4" style="font-weight:bold;"></td>
+        <td colspan="3">
+          <input type="text" class="input-text" name="linklist[$catid][title]" value="$cat[title]" maxlength="10"> 
+          <a href="javascript:;" onclick="addLink($catid)"><i class="icon">&#xf0154;</i>添加链接</a>
+        </td>
+      </tr>
+      {loop $linklist $linkid $link}
+      {if $link[catid]==$catid}
+      <tr>
+        <td><input type="checkbox" class="checkbox" name="delete[]" value="$linkid" /></td>
+        <td><img src="$link[pic]" width="50" height="50"></td>
+        <td><input type="text" class="input-text w60" name="linklist[$linkid][displayorder]" value="$link[displayorder]" maxlength="4"></td>
+        <td>|––<input type="text" class="input-text" name="linklist[$linkid][title]" value="$link[title]" maxlength="10"></td>
+        <td><input type="text" class="input-text w300" name="linklist[$linkid][url]" value="$link[url]"></td>
+      </tr>
+      {/if}
+      {/loop}
+      </tbody>
+      {/loop}
+      <tbody id="tbclass"></tbody>
+      <tfoot>
+      <tr>
+          <td colspan="5">
+          <label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'delete[]')" /> 全选</label>
+          <a href="javascript:;" onclick="addClass()"><i class="icon">&#xf0154;</i>添加分类</a></td>
+      </tr>
+      <tr>
+          <td colspan="5">
+              <span class="pages">{$pages}</span>
+              <input type="submit" class="submit" value="提交" />
+              <input type="button" class="button" value="刷新" onclick="window.location.reload()" />
+          </td>
+      </tr>
+      </tfoot>
+    </table>
+ 	</form>
+ 	</div>
+</div>
+<script type="text/template" id="tplLink">
+<tr>
+<td><input type="hidden" name="newlink[#keynum#][catid]" value="#catid#" /></td>
+<td></td>
+<td><input type="text" class="input-text w60" name="newlink[#keynum#][displayorder]" value="0" maxlength="4"></td>
+<td>|––<input type="text" class="input-text" name="newlink[#keynum#][title]" value="新链接" maxlength="10"></td>
+<td><input type="text" class="input-text w300" name="newlink[#keynum#][url]" value=""></td>
+</tr>
+</script>
+<script type="text/template" id="tplClass">
+<tr class="white">
+  <td></td>
+  <td><input type="text" class="input-text w60" name="newlink[#keynum#][displayorder]" value="0" maxlength="4"></td>
+  <td colspan="3"><input type="text" class="input-text" name="newlink[#keynum#][title]" value="新分类" maxlength="10"></td>
+</tr>
+</script>
+<script type="text/javascript">
+var keynum = 0;
+function addClass(){
+	var html = $("#tplClass").html().replace(/#keynum#/g, keynum);
+	$("#tbclass").append(html);
+	keynum--;
+}
+function addLink(catid){
+	var html = $("#tplLink").html().replace(/#catid#/g,catid).replace(/#keynum#/g, keynum);
+	$("#tbcontent_"+catid).append(html);
+	keynum--;
+}
+</script>
+{template footer_admin}

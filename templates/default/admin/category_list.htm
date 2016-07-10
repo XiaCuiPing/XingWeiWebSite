@@ -1,0 +1,145 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar"><strong>分类管理</strong></div>
+    <div class="table-hd">
+	<form method="post" action="">
+    <input type="hidden" name="formsubmit" value="yes" />
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+    <thead>
+    	<th width="30" class="center">删?</th>
+       <th width="30">ID</th>
+       <th width="60">图片</th>
+       <th>分类名称</th>
+       <th width="80">显示顺序</th>
+       <th width="50" class="center">可选</th>
+       <th width="50" class="center">可用</th>
+       <th width="40">选项</th>
+    </thead>
+       {loop $categorylist[0] $lv1}
+       {eval $lv1[image]=image($lv1[image])}
+        <tr id="row_$lv1[catid]">
+          <td><input type="checkbox" class="checkbox" name="delete[]" value="$lv1[catid]" /></td>
+          <td>$lv1[catid]</td>
+          <td><img src="{$lv1[image]}" width="50" height="50" onclick="openUploadWindow(this,$lv1[catid]);"></td>
+          <td>
+          <input type="text" class="text text200" name="categorylist[{$lv1[catid]}][cname]" value="{$lv1[cname]}" maxlength="10" style="font-weight:bold;">
+          <a href="javascript:;" onclick="addNew($lv1[catid],1)">+添加子分类</a>
+          </td>
+          <td><input type="text" class="text w60"  name="categorylist[{$lv1[catid]}][displayorder]" value="{$lv1[displayorder]}"></td>
+          <td class="center"><input type="checkbox" class="checkbox" name="categorylist[{$lv1[catid]}][enable]" value="1"{if $lv1[enable]} checked="checked"{/if}></td>
+          <td class="center"><input type="checkbox" class="checkbox" name="categorylist[{$lv1[catid]}][available]" value="1"{if $lv1[available]} checked="checked"{/if}></td>
+          <td><a href="/?m=$G[m]&c=$G[c]&a=edit&catid=$lv1[catid]" class="edit">编辑</a></td>
+        </tr>
+        {loop $categorylist[$lv1[catid]] $lv2}
+        {eval $lv2[image]=image($lv2[image])}
+        <tbody id="group_$lv2[catid]">
+         <tr>
+          <td><input type="checkbox" class="checkbox" name="delete[]" value="$lv2[catid]" /></td>
+          <td>$lv2[catid]</td>
+          <td><img src="{$lv2[image]}" width="50" height="50" onclick="openUploadWindow(this,$lv2[catid]);"></td>
+          <td>
+          <div class="join"></div>
+          <input type="text" class="text text200" name="categorylist[{$lv2[catid]}][cname]" value="{$lv2[cname]}" maxlength="10">
+          <a href="javascript:;" onclick="addNew($lv2[catid],2)">+添加子分类</a>
+          </td>
+          <td><input type="text" class="text w60"  name="categorylist[{$lv2[catid]}][displayorder]" value="{$lv2[displayorder]}"></td>
+          <td class="center"><input type="checkbox" class="checkbox" name="categorylist[{$lv2[catid]}][enable]" value="1"{if $lv2[enable]} checked="checked"{/if}></td>
+          <td class="center"><input type="checkbox" class="checkbox" name="categorylist[{$lv2[catid]}][available]" value="1"{if $lv2[available]} checked="checked"{/if}></td>
+          <td><a href="/?m=$G[m]&c=$G[c]&a=edit&catid=$lv2[catid]" class="edit">编辑</a></td>
+        </tr>
+            {loop $categorylist[$lv2[catid]] $lv3}
+            {eval $lv3[image]=image($lv3[image])}
+             <tr>
+              <td><input type="checkbox" class="checkbox" name="delete[]" value="$lv3[catid]" /></td>
+              <td>$lv2[catid]</td>
+              <td><img src="{$lv3[image]}" width="50" height="50" onclick="openUploadWindow(this,$lv3[catid]);"></td>
+              <td>
+              <div class="join"></div><div class="join"></div>
+              <input type="text" class="text text200" name="categorylist[{$lv3[catid]}][cname]" value="{$lv3[cname]}" maxlength="10">
+              </td>
+              <td><input type="text" class="text w60"  name="categorylist[{$lv3[catid]}][displayorder]" value="{$lv2[displayorder]}"></td>
+              <td class="center"><input type="checkbox" class="checkbox" name="categorylist[{$lv3[catid]}][enable]" value="1"{if $lv1[enable]} checked="checked"{/if}></td>
+              <td class="center"><input type="checkbox" class="checkbox" name="categorylist[{$lv3[catid]}][available]" value="1"{if $lv1[available]} checked="checked"{/if}></td>
+              <td><a href="/?m=$G[m]&c=$G[c]&a=edit&catid=$lv3[catid]" class="edit">编辑</a></td>
+            </tr>
+            {/loop}
+            </tbody>
+        {/loop}
+    <!--{/loop}-->
+    <tbody id="newgroups"></tbody>
+    <tfoot>
+    <tr>
+        <td colspan="8">
+        	<label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'delete[]');" /> 全选</label>
+        	<a href="javascript:;" onclick="addNew(0)" style="margin-left:20px;"><i class="icon">&#xf0154;</i>添加分类</a>
+            <p class="tips">提示:选中复选框提交后选中项将被删除</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="8">
+            <input type="submit" class="submit" value="提交" />
+            <input type="button" class="button" value="刷新" onclick="window.location.reload()" />
+        </td>
+    </tr>
+    </tfoot>
+  </table>
+ </form>
+ </div>
+</div>
+<script type="text/template" id="tpItem">
+<tr>
+  <td><input type="hidden" name="categorynew[#k#][fid]" value="#fid#" /></td>
+  <td></td>
+  <td></td>
+  <td>#line#<input type="text" class="input-text" name="categorynew[#k#][cname]" value="" maxlength="10"></td>
+  <td><input type="text" class="input-text w60"  name="categorynew[#k#][displayorder]" value="0"></td>
+  <td class="center"><input type="checkbox" class="checkbox" name="categorynew[#k#][enable]" value="1" checked="checked"></td>
+  <td class="center"><input type="checkbox" class="checkbox" name="categorynew[#k#][available]" value="1" checked="checked"></td>
+  <td></td>
+</tr>
+</script>
+<script type="text/javascript">
+var k = 0;
+function addNew(fid, level){
+	k--;
+	var html = $("#tpItem").html();
+	html = html.replace(/#k#/g,k);
+	html = html.replace(/#fid#/g,fid);
+	if(level == 1) {
+		html = html.replace(/#line#/g,'<div class="join"></div>');
+	}else if(level == 2){
+		html = html.replace(/#line#/g,'<div class="join"></div><div class="join"></div>');
+	}else {
+		html = html.replace(/#line#/g,'');
+	}
+	
+	if(level == 1){
+		$("#row_"+fid).after(html);
+	}else if(level == 2){
+		$("#group_"+fid).append(html);
+	}else {
+		$("#newgroups").append(html);
+	}
+	
+	$(html).remove();
+	$(html).find(".delete").click(function(e) {
+         $(html).remove();
+    });
+}
+
+function openUploadWindow(obj,catid){
+	var dlg = DSXUI.showImgUploadWindow({},function(c){
+		if(c.errno == 0){
+			$.ajax({
+				url:'/?m=$G[m]&c=$G[c]&a=setimage',
+				data:{catid:catid,image:c.data.image},
+				success: function(){
+					$(obj).attr('src',c.data.imageurl);
+				}
+			});
+		}
+	});
+}
+</script>
+{template footer_admin}

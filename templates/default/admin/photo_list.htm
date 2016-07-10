@@ -1,0 +1,51 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar"><strong>照片管理</strong></div>
+    <div class="table-hd">
+	<form method="post" action="">
+    <input type="hidden" name="formsubmit" value="yes" />
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+    <thead>
+      <tr>
+        <th width="30" class="center">删?</th>
+        <th width="80">预览</th>
+        <th>名称</th>
+        <th width="80">所有人</th>
+        <th width="100">大小</th>
+        <th width="80">类型</th>
+        <th width="120">上传时间</th>
+      </tr>
+     </thead>
+     <tbody>
+      {loop $photolist $list}
+      {eval $uptime=@date('Y-m-d H:i',$list[dateline]);}
+      {eval $size=formatSize($list[size]);}
+      <tr>
+        <td><input type="checkbox" class="checkbox" name="delete[]" value="$list[photoid]"></td>
+        <td><img src="{$list[thumburl]}" width="50" height="50"></td>
+        <th>$list[name]</th>
+        <td>{$userlist[$list[uid]][username]}</td>
+        <td>$size</td>
+        <td>$list[type]</td>
+        <td>$uptime</td>
+      </tr>
+      {/loop}
+      </tbody>
+      <tfoot>
+      <tr>
+      		<td colspan="10"><label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'delete[]');"> 全选</label></td>
+      </tr>
+      <tr>
+          <td colspan="10">
+              <span class="pages">$pages</span>
+              <input type="submit" class="submit" value="删除">
+              <input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+          </td>
+      </tr>
+     </tfoot>
+    </table>
+ 	</form>
+    </div>
+ </div>
+{template footer_admin}

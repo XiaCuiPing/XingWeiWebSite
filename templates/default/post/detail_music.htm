@@ -1,0 +1,73 @@
+{template header}
+{template detail_common}
+<div class="wrapper">
+	<div class="post-detail-main">
+        <div class="post-content-body">
+            <h1 class="post-title-h1">$post[title]</h1>
+            <div class="post-info">        
+            <span>{$post[pubtime]}</span>
+            <span>阅读:{$post[views]}</span>
+            <a href="#dsxcomment">评论:($post[comments])</a>
+            <a href="javascript:;" onclick="Favorite($post[id])">收藏本文</a>
+            {if $allowdelpost}<a href="javascript:;" onclick="deletePost($post[id])">删除</a>{/if}
+            {if $alloweditpost}<a href="/?mod=post&act=editpost&id=$post[id]">编辑</a>{/if}
+            {if $allowauditpost}<a href="javascript:;" onclick="setPostState($post[id],0)">通过审核</a> <a href="javascript:;" onclick="setPostState($post[id],2)">取消审核</a>{/if}
+
+            </div>
+            <div class="post-mp3-player" id="post-mp3-player"></div>
+            <script src="/static/js/swfobject.js"></script>
+            <script language="javascript" type="text/javascript">
+			 var so = new SWFObject("/static/swf/dsxplayer.swf", "player", "400", "400", "9"); // Location of swf file. You can change player width and height here (using pixels or percents).
+			 so.addParam("quality", "high");
+			 so.addVariable("playlist",encodeURIComponent("/?mod=post&act=addon&opt=getsongs&postid=$post[id]")); // Location of php script.
+			 so.write("post-mp3-player");
+			 </script>
+            <div class="post-body">$post[content]</div>
+            {if $post[type]=='attach'}
+            <div class="post-attach-down">
+                <h3>下载附件</h3>
+                <div class="urls">
+                     {loop $post[postdata] $attach}
+                     <a href="$attach[attachurl]" target="_blank">$attach[attachname]</a>
+                    {/loop}
+                </div>
+            </div>
+            
+            {/if}
+            {if $post[tags]}
+            <div class="post-tags">标签:
+            	  {loop $post[tags] $tag}
+                <a href="/?mod=post&act=search&tag=$tag">$tag</a>
+                {/loop}
+            </div>
+            {/if}
+            <div class="post-related-div">
+                  <h3 class="post-title-h3">相关文章</h3> 
+                  <ul class="post-list-ul">
+                      {loop $posts[related] $k $pp}
+                      <li><span>$pp[pubtime]</span><a href="/?mod=post&act=detail&id=$pp[id]">$pp[title]</a></li>
+                      {/loop}
+                  </ul>
+            </div>
+            <!--评论-->
+            <a name="dsxcomment"></a>
+            {if $post[allowcomment]}
+            {if $allowcomment}
+            <div class="post-comment-form">
+            	<form method="post" name="formcomment">
+            	<textarea class="comment-textarea" name="message" id="comment-text" placeholder="在这里输入评论内容"{if !$G[islogin]} disabled{/if}></textarea>
+                <div class="comment-toolbar"><input type="button" class="comment-publish" id="comment-publish" value="发布"><span>已有<font node="comments">$post[comments]</font>条评论</span></div>
+            	</form>
+                {if !$G[islogin]}<div class="errortips" style="display:block;"><i class="icon">&#xf0142;</i>登录后才能发评论哦，亲.</div>{/if}
+                <div class="errortips" id="comment-tips"><i class="icon">&#xf0142;</i>不能发空评论哦，亲.</div>
+            </div>
+            {/if}
+            <h3 class="post-comment-title">最新评论</h3>
+            <div id="post-comment-list-content"></div>
+            {/if}
+        </div>
+    </div>
+    [diy=diy1]<div class="post-detail-right diy" id="diy1"></div>[/diy]
+</div>
+<script type="text/javascript" src="/static/js/postdetail.js"></script>
+{template footer}

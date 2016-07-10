@@ -1,0 +1,92 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/homepage.css">
+<div class="lianmengpage area">
+	<div class="menudiv">
+    	<ul class="menulist">
+        	{eval $categorylist=category_get_all('shop');}
+            {loop $categorylist $clist}
+            <li><span>></span><a href="/">$clist[cname]</a></li>
+            {/loop}
+        </ul>
+        
+        <div class="hot">
+        	<div class="titlediv"><strong>热门商家推荐</strong></div>
+            <ul>
+            	{eval $shoplist[hot]=shop_get_list(0,3);}
+                {loop $shoplist[hot] $slist}
+                <li>
+                	<div class="pic"><img src="$slist[thumburl]"></div>
+                    <h3 class="name">$slist[shopname]</h3>
+                    <p>30元代金券一张,免包房费</p>
+                    <div class="fan">满100返20</div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+    
+    <!--名店推荐-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>名店推荐</strong></div>
+    {eval $shoplist[best]=shop_get_list(0,10);}
+    <div class="mdbd">
+        <ul class="mdlist">
+            {eval $no=1;}
+            {loop $shoplist[best] $slist}
+            <li>
+                <div class="pic"><img src="$slist[thumburl]"></div>
+                <h3 class="name">$slist[shopname]</h3>
+                <div class="fan"><i>50评</i>满100返20</div>
+            </li>
+            <!--{if $no%5==0&&$no<10}</ul><ul class="mdlist">{/if}-->
+            {eval $no++;}
+            {/loop}
+        </ul>
+    </div>
+    
+    <!--餐饮商家推荐-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>餐饮美食</strong></div>
+    <div class="shangHD">
+    	{eval $shoplist[new]=shop_get_list(0,8);}
+        <ul class="shangList">
+        	{loop $shoplist[new] $slist}
+            <li>
+                <div class="pic"><img src="$slist[thumburl]"></div>
+                <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    
+    <!--餐饮商家推荐-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>酒店推荐</strong></div>
+    <div class="shangHD">
+    	{eval $shoplist[new]=shop_get_list(0,8);}
+        <ul class="shangList">
+        	{loop $shoplist[new] $slist}
+            <li>
+                <div class="pic"><img src="$slist[thumburl]"></div>
+                <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    
+    <!--餐饮商家推荐-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>生活服务</strong></div>
+    <div class="shangHD">
+    	{eval $shoplist[new]=shop_get_list(0,8);}
+        <ul class="shangList">
+        	{loop $shoplist[new] $slist}
+            <li>
+                <div class="pic"><img src="$slist[thumburl]"></div>
+                <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+</div>
+{template footer_common}
