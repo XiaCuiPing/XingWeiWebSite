@@ -1,0 +1,38 @@
+APP 接口文档
+
+1.API接口
+
+http://xw.zhangwoo.cn/app.php?platform=ios&appkey=40a3e8e50fa27b8e6f1dd1a4b7454a0a&version=1.0
+参数说明:
+platform: 平台名称 ios或android 小写
+appkey: 数据访秘钥
+c=控制器
+a=操作
+
+1. 用户登录
+c=login
+POST参数
+account=登录账号(用户名/邮箱/手机号, 后台自动识别)
+password=登录密码
+
+成功返回用户信息
+错误代码
+301=账号不存在
+302=密码错误
+303=参数错误
+
+2. 用户注册
+c=register
+
+POST参数
+username=用户名
+mobile=手机号
+password=密码
+
+成功返回用户信息
+错误代码
+301=用户名已被人占用
+302=手机号已被占用
+303=邮箱已被占用
+305=密码错误
+306=参数错误
