@@ -37,13 +37,15 @@ display:block; text-align:center; font-size:14px; color:#fff; margin:20px auto 0
 .userinfo .box-avatar{width:28%;}
 
 .leftNav{width:180px; float:left;}
+.leftNav h3.title{display:block; margin-bottom:3px; font-size:14px; padding:7px 10px 7px 40px; background-color:#D41D6D; color:#fff;}
 .leftNav .menu{display:block;}
 .leftNav .menu li{display:block; margin-bottom:3px; position:relative;}
 .leftNav .menu li a{display:block; background-color:#EEEEEF; font-size:14px; padding:7px 10px 7px 40px;}
 .leftNav .menu li a:hover{background-color:#E0E0E0; color:#000;}
-.leftNav .menu li a.cur{background-color:#D41D6D; color:#fff;}
+.leftNav .menu li a.cur{background-color:#999; color:#fff;}
 
-.mainFrame{overflow:hidden; border-left:0.5px #CCC solid; border-top:0.5px #CCC solid; min-height:600px; padding:20px 0 0 20px;}
+#mainFrame,.mainFrame{overflow:hidden; border-left:0.5px #CCC solid; border-top:0.5px #CCC solid; 
+min-height:600px; padding:20px 0 0 20px;}
 .ptips{display:block; margin-bottom:10px; border:0.5px #CCC solid; padding:7px 20px; font-size:12px; background:#fefefe;}
 .htitle{display:block; margin-bottom:10px; font-size:16px; color:#D41D6D;}
 .noticelist{display:block; padding:0 0 0 20px;}

@@ -1,0 +1,77 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right"><a href="/?m=$G[m]&c=$G[c]" class="baritem">返回列表</a></div>
+        <strong>幻灯图片管理</strong>
+    </div>
+    <div class="table-hd">
+    	<table width="100%" cellpadding="0" cellspacing="0" class="listtable">
+        	<thead>
+            	<th>
+                	<div class="f-right" style="position:relative;">
+                    	<form method="post" enctype="multipart/form-data" id="uploadForm">
+                    	<input type="button" class="submit" value="添加图片">
+                        <input type="file" class="j-file" id="j-file" name="filedata">
+                        </form>
+                    </div>
+                首页顶部轮播图片</th>
+            </thead>
+            <tbody>
+            	<td>
+                	<form method="post" id="picForm">
+                    <input type="hidden" name="formsubmit" value="yes" />
+                    <input type="hidden" name="formhash" value="{FORMHASH}">
+                	<div id="sortable">
+                	{loop $piclist $pic}
+                    {eval $id=$pic[id]}
+                    <div class="sliderbox">
+                    	<input type="hidden" name="piclist[$id][image]" value="$pic[image]"> 
+                    	<div class="pic"><img src="{echo image($pic[image]);}"></div>
+                        <div class="con">
+                        	<p><span>标题:</span><input type="text" class="input-text w300" name="piclist[$id][title]" value="$pic[title]"></p>
+                            <p><span>链接:</span><input type="text" class="input-text w300" name="piclist[$id][url]" value="$pic[title]"></p>
+                            <p><span>描述:</span><textarea class="textarea w300" name="piclist[$id][description]">$pic[description]</textarea></p>
+                        </div>
+                        <a href="javascript:;" class="del" onclick="$(this).parent().remove()" title="删除">×</a>
+                    </div>
+                    {/loop}
+                    </div>
+                    </form>
+                </td>
+            </tbody>
+            <tfoot>
+            	<td>
+                	<div class="f-right">拖动图片更改图片显示顺序</div>
+                	<input type="submit" class="submit" value="更新" id="submit">
+                  	<input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+                </td>
+            </tfoot>
+            
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+$("#sortable").sortable({items:".sliderbox"});
+$("#submit").click(function(e) {
+    $("#picForm").submit();
+});
+$("#j-file").change(function(e) {
+	var loading;
+    $("#uploadForm").ajaxSubmit({
+		url:'/?m=$G[m]&c=$G[c]&a=uploadimage&sliderid=$sliderid',
+		dataType:'json',
+		beforeSend:function(){
+			loading = DSXUI.showloading('图片上传中..');
+		},
+		success:function(json){
+			loading.close();
+			if(json.errno == 0){
+				window.location.reload();
+			}else {
+				DSXUI.error('上传失败');
+			}
+		}
+	});
+});
+</script>
+{template footer_admin}

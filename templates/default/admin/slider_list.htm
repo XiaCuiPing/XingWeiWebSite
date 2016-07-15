@@ -1,0 +1,52 @@
+{template header_admin}
+<div id="pagecontainer">
+    <div class="toolbar">
+    	<strong>幻灯片管理</strong>
+    </div>
+    <div class="table-hd">
+    <form method="post">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+        <thead>
+          <tr>
+            <th width="30">删?</th>
+            <th width="60">ID</th>
+            <th>名称</th>
+            <th width="80">图片管理</th>
+          </tr>
+         </thead>
+         <tbody id="mainBody">
+          <!--{loop $sliderlist $id $list}-->
+          <tr>
+            <td><input type="checkbox" class="checkbox" name="delete[]" value="$list[slideid]"></td>
+            <td>$list[id]</td>
+            <td><input type="tex" class="input-text w300" name="slidelist[$id][title]" value="$list[title]"></td>
+            <td><a href="/?m=$G[m]&c=$G[c]&a=showimage&sliderid=$list[id]">图片管理</a></td>
+          </tr>
+          <!--{/loop}-->
+          </tbody>
+          <tfoot>
+          <tr>
+              <td colspan="3"><a href="javascript:;" onclick="addSlide()"><i class="icon">&#xf0154;</i>添加幻灯片</a></td>
+          </tr>
+          <tr>
+              <td colspan="3">
+                  <input type="submit" class="submit" value="$lang[submit]">
+                  <input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+              </td>
+          </tr>
+         </tfoot>
+        </table>
+     </form>
+ 	</div>
+</div>
+<script type="text/javascript">
+var keynum = 0;
+function addSlide(){
+	$("#mainBody").append('<tr><td></td><td></td><td><input type="tex" class="input-text w300" name="slidernew['+keynum+'][title]" '+
+	'value=""></td><td></td></tr>');
+	keynum--;
+}
+</script>
+{template footer_admin}

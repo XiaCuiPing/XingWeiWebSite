@@ -13,10 +13,11 @@
         	<div class="titlediv"><strong>热门商家推荐</strong></div>
             <ul>
             	{eval $shoplist[hot]=shop_get_list(0,3);}
-                {loop $shoplist[hot] $slist}
+                {loop $shoplist[hot] $shopid $slist}
                 <li>
-                	<div class="pic"><img src="$slist[thumburl]"></div>
-                    <h3 class="name">$slist[shopname]</h3>
+                	<div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">
+                    <img src="$slist[thumburl]"></a></div>
+                    <h3 class="name"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">$slist[shopname]</a></h3>
                     <p>30元代金券一张,免包房费</p>
                     <div class="fan">满100返20</div>
                 </li>
@@ -32,10 +33,10 @@
     <div class="mdbd">
         <ul class="mdlist">
             {eval $no=1;}
-            {loop $shoplist[best] $slist}
+            {loop $shoplist[best] $shopid $slist}
             <li>
-                <div class="pic"><img src="$slist[thumburl]"></div>
-                <h3 class="name">$slist[shopname]</h3>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank"><img src="$slist[thumburl]"></a></div>
+                <h3 class="name"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">$slist[shopname]</a></h3>
                 <div class="fan"><i>50评</i>满100返20</div>
             </li>
             <!--{if $no%5==0&&$no<10}</ul><ul class="mdlist">{/if}-->
@@ -50,9 +51,9 @@
     <div class="shangHD">
     	{eval $shoplist[new]=shop_get_list(0,8);}
         <ul class="shangList">
-        	{loop $shoplist[new] $slist}
+        	{loop $shoplist[new] $shopid $slist}
             <li>
-                <div class="pic"><img src="$slist[thumburl]"></div>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank"><img src="$slist[thumburl]"></a></div>
                 <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
             </li>
             {/loop}
@@ -65,9 +66,9 @@
     <div class="shangHD">
     	{eval $shoplist[new]=shop_get_list(0,8);}
         <ul class="shangList">
-        	{loop $shoplist[new] $slist}
+        	{loop $shoplist[new] $shopid $slist}
             <li>
-                <div class="pic"><img src="$slist[thumburl]"></div>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank"><img src="$slist[thumburl]"></a></div>
                 <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
             </li>
             {/loop}
@@ -80,9 +81,9 @@
     <div class="shangHD">
     	{eval $shoplist[new]=shop_get_list(0,8);}
         <ul class="shangList">
-        	{loop $shoplist[new] $slist}
+        	{loop $shoplist[new] $shopid $slist}
             <li>
-                <div class="pic"><img src="$slist[thumburl]"></div>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank"><img src="$slist[thumburl]"></a></div>
                 <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
             </li>
             {/loop}

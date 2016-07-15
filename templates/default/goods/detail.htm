@@ -9,7 +9,7 @@
 	<div class="picBox">
     	<div class="image">
         	{loop $piclist $pic}
-            <img src="$pic[image]">
+            <img src="{echo image($pic[image]);}">
             {/loop}
         </div>
     </div>

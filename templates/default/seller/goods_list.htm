@@ -1,0 +1,66 @@
+{template header_seller}
+<div class="mainFrame">
+	<div class="topbar">
+    	<span class="right"><a class="button" href="/?m=$G[m]&c=$G[c]&a=publish">发布商品</a></span>
+        <span>商品管理</span>
+    </div>
+    {if $goodslist}
+	<form method="post" autocomplete="off">
+    <input type="hidden" name="formsubmit" value="yes">
+    <input type="hidden" name="formhash" value="{FORMHASH}">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable goodslist">
+      <thead>
+      <tr>
+        <th width="20"><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'id[]');"></th>
+        <th width="70">图片</th>
+        <th>商品名称</th>
+        <th width="80">价格</th>
+        <th width="80">返现金额</th>
+        <th width="130">上架时间</th>
+        <th width="64">状态</th>
+      </tr>
+      </thead>
+      <tbody>
+      {loop $goodslist $id $list}
+      {eval $pubtime=@date('Y-m-d H:i', $list[dateline]);}
+      {eval $price=@number_format($list[price], 2);}
+      {eval $discount_price=@number_format($list[discount_price], 2);}
+      {eval $back_amount=@number_format($list[back_amount], 2);}
+      <tr>
+        <td><input type="checkbox" value="{$id}" name="id[]"></td>
+        <td><div class="pic"><img src="{$list[thumburl]}"></div></td>
+        <td>
+        	<h3><a href="/?m=goods&c=detail&id={$id}" target="_blank">{$list[name]}</a></h3>
+           	<p><a href="/?m=$G[m]&c=$G[c]&a=edit&id={$id}">编辑</a> 
+            <a href="/?m=goods&c=detail&id={$id}" target="_blank">查看</a></p>
+        </td>
+        <td><h3 style="color:#F00;">￥:{$discount_price}</h3><p style="color:#999;">原价:{$price}</p></td>
+        <td><strong>{$back_amount}</strong></td>
+        <td>{$pubtime}</td>
+        <td>{$lang[goods_status][$list[status]]}</td>
+      </tr>
+      {/loop}
+      </tbody>
+      <tfoot>
+      <tr>
+      	<td colspan="10">
+            <label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'id[]');"> 全选</label>
+            <label><input type="radio" class="radio" name="option" value="delete" checked="checked">删除</label>
+            <label><input type="radio" class="radio" name="option" value="shelve">上架</label>
+            <label><input type="radio" class="radio" name="option" value="unshelve">下架</label>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="10" style="padding:15px 10px;">
+        	<div class="pages">{$pages}</div>
+           <input type="submit" class="button submit" value="提交">
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+    </form>
+    {else}
+    <div class="noaccess">你还未发布过任何商品信息信息，<a href="/?m=$G[m]&c=$G[c]&a=publish">马上发布</a></div>
+    {/if}
+</div>
+{template footer_seller}

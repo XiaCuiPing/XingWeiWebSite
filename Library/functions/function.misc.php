@@ -682,3 +682,130 @@ function favorite_get_page($condition, $page=1, $pagesize=20, $order=''){
 	$limit = ($page-1) * $pagesize;
 	return favorite_get_list($condition, $pagesize, $limit, $order);
 }
+
+
+/**
+ * 添加数据
+ * @param array $data
+ * @param number $return
+ */
+function slider_add_data($data, $return=0){
+	$id = M('slider')->insert($data, true);
+	if ($return){
+		return slider_get_data(array('id'=>$id));
+	}else {
+		return $id;
+	}
+}
+
+/**
+ * 删除幻灯片
+ * @param mixed $condition
+ */
+function slider_delete_data($condition){
+	if ($condition) {
+		return M('slider')->where($condition)->delete();
+	}else {
+		return false;
+	}
+}
+
+/**
+ * 更新花灯片
+ * @param mixed $condition
+ * @param array $data
+ */
+function slider_update_data($condition, $data){
+	return M('slider')->where($condition)->update($data);
+}
+
+/**
+ * 获取幻灯片信息
+ * @param mixed $condition
+ */
+function slider_get_data($condition){
+	return M('slider')->where($condition)->getOne();
+}
+
+/**
+ * 获取幻灯片数目
+ * @param mixed $condition
+ */
+function slider_get_num($condition){
+	return M('slider')->where($condition)->count();
+}
+
+/**
+ * 获取幻灯片列表
+ * @param mixed $condition
+ * @param number $num
+ * @param number $limit
+ */
+function slider_get_list($condition, $num=20, $limit=0){
+	$limit = $num ? "$limit,$num" : ($limit ? $limit : '');
+	$sliderlist = M('slider')->where($condition)->limit($limit)->order('displayorder ASC, id ASC')->select();
+	if ($sliderlist){
+		$datalist = array();
+		foreach ($sliderlist as $list){
+			$datalist[$list['id']] = $list;
+		}
+		return $datalist;
+	}else {
+		return array();
+	}
+}
+
+/**
+ * 获取幻灯片分页
+ * @param mixed $condition
+ * @param number $page
+ * @param number $pagesize
+ */
+function slider_get_page($condition, $page=1, $pagesize=20){
+	$limit = ($page - 1) * $pagesize;
+	return slider_get_list($condition, $pagesize, $limit);
+}
+
+/**
+ * 获取幻灯片图片
+ * @param int $sliderid
+ */
+function slider_get_image($sliderid){
+	$sliderimage = M('slider_image')->where(array('sliderid'=>$sliderid))->order('displayorder ASC,id ASC')->select();
+	if ($sliderimage){
+		return $sliderimage;
+	}else {
+		return array();
+	}
+}
+
+/**
+ * 添加图片
+ * @param array $data
+ * @return boolean|unknown
+ */
+function slider_add_image($data){
+	return M('slider_image')->insert($data, true);
+}
+
+/**
+ * 更新图片
+ * @param mixed $condition
+ * @param array $data
+ */
+function slider_update_image($condition, $data){
+	return M('slider_image')->where($condition)->update($data);
+}
+
+
+/**
+ * 删除图片
+ * @param mixed $condition
+ */
+function slider_delete_image($condition){
+	if ($condition){
+		return M('slider_image')->where($condition)->delete();
+	}else {
+		return false;
+	}
+}

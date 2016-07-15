@@ -2,12 +2,13 @@ APP 接口文档
 
 1.API接口
 
-http://xw.zhangwoo.cn/app.php?platform=ios&appkey=40a3e8e50fa27b8e6f1dd1a4b7454a0a&version=1.0
+http://xw.zhangwoo.cn/app.php?platform=ios&appkey=40a3e8e50fa27b8e6f1dd1a4b7454a0a&version=1.0&location=当前位置坐标
 参数说明:
 platform: 平台名称 ios或android 小写
 appkey: 数据访秘钥
 c=控制器
 a=操作
+location=当前位置坐标，格式[经度,纬度]
 
 1. 用户登录
 c=login
@@ -36,3 +37,64 @@ password=密码
 303=邮箱已被占用
 305=密码错误
 306=参数错误
+
+2016-07-15 更新
+
+3. 店铺管理
+
+3.1 获取店铺数据
+接口:c=shop&a=getdata&shopid=店铺ID
+
+3.2 获取店铺列表
+接口:c=shop&a=getlist
+可选参数
+catid=店铺分类ID
+num=获取数目（默认10）
+limit=越过数目（默认0）
+
+3.3 获取店铺分页列表
+接口:c=shop&a=getpage
+可选参数
+catid=店铺分类ID
+page=当前显示页码（默认1）
+pagesize=每页显示数目（默认20）
+
+3.4 显示店铺详细页（webview显示）
+接口:c=shop&a=showdetail&shopid=店铺ID
+
+3.5 显示店铺分页列表（webview显示）
+接口:c=shop&a=showpage
+可选参数
+catid=店铺分类ID
+page=当前显示页码（默认1）
+pagesize=每页显示数目（默认20）
+
+
+4. 商品管理
+
+4.1 获取商品数据
+接口:c=goods&a=getdata&id=商品ID
+
+4.2 获取商品列表
+接口:c=goods&a=getlist
+可选参数
+catid=商品分类ID
+num=获取数目（默认10）
+limit=越过数目（默认0）
+
+4.3 获取商品分页列表
+接口:c=goods&a=getpage
+可选参数
+catid=商品分类ID
+page=当前显示页码（默认1）
+pagesize=每页显示数目（默认20）
+
+4.4 显示商品详细页（webview显示）
+接口:c=goods&a=showdetail&id=商品ID
+
+4.5 显示商品分页列表（webview显示）
+接口:c=goods&a=showpage
+可选参数
+catid=商品分类ID
+page=当前显示页码（默认1）
+pagesize=每页显示数目（默认20）

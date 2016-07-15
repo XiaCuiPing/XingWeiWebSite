@@ -220,3 +220,13 @@ line-height:22px; padding:0 5px; box-sizing:border-box; border:1px #666 solid; c
 
 .formtable .cell{padding:5px 10px; border-bottom:none;}
 .formtable .row{border-bottom:0;}
+
+.j-file{position:absolute; width:100%; height:100%; display:block; opacity:0; left:0; top:0; cursor:pointer;}
+.sliderbox{display:block; margin:5px 0; position:relative;}
+.sliderbox .pic{width:240px; height:180px; float:left; overflow:hidden; margin-right:20px;}
+.sliderbox .pic img{display:block; width:100%; height:100%;}
+.sliderbox .con{overflow:hidden;}
+.sliderbox .con p{display:block; padding:7px 0; vertical-align:middle;}
+.sliderbox .con p span{float:left; margin:4px 5px 0 0;}
+.sliderbox .del{position:absolute; top:5px; right:10px; font-size:24px; cursor:pointer; line-height:1.0; padding:5px;}
+.sliderbox .del:hover{background:#000; color:#fff; border-radius:3px;}

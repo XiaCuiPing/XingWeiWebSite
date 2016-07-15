@@ -1,0 +1,16 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/seller.css">
+<div class="blank"></div>
+<div class="area">
+	<div class="leftNav">
+    	<h3 class="title">卖家中心</h3>
+    	<ul class="menu" id="leftMenu">
+            <li><a href="/?m=$G[m]&c=shop" id="menu_shop">店铺设置</a></li>
+            <li><a href="/?m=$G[m]&c=goods" id="menu_goods">商品管理</a></li>
+            <li><a href="/?m=$G[m]&c=sold" id="menu_sold">已售出宝贝</a></li>
+            <li><a href="/?m=$G[m]&c=ticket" id="menu_ticket">返券管理</a></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    $("#menu_$G[c]").addClass('cur');
+    </script>

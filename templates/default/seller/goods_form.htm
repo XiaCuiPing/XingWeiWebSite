@@ -1,0 +1,146 @@
+{template header_seller}
+<div id="mainFrame">
+	<div class="topbar">
+    	<span class="right"><a class="button" href="/?m=$G[m]&c=$G[c]">商品列表</a></span>
+        <strong>{if $G[a]=='edit'}编辑商品{else}发布商品{/if}</strong>
+    </div>
+    <div class="tableView">
+      <form method="post" id="goodsForm">
+      <input type="hidden" name="formsubmit" value="yes">
+      <input type="hidden" name="formhash" value="{FORMHASH}">
+      <div class="row">
+          <div class="cell cell-name">商品名称</div>
+          <div class="cell cell-input"><input type="text" class="input-text" maxlength="60"  name="goodsnew[name]" value="$goods[name]" id="goodsname"></div>
+          <div class="cell error" id="tips_name">请填写商品名称，至少2个字</div>
+      </div>
+      
+      <div class="row">
+          <div class="cell cell-name">商品类目</div>
+          <div class="cell cell-input">
+              <select name="goodsnew[catid]" class="input-select" id="catid">
+              <option value="0">请选择类目</option>
+              {$categoryoptions}
+             </select>
+          </div>
+          <div class="cell error" id="tips_catid">请选择商品类目</div>
+      </div>
+      
+      <div class="row">
+          <div class="cell cell-name">商品价格</div>
+          <div class="cell">
+          	<input type="text" class="input-text w120" name="goodsnew[price]" value="$goods[price]" id="price"></div>
+          <div class="cell cell-name">商品库存</div>
+          <div class="cell">
+          	<input type="text" class="input-text w120" name="goodsnew[stock]" value="$goods[stock]" id="stock"></div>
+          <div class="cell error" id="tips_stock">请填写商品库存</div>
+          <div class="cell error" id="tips_price">请填写商品价格</div>
+      </div>
+      
+       <div class="row">
+          <div class="cell cell-name">是否折扣</div>
+          <div class="cell w120">
+          	<label><input type="radio" class="radio" name="goodsnew[isdiscount]" value="1"{if $goods[isdiscount]} checked{/if}> 是</label>
+          	<label><input type="radio" class="radio" name="goodsnew[isdiscount]" value="0"{if !$goods[isdiscount]} checked{/if}> 否</label>
+          </div>
+          <div class="cell cell-name">折扣价格</div>
+          <div class="cell">
+          	<input type="text" class="input-text w120" name="goodsnew[discount_price]" value="$goods[discount_price]" id="discount_price"></div>
+      </div>
+      
+      <div class="row">
+          <div class="cell cell-name">返现金额</div>
+          <div class="cell cell-input">
+          	<input type="text" class="input-text w100" maxlength="60"  name="goodsnew[back_amount]" value="$goods[back_amount]" id="back_amount"></div>
+          <div class="cell error" id="tips_amount">请填写返现金额</div>
+      </div>
+      <div class="blank"></div>
+      <div class="row">	 
+          <div class="cell cell-name">商品图片</div>
+          <div class="cell">
+            <div id="imageUploadQueue">
+                {loop $piclist $plist}
+                <div class="imageUploadItem"><img src="{$plist[thumburl]}">
+                    <input type="hidden" name="piclist[{$plist[id]}][image]" value="{$plist[image]}">
+                    <input type="hidden" name="piclist[{$plist[id]}][thumb]" value="{$plist[thumb]}">
+                    <a class="icon del" href="javascript:;" title="删除" onclick="$(this).parent().remove();">&#xf00b3;</a>
+                </div>
+                {/loop}
+                <div class="selectImageButton" id="selectImageButton"><a href="javascript:;">添加图片</a></div>
+            </div>
+          </div>
+      </div>
+      <div class="blank"></div>
+      <div class="row">
+      	  {eval $editorname='description';}
+          {eval $editorcontent=$description[description];}
+          <div class="cell cell-name">商品描述</div>
+          <div class="cell">{template editor_mini}</div>
+      </div>
+      <div class="row">
+          <div class="cell cell-name">&nbsp;</div>
+          <div class="cell"><input type="submit" class="button" value="提交"></div>
+      </div>
+      </form>
+    </div>
+</div>
+<form id="uploadForm" method="post" enctype="multipart/form-data" action="/?m=common&c=upload&a=uploadimage">
+<input name="filedata" id="filedata" type="file" title="选择商品图片" class="j-filedata">
+</form>
+<script type="text/javascript">
+$("#selectImageButton").mouseover(function(){
+	$("#filedata").css({'left':$(this).offset().left,'top':$(this).offset().top})
+	.width($(this).width()).height($(this).height());
+});
+
+var imagenum = 0;
+var imagekey = 0;
+$("#filedata").change(function(){
+	var picItem;
+	$("#uploadForm").ajaxSubmit({
+		dataType:'json',
+		beforeSend:function(){
+			picItem = $('<div class="imageUploadItem"></div>').insertBefore("#selectImageButton");
+		},
+		success:function(json){
+			if(json.errno == 0){
+				var del = $('<a class="icon del" href="javascript:;" title="删除">&#xf00b3;</a>').on('click',function(){
+					$(this).parent().remove();
+					imagenum--;
+				});
+				picItem.append('<img src="'+json.data.imageurl+'" />');
+				picItem.append('<input type="hidden" name="piclist['+imagekey+'][image]" value="'+json.data.image+'">');
+				picItem.append('<input type="hidden" name="piclist['+imagekey+'][thumb]" value="'+json.data.thumb+'">');
+				picItem.append(del);
+				imagenum++;
+				imagekey++;
+			}else {
+				alert('上传失败('+json.error+')');
+			}
+		}
+	});
+});
+$("#goodsForm").submit(function(){
+	if(($("#goodsname").val()).length < 2){
+		$("#tips_name").show();
+		return false;
+	}else {
+		$("#tips_name").hide();
+	}
+	
+	if(!$("#catid").val()){
+		$("#tips_catid").show();
+		return false;
+	}else {
+		$("#tips_catid").hide();
+	}
+	
+	if(!$("#price").val()){
+		$("#tips_price").show();
+		return false;
+	}else {
+		$("#tips_price").hide();
+	}
+	return true;
+});
+</script>
+{template footer_seller}

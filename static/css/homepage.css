@@ -80,7 +80,7 @@
 .lianmengDiv ul li .name{margin:10px 10px 5px; font-size:14px; height:20px; overflow:hidden;}
 .lianmengDiv ul li .comm{height:20px; margin:0 10px; clear:both; color:#999;}
 .lianmengDiv ul li .comm .stars{height:18px; float:left; margin-right:6px;}
-.lianmengDiv ul li .address{font-size:12px; color:#999; margin:0 10px;}
+.lianmengDiv ul li .address{font-size:12px; color:#999; margin:0 10px; height:18px; overflow:hidden;}
 .lianmengDiv ul li .fan{font-size:14px; color:#F00; padding:8px 10px; background:#F7F7F7; border-top:1px #DDD solid;
 font-weight:bold; clear:both; overflow:hidden; margin-top:5px;}
 .lianmengDiv ul li .fan i{font-style:normal; background:#F00; color:#fff; font-size:12px; padding:2px 8px; float:right;}

@@ -1,0 +1,83 @@
+/* CSS Document */
+.leftNav{width:180px; float:left;}
+.leftNav h3.title{display:block; margin-bottom:3px; font-size:14px; padding:7px 10px 7px 40px; background-color:#D41D6D; color:#fff;}
+.leftNav .menu{display:block;}
+.leftNav .menu li{display:block; margin-bottom:3px; position:relative;}
+.leftNav .menu li a{display:block; background-color:#EEEEEF; font-size:14px; padding:7px 10px 7px 40px;}
+.leftNav .menu li a:hover{background-color:#E0E0E0; color:#000;}
+.leftNav .menu li a.cur{background-color:#999; color:#fff;}
+
+#mainFrame,.mainFrame{overflow:hidden; border-left:0.5px #CCC solid; border-top:0.5px #CCC solid; 
+min-height:600px; padding:20px 0 0 20px;}
+
+.pages{float:right; padding:0;}
+.pages a,#member .pages span{background:#fff; height:21px; line-height:21px; 
+display:inline-block; padding:0 10px; margin:0 2px; border:1px #ddd solid; color:#333;}
+.pages a:hover{color:#000; border-color:#999; text-decoration:none;}
+.pages .cur{background:#049985; color:#fff; border-color:#049985;}
+
+.topbar{display:block; margin-bottom:10px;}
+.topbar .right{float:right;}
+.topbar strong{font-size:20px;}
+.button,a.button{background-color:#D6146C; color:#fff; border:0; border-radius:3px; cursor:pointer;
+height:28px; line-height:28px; display:inline-block; font-size:13px; padding:0 15px;}
+.button:hover{background-color:#B6166D;}
+.input-text, textarea, select{width:300px;}
+.w30{width:30px;}
+.w60{width:60px;}
+.w100{width:100px;}
+.w120{width:120px;}
+.w200{width:200px;}
+.w300{width:300px;}
+.w400{width:400px;}
+.w500{width:500px;}
+
+/**列表表格**/
+.listtable{background:#fff; clear:both;}
+.listtable th,.listtable td{padding:5px; background:#fff; height:30px; text-align:left;}
+.listtable th{background:#F0f0f0; font-weight:bold;}
+.listtable td{border-top:1px #eee solid; background:#fafafa;}
+.listtable td .menu{margin-top:5px;}
+.listtable tbody tr:hover td{background:#EFEFEF;}
+.listtable tbody h3{font-size:14px; line-height:1.2;}
+.listtable tbody p{line-height:1.5; margin:0; padding:0; font-size:12px; margin-top:5px;}
+.listtable tbody .pic{width:70px; height:70px; display:block; overflow:hidden;}
+.listtable tbody .pic img{height:90px; display:block;}
+.listtable tfooter .bottom{padding:15px 10px;}
+.listtable tfooter .pages{padding:0; float:right;}
+
+/**表单表格**/
+.formtable{clear:both; table-layout:auto;}
+.formtable th,td{padding:10px; text-align:left; font-size:14px;}
+.formtable th{font-weight:bold;}
+.formtable tbody tr:hover td,#member .formtable tbody tr:hover th{color:#000;}
+.formtable .tips{color:#555; font-size:12px;}
+.formtable .err{color:#F00;}
+
+.tableView{}
+.tableView .itemRow{overflow:hidden; display:block; line-height:50px;}
+.tableView .itemRow:after{content:" "; display:block; clear:both; overflow:hidden;}
+.tableView .itemRow .item-name{width:70px; float:left; margin-right:20px; text-align:right;}
+.tableView .itemRow .item-input{width:350px; float:left; margin-right:10px;}
+.tableView .itemRow .item-tips{overflow:hidden; font-size:12px; display:none;}
+.tableView .itemRow .item-content{overflow:hidden; float:left; margin-right:10px;}
+.tableView .error{color:#F00; display:none;}
+.tableView #imageUploadQueue{width:auto; float:left;}
+.tableView #imageUploadQueue:after{display:block; overflow:hidden; content:" "; clear:both;}
+.tableView .imageUploadItem{width:100px; height:80px; float:left; margin-right:10px; display:block; 
+overflow:hidden; border:1px #ccc solid; position:relative; background-image:url(/static/images/common/loading32.gif); background-repeat:no-repeat; background-position:center center;}
+.tableView .imageUploadItem img{width:100%; height:100%; display:block;}
+.tableView .imageUploadItem .del{position:absolute; top:0px; right:0px; line-height:1.0; color:#333; font-size:14px; padding:3px; margin:0; width:auto; height:auto;}
+.tableView .imageUploadItem .del:hover{background:#333; color:#fff;}
+.tableView .selectImageButton{width:100px; height:80px; padding:0; position:relative; border:1px #ccc solid; background:#f0f0f0; float:left;}
+.tableView .selectImageButton a{line-height:80px; display:block; font-size:14px; text-align:center; color:#333;}
+
+.tableView .theader{}
+.tableView .row{display:block; overflow:hidden;}
+.tableView .row:after{content:" "; display:block; clear:both; overflow:hidden;}
+.tableView .cell{float:left; padding:7px 0; line-height:1.2; margin-right:10px; line-height:30px;}
+.tableView .cell .dist{width:auto;}
+.tableView .cell-name{width:70px; text-align:right;}
+.tableView .cell-input{width:320px; overflow:hidden;}
+.tableView .tfooter{padding:20px 0;}
+.j-filedata{opacity:0; visibility:visible; position:absolute; z-index:200; cursor:pointer;}
