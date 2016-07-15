@@ -12,3 +12,32 @@
 .goodsDetail .goodsAttr .price .p2{display:block; font-size:14px;}
 .goodsDetail .goodsAttr .price .p2 strong{font-size:16px;}
 .goodsDetail .goodsAttr .discounting{background:#efefef; padding:5px 10px; font-size:14px; margin-top:10px; font-weight:500;}
+.goodsDetail .goodsAttr .attrbox{display:block; padding:10px 20px;}
+.goodsDetail .goodsAttr .attrbox .name{width:60px; font-size:12px; color:#999; float:left;}
+.goodsDetail .goodsAttr .attrbox .con{overflow:hidden; font-size:12px;}
+.goodsDetail .goodsAttr .attrbox .row{display:block; padding:5px 0;}
+.goodsDetail .goodsAttr .attrbox .changebtn{height:20px; width:20px; background:#ccc; 
+font-size:14px; line-height:20px; text-align:center; float:left; margin-right:3px; cursor:pointer;}
+.goodsDetail .goodsAttr .attrbox .buynum{height:20px; float:left; box-sizing:border-box; margin-right:3px; width:30px;
+border:1px #CCC solid; text-align:center; font-size:12px;}
+.goodsDetail .goodsAttr .btn-container{display:block; text-align:right; padding:10px 20px;}
+.goodsDetail .goodsAttr .btn{height:36px; line-height:36px; display:inline-block; color:#fff; 
+width:90px; font-size:13px; text-align:center; margin-left:5px;}
+.goodsDetail .goodsAttr .btn-buy{background-color:#B6166D;}
+.goodsDetail .goodsAttr .btn-cart{background-color:#F7B52B;}
+.goodsDetail .goodsAttr .btn-phone{background-color:#C8C9CA;}
+.goodsDetail .goodsAttr .btn-container .p{font-size:11px; color:#999; display:block; text-align:right; padding-top:5px;}
+.goodsDetail .shopbox{overflow:hidden;}
+.goodsDetail .shopbox .con{display:block; padding:10px;}
+.goodsDetail .shopbox h3{font-size:16px;}
+
+.goodsdiv{display:block; border:1px #DBDCDC solid;}
+.goodsdiv .bar{background-color:#DBDCDC; height:30px; font-size:12px; position:relative;}
+.goodsdiv .bar .tab{height:31px; margin-top:-1px; display:block; float:left; line-height:31px; 
+font-size:12px; width:100px; text-align:center; cursor:pointer;}
+.goodsdiv .bar .tab-on{background:#fff; border-top:3px #B6166D solid; box-sizing:border-box;}
+.goodsdiv .hot-sale{display:block; margin:30px 10px;}
+.goodsdiv .hot-sale li{float:left; width:163px; overflow:hidden;}
+.goodsdiv .hot-sale li img{display:block; width:130px; height:130px; margin:0 auto;}
+.goodsdiv .desc{display:block; padding:20px; overflow:hidden;}
+.goodsdiv .desc img{max-width:100%;}

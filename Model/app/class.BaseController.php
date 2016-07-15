@@ -25,6 +25,13 @@ class BaseController extends Controller{
 		if ($_GET['appkey'] != $this->appkey){
 			$this->showAppError(201, 'APPKEY FAILD');
 		}
+		
+		if (isset($_GET['location']) && !empty($_GET['location'])){
+			$location = trim($_GET['location']);
+			$point = explode(',', $location);
+			$this->longitude = $point[0];
+			$this->latitude = $point[1];
+		}
 	}
 	
 	/**

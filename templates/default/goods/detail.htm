@@ -22,7 +22,74 @@
             	<p class="p2">折扣价:<strong>$goods[discount_price]</strong></p>
             </div>
             <div class="discounting">正在促销 可返现20%</div>
+            <div class="attrbox">
+                <div class="row">
+                	<div class="name">送至</div>
+                    <div class="con">贵州六盘水 金水港湾</div>
+                </div>
+                <div class="row">
+                	<div class="name">规格</div>
+                    <div class="con">贵州六盘水 金水港湾</div>
+                </div>
+                <div class="row">
+                	<div class="name">服务</div>
+                    <div class="con">贵州六盘水 金水港湾</div>
+                </div>
+                
+                <div class="row">
+                	<div class="name">购买数量</div>
+                    <div class="con">
+                    	<div class="changebtn">-</div>
+                        <input type="text" class="buynum" value="1">
+                        <div class="changebtn">+</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="btn-container">
+            	<a href="javascript:;" class="btn btn-buy">立即购买</a>
+                <a href="javascript:;" class="btn btn-cart">加入购物车</a>
+                <a href="javascript:;" class="btn btn-phone">客户端购买</a>
+                <p class="p">商品数量有限，下单后需在30分钟内付款，否则无货哦。</p>
+            </div>
+            
+            
         </div>
+        
+        <div class="shopbox">
+        	<div class="con">
+            	<h3>$shop[shopname]</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="blank"></div>
+<div class="area goodsdiv">
+	<div class="bar">
+    	<div class="tab tab-on">店家热卖</div>
+        
+    </div>
+    
+    <div class="hot-sale">
+        <ul>
+            {eval $goodslist=goods_get_list(0,6);}
+            {loop $goodslist $id $list}
+            <li><a href="/?m=goods&c=detail&id=$id"><img src="{echo image($list[thumb]);}"></a></li>
+            {/loop}
+        </ul>
+    </div>
+</div>
+
+<div class="blank"></div>
+<div class="area">
+	<div class="goodsdiv">
+    	<div class="bar">
+            <div class="tab tab-on">商品详情</div>
+            <div class="tab">评价(100)</div>
+            <div class="tab">售后保障</div>
+        </div>
+        
+        <div class="desc">$description[description]</div>
     </div>
 </div>
 {template footer_common}
