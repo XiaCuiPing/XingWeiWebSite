@@ -1,0 +1,25 @@
+/* CSS Document */
+.about{display:block;}
+.about .brandlist{display:block; margin:20px 0;}
+.about .brandlist ul{width:1050px;}
+.about .brandlist li{float:left; margin-right:10px; width:242px; height:160px; overflow:hidden;}
+.about .brandlist li img{width:100%; height:100%; display:block;}
+.about .titlediv{display:block; border-bottom:0.5px #CCC solid;}
+.about .titlediv strong{display:block; padding:7px 5px; font-weight:500; 
+font-size:16px; border-bottom:3px #B6166D solid; float:left; width:80px;}
+
+.about .focus{width:50%; height:310px; float:left; margin-right:30px; overflow:hidden;}
+.about .focus img{display:block; width:100%; height:100%;}
+.about .vbox{overflow:hidden;}
+.about .vbox ul{display:block;}
+.about .vbox li{display:block; padding:6px 0; border-bottom:0.5px #CCC solid;}
+.about .vbox li h3{font-size:16px; font-weight:500;}
+.about .vbox li div{padding:3px 0; color:#999; font-size:14px;}
+.about .content{margin:10px 0; display:block;}
+.about .newslist{display:block;}
+.about .newslist li{display:block; padding:7px 5px; border-bottom:0.5px #CCC dotted; font-size:16px;}
+.about .newslist li span{float:right; font-size:14px; color:#666;}
+
+.about .xwpic{width:40%; height:280px; float:left; margin-right:30px;}
+.about .xwpic img{width:100%; height:100%; display:block;}
+.about .xwdesc{overflow:hidden; line-height:1.5; font-size:14px; text-align:justify;}

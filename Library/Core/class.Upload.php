@@ -38,7 +38,7 @@ class Upload{
      * 设置文件名
      */
     public function setfilename(){
-    	return time().rand(100,999).rand(100,999).'.'.$this->getfileextension();
+    	return date('YmdHis', time()).rand(100,999).rand(100,999).'.'.$this->getfileextension();
     }
     
     /**

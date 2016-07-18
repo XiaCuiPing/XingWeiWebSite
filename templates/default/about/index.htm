@@ -1,0 +1,88 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/about.css">
+<div class="area about">
+	<div class="brandlist">
+    	<ul>
+        	{eval $shoplist[hot]=shop_get_list(0,4);}
+            {loop $shoplist[hot] $shopid $slist}
+            <li>
+                <a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">
+                <img src="{echo image($slist[thumb]);}"></a>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+	<div class="titlediv">
+    	<strong>联盟企业</strong>
+    </div>
+    
+    <div class="content">
+    	<div class="focus">
+        	<img src="http://xw.zhangwoo.cn/data/attachment/photo/2016/07/1468484604317353.png">
+        </div>
+        <div class="vbox">
+        	<ul>
+            	<li>
+                	<h3>力爱迪科技企业宣传片</h3>
+                    <div>六盘水力爱迪科技有限公司</div>
+                </li>
+                <li>
+                	<h3>力爱迪科技企业宣传片</h3>
+                    <div>六盘水力爱迪科技有限公司</div>
+                </li>
+                <li>
+                	<h3>力爱迪科技企业宣传片</h3>
+                    <div>六盘水力爱迪科技有限公司</div>
+                </li>
+                <li>
+                	<h3>力爱迪科技企业宣传片</h3>
+                    <div>六盘水力爱迪科技有限公司</div>
+                </li>
+                <li>
+                	<h3>力爱迪科技企业宣传片</h3>
+                    <div>六盘水力爱迪科技有限公司</div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="titlediv">
+    	<strong>星微动态</strong>
+    </div>
+    <div class="content">
+    	<ul class="newslist">
+        	<li><span>2016/07/16</span>星微公司动态</li>
+            <li><span>2016/07/16</span>星微超市PC版正式上线</li>
+            <li><span>2016/07/16</span>星微公司动态</li>
+            <li><span>2016/07/16</span>星微超市PC版正式上线</li>
+            <li><span>2016/07/16</span>星微公司动态</li>
+            <li><span>2016/07/16</span>星微超市PC版正式上线</li>
+        </ul>
+    </div>
+    <div class="titlediv">
+    	<strong>关于我们</strong>
+    </div>
+    <div class="content">
+    	<div class="xwpic"><img src="http://xw.zhangwoo.cn/data/attachment/photo/2016/07/1468484604317353.png"></div>
+        <div class="xwdesc">
+        	星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+            星微科技简介星微科技简介星微科技简介星微科技简介星微科技简介
+        </div>
+    </div>
+</div>
+{template footer_common}
