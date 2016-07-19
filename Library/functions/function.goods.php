@@ -312,3 +312,95 @@ function cart_get_page($condition, $page=1, $pagesize=20, $order=''){
 	$limit = ($page -1) * $pagesize;
 	return cart_get_list($condition, $pagesize, $limit, $order);
 }
+
+
+/**
+ * 添加品牌信息
+ * @param array $data
+ * @param number $return
+ */
+function brand_add_data($data, $return=0){
+	$id = M('brand')->insert($data, true);
+	if ($return) {
+		return brand_get_data(array('id'=>$id));
+	}else {
+		return $id;
+	}
+}
+
+/**
+ * 删除品牌信息
+ * @param mixed $condition
+ */
+function brand_delete_data($condition){
+	if ($condition){
+		return M('brand')->where($condition)->delete();
+	}else {
+		return false;
+	}
+}
+
+/**
+ * 更新品牌信息 
+ * @param mixed $condition
+ * @param array $data
+ * @return boolean
+ */
+function brand_update_data($condition,$data){
+	return M('brand')->where($condition)->update($data);
+}
+
+/**
+ * 获取品牌信息
+ * @param mixed $condition
+ */
+function brand_get_data($condition){
+	$data = M('brand')->where($condition)->getOne();
+	if ($data) {
+		return $data;
+	}else {
+		return array();
+	}
+}
+
+/**
+ * 获取品牌数
+ * @param mixed $condition
+ */
+function brand_get_num($condition){
+	return M('brand')->where($condition)->count();
+}
+
+/**
+ * 获取品牌列表
+ * @param mixed $condition
+ * @param number $num
+ * @param number $limit
+ * @param string $order
+ */
+function brand_get_list($condition, $num=20, $limit=0, $order=''){
+	$limit = $num ? "$limit,$num" : ($limit ? $limit : '');
+	!$order && $order = 'displayorder ASC,id ASC';
+	$brandlist = M('brand')->where($condition)->limit($limit)->order($order)->select();
+	if ($brandlist) {
+		$datalist = array();
+		foreach ($brandlist as $list){
+			$datalist[$list['id']] = $list;
+		}
+		return $datalist;
+	}else {
+		return array();
+	}
+}
+
+/**
+ * 获取品牌分页列表
+ * @param mixed $condition
+ * @param number $page
+ * @param number $pagesize
+ * @param string $order
+ */
+function brand_get_page($condition, $page=1, $pagesize=20, $order=''){
+	$limit = ($page - 1) * $pagesize;
+	return brand_get_list($condition, $pagesize, $limit, $order);
+}

@@ -124,7 +124,7 @@ font-size:12px; font-weight:bold; box-sizing:border-box; height:40px; line-heigh
 
 /**超市首页**/
 .marketpage{}
-.marketpage .slideDiv,.marketpage .slideBox{width:820px;}
+.marketpage .slideDiv,.marketpage .slideBox{width:820px; left:180px;}
 .marketpage .hotbest{background:#D41D6D; padding:10px; display:block;}
 .marketpage .hotbest h3{overflow:hidden; color:#fff; font-size:14px; margin-bottom:10px;}
 .marketpage .hotbest h3 i{float:right; font-size:12px; font-style:normal;}

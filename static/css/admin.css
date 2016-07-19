@@ -150,6 +150,7 @@ text-align:left; font-size:14px; font-weight:normal; border-bottom:1px #ddd soli
 .listtable .icon {font-size:14px; height:24px; width:20px; font-weight:normal; vertical-align:1px;}
 .listtable .folder-line{float:left; background:url(../images/common/t1.png) -4px center no-repeat; display:inline-block; height:25px; width:30px;}
 .listtable .join{width:36px; height:26px; background:url(../images/admin/join.png) left center no-repeat; display:block; float:left;}
+.listtable .join2{background-image:url(/static/images/admin/join2.png);}
 
 .postbody{background:#fff; border:1px #ccc solid;}
 .postbody .postcontent{padding:9px 5px 5px 7px;}

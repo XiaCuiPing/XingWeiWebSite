@@ -116,9 +116,10 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
                         {eval $goodslist[hot]=goods_get_list(0,10);}
                         {loop $goodslist[hot] $glist}
                         <li>
-                            <h2 class="name">$glist[name]</h2>
+                            <h2 class="name"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">$glist[name]</a></h2>
                             <div class="price">￥:$glist[price]</div>
-                            <div class="pic"><img src="$glist[thumburl]"></div>
+                            <div class="pic"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">
+                            <img src="$glist[thumburl]"></a></div>
                         </li>
                         {/loop}
                     </ul>
@@ -150,8 +151,9 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
         	<ul class="goodsList">
             	{loop $goodslist[hot] $glist}
                 <li>
-                	<div class="pic"><img src="$glist[thumburl]"></div>
-                    <h2 class="name">$glist[name]</h2>
+                	<div class="pic"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">
+                    <img src="$glist[thumburl]"></a></div>
+                    <h2 class="name"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">$glist[name]</a></h2>
                     <div class="price">￥:$glist[price]</div>
                 </li>
                 {/loop}
@@ -184,8 +186,9 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
         	<ul class="goodsList">
             	{loop $goodslist[hot] $glist}
                 <li>
-                	<div class="pic"><img src="$glist[thumburl]"></div>
-                    <h2 class="name">$glist[name]</h2>
+                	<div class="pic"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">
+                    <img src="$glist[thumburl]"></a></div>
+                    <h2 class="name"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">$glist[name]</a></h2>
                     <div class="price">￥:$glist[price]</div>
                 </li>
                 {/loop}

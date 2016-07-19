@@ -1,0 +1,93 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<form name="search" action="/?">
+                <input type="hidden" name="m" value="$G[m]">
+                <input type="hidden" name="c" value="$G[c]">
+                <input type="hidden" name="a" value="$G[a]">
+                <input type="text" class="input-text" name="keyword" value="$keyword">
+                <input type="submit" class="button search" value="$lang[search]">
+            </form>
+        	
+        </div>
+    	<strong>品牌管理</strong>
+	</div>
+    <div class="table-hd">
+        <form method="post">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+        <thead>
+          <tr>
+            <th width="20" class="center">删?</th>
+            <th width="50">LOGO</th>
+            <th width="240">品牌名称</th>
+            <th>官方网站</th>
+            <th width="100">显示顺序</th>
+          </tr>
+         </thead>
+         <tbody>
+          {loop $brandlist $id $brand}
+          <tr>
+            <td><input type="checkbox" class="checkbox" name="id[]" value="$id"></td>
+            <td><img src="{echo image($brand[logo]);}" width="50" height="50" 
+            onclick="openUploadWindow(this,$id)" style="display:block;" title="点击更换图片"></td>
+            <th><input type="text" class="input-text w200" name="brandlist[$id][name]" value="$brand[name]"></th>
+            <td><input type="text" class="input-text w300" name="brandlist[$id][website]" value="$brand[website]"></td>
+            <td><input type="text" class="input-text w60" name="brandlist[$id][displayorder]" value="$brand[displayorder]"></td>
+          </tr>
+          {/loop}
+          </tbody>
+          <tbody id="newbrand"></tbody>
+          <tfoot>
+          <tr>
+          	<td colspan="10"><a href="javascript:;" class="addnew" id="addnew"><i class="icon">&#xf0154;</i>添加品牌</a></td>
+          </tr>
+          <tr>
+            <td colspan="10">
+                <label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'id[]')"> $lang[selectall]</label>
+                <label><input type="radio" class="radio" name="option" value="delete" checked="checked"> 删除</label>
+                <label></label>
+            </td>
+          </tr>
+          <tr>
+          	
+              <td colspan="10">
+                  <span class="pages">$pages</span>
+                  <input type="submit" class="submit" value="$lang[submit]">
+                  <input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+              </td>
+          </tr>
+         </tfoot>
+        </table>
+        </form>
+     </div>
+</div>
+<script type="text/javascript">
+var key = 0;
+$("#addnew").click(function(e) {
+    $("#newbrand").append('<tr>'+
+            '<td></td>'+
+            '<td></td>'+
+            '<th><input type="text" class="input-text w200" name="brandnew['+key+'][name]" value=""></th>'+
+            '<td><input type="text" class="input-text w300" name="brandnew['+key+'][website]" value=""></td>'+
+            '<td><input type="text" class="input-text w60" name="brandnew['+key+'][displayorder]" value="0"></td>'+
+          '</tr>');
+	key++;
+});
+function openUploadWindow(o,id){
+	var dlg = DSXUI.showImgUploadWindow({},function(c){
+		if(c.errno == 0){
+			$.ajax({
+				url:'/?m=$G[m]&c=$G[c]&a=setimage',
+				data:{id:id,image:c.data.image},
+				success: function(){
+					$(o).attr('src',c.data.imageurl);
+				}
+			});
+		}
+	});
+}
+</script>
+{template footer_admin}
