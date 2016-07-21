@@ -125,6 +125,20 @@ font-size:12px; font-weight:bold; box-sizing:border-box; height:40px; line-heigh
 /**超市首页**/
 .marketpage{}
 .marketpage .slideDiv,.marketpage .slideBox{width:820px; left:180px;}
+.marketpage .menuPannel{position:absolute; z-index:100; border-right:0.5px #F7F7F7 solid; border-bottom:1px #F7F7F7 solid; 
+background:#fff; width:500px; padding:5px; display:none; left:180px; 
+min-height:410px; box-sizing:border-box; overflow:hidden;}
+.marketpage .menuPannel ul{display:block; margin:0; padding:0;}
+.marketpage .menuPannel ul li{border:0; padding:3px 10px;}
+.marketpage .menuPannel ul h3{display:block; padding:5px 0; font-size:14px;}
+.marketpage .menuPannel ul div{display:block;}
+.marketpage .menuPannel ul div a{margin:0 7px 0 0; line-height:1.5; font-size:12px;}
+
+.marketpage .menu-level-1 li{font-size:15px; padding:0; font-weight:bold;}
+.marketpage .menu-level-1 li a{display:block; padding:10px; margin:0;}
+.marketpage .menu-level-1 li a:hover{background:#fff;}
+.marketpage .menu-level-1 li.on{background:#fff;}
+
 .marketpage .hotbest{background:#D41D6D; padding:10px; display:block;}
 .marketpage .hotbest h3{overflow:hidden; color:#fff; font-size:14px; margin-bottom:10px;}
 .marketpage .hotbest h3 i{float:right; font-size:12px; font-style:normal;}

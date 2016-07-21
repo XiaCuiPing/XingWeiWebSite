@@ -1,0 +1,68 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/goods.css">
+<div class="goods-list-div">
+    <div class="area filterdiv">
+    	<div class="row"><div class="cell"><strong class="tit">筛选</strong></div></div>
+        <div class="row">
+        	<div class="cell cell-name">分类</div>
+            <div class="cell">
+            	<a href="/" class="cur">当地游</a>
+                <a href="/">出国游</a>
+                <a href="/">跟团游</a>
+                <a href="/">自由行</a>
+                <a href="/">自驾游</a>
+            </div>
+        </div>
+        <div class="row">
+        	<div class="cell cell-name">城市</div>
+            <div class="cell">
+            	<a href="" class="cur">全部</a>
+                <a href="">北京</a>
+                <a href="/">上海</a>
+                <a href="/">广州</a>
+                <a href="/">深圳</a>
+                <a href="/">成都</a>
+                <a href="/">重庆</a>
+                <a href="/">西安</a>
+                <a href="">昆明</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="blank"></div>
+    <div class="area viewList">
+    	<div class="tit">共为你查询到100条信息</div>
+        <div class="LList">
+        	<ul>
+            	{eval $goodslist[hot]=goods_get_list(0,10);}
+                {loop $goodslist[hot] $glist}
+                <li>
+                	<div class="bd">
+                	<div class="pic"><img src="$glist[thumburl]"></div>
+                    <h2 class="title">$glist[name]</h2>
+                    <div class="fan">免费赠送门票一张</div>
+                    <div class="price">￥:100.00</div>
+                    </div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+        
+        <div class="RList">
+        	<ul>
+            	{eval $goodslist[hot]=goods_get_list(0,6);}
+                {loop $goodslist[hot] $glist}
+                <li>
+                	<div class="bd">
+                	<div class="pic"><img src="$glist[thumburl]"></div>
+                    <h2 class="title">$glist[name]</h2>
+                    <div class="fan"><span>50评</span>满100f返20</div>
+                    </div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+    
+</div>
+{template footer_common}

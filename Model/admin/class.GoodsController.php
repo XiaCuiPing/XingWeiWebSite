@@ -61,7 +61,8 @@ class GoodsController extends BaseController{
 				unset($uids, $comma);
 			}
 			$pages = $this->showPages($G['page'], $pagecount, $totalnum, "catid=$catid&keyword=$keyword", 1);
-			$categoryoptions = category_get_options(0, $catid, 0, 'goods');
+			//$categoryoptions = category_get_options(0, $catid, 0, 'goods');
+			category_set_options($categoryoptions, 0, $catid, 0, 'goods');
 			include template('goods_list');
 		}
 	}

@@ -1,0 +1,6 @@
+/* CSS Document */
+.post-detail-div{margin-top:20px;}
+.post-detail-div h1.title{font-size:24px; font-weight:bolder; text-align:center; padding:10px 0; display:block;}
+.post-detail-div div.body{display:block; padding:20px 0; text-align:justify; font-size:14px; line-height:1.5;}
+.post-detail-div div.body p{padding:5px 0; text-indent:2em;}
+.post-detail-div div.body *{max-width:100%; box-sizing:border-box;}

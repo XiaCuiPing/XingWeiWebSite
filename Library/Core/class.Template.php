@@ -91,6 +91,7 @@ class Template{
 		flock($fp, 2);
 		fwrite($fp, $template);
 		fclose($fp);
+		@chmod($objfile, '0505');
 	}
 	
 	/**

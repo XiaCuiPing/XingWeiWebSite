@@ -15,6 +15,7 @@ class IndexController extends BaseController{
 	public function market(){
 		global $G,$lang;
 		G('title','超市');
+		$categorylist = category_get_tree('goods');
 		include template('index_market');
 	}
 	

@@ -45,8 +45,8 @@ color:#fff; float:left;}
 
 .navHD{height:40px; background:#D41D6D; position:relative;}
 .mainNav{height:40px; line-height:40px; color:#fff; position:relative;}
-.mainNav ul{display:block; width:1010px;}
-.mainNav li{float:left; height:40px; font-size:14px; font-weight:bold; color:#fff; width:167px;}
+.mainNav ul{display:block; width:1010px; box-sizing:border-box;}
+.mainNav li{float:left; height:38px; font-size:14px; font-weight:bold; color:#fff; width:167px;}
 .mainNav li a{display:block; color:#fff; text-align:center;}
 .mainNav li.cur a{background:#B41D6D;}
 .mainNav .shadow{position:absolute; left:-10px; top:0; width:10px; height:40px; background:#D41D6D; display:block;}

@@ -75,24 +75,10 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
     	<div class="brandFocus"><img src="/data/attachment/photo/2016/05/1463646137425845.jpg"></div>
         <div class="brandHD">
         	<ul class="brandList">
-            	<li><a href="/"><img src="/data/attachment/photo/2016/05/1463646417651270.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646435768331.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646463671752.jpg"></a></li>
-            	<li><a href="/"><img src="/data/attachment/photo/2016/05/1463646480622539.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646372663702.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646399416762.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646417651270.jpg"></a></li>
-            	<li><a href="/"><img src="/data/attachment/photo/2016/05/1463646372663702.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646399416762.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646435768331.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646463671752.jpg"></a></li>
-            	<li><a href="/"><img src="/data/attachment/photo/2016/05/1463646480622539.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646435768331.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646463671752.jpg"></a></li>
-            	<li><a href="/"><img src="/data/attachment/photo/2016/05/1463646480622539.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646372663702.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646399416762.jpg"></a></li>
-                <li><a href="/"><img src="/data/attachment/photo/2016/05/1463646417651270.jpg"></a></li>
+            	{eval $brandlist=brand_get_list(0,18);}
+                {loop $brandlist $id $brand}
+            	<li><a href="/" title="$brand[name]"><img src="{echo image($brand[logo])}"></a></li>
+                {/loop}
             </ul>
         </div>
     </div>

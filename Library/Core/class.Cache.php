@@ -89,7 +89,7 @@ class Cache{
                 $key = is_string($key) ? '\''.addcslashes($key, '\'\\').'\'' : $key;
                 $val = !is_array($val) && (!preg_match("/^\-?[1-9]\d*$/", $val) || strlen($val) > 12) ? '\''.addcslashes($val, '\'\\').'\'' : $val;
                 if(is_array($val)) {
-                    $evaluate .= "$comma$key => ".self::arrayeval($val, $level + 1);
+                    $evaluate .= "$comma$key => ".$this->arrayeval($val, $level + 1);
                 } else {
                     $evaluate .= "$comma$key => $val";
                 }

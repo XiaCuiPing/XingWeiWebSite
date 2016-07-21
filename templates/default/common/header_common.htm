@@ -18,19 +18,19 @@
 <div class="header-hd">
 	<div class="area header">
     	<div class="topnav">
-        	 <div class="menu"><a href="/">超市首页</a></div>
+        	 <div class="menu"><a href="/">星微首页</a></div>
             {if $G[islogined]}
-            <div class="menu"><a href="/?m=member">我的星微</a></div>
+            <div class="menu"><a href="/?m=member">个人中心</a></div>
             {if $G[member][admincp]}<div class="menu"><a href="/?m=admin&c=login">后台管理</a></div>{/if}
             <div class="menu"><a href="/?m=member&c=logout">安全退出</a></div>
             {else}
             <div class="menu"><a href="/?m=member&c=login">登录</a></div>
             <div class="menu"><a href="/?m=member&c=register">注册</a></div>
             {/if}
-            <div class="menu"><a href="">我的订单</a></div>
-            <div class="menu"><a href="/?m=seller">我是卖家</a></div>
-            <div class="menu"><a href="">我的收藏</a></div>
-            <div class="menu"><a href="">网站导航</a></div>
+            <div class="menu"><a href="/?m=member&c=order">我的订单</a></div>
+            <div class="menu"><a href="/?m=seller">我是商家</a></div>
+            <div class="menu"><a href="/?m=member&c=seller">我的收藏</a></div>
+            <div class="menu"><a href="/?m=about">关于星微</a></div>
         </div>
     	<a href="/?m=events&c=app"><i class="icon">&#xf00a2;</i>手机版</a>
     </div>
@@ -54,8 +54,7 @@
            <li><a href="/">首页</a></li>
            <li><a href="/?m=home&c=index&a=lianmeng">联盟商家</a></li>
            <li><a href="/?m=home&c=index&a=market">星微超市</a></li>
-           <li><a href="/?m=member">我的返现</a></li>
-           <li><a href="/?m=about">关于我们</a></li>
+           <li><a href="/?m=member&c=fan">购物分红</a></li>
         </ul>
     </div>
 </div>
