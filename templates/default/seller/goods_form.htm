@@ -1,13 +1,19 @@
 {template header_seller}
 <div id="mainFrame">
-	<div class="topbar">
-    	<span class="right"><a class="button" href="/?m=$G[m]&c=$G[c]">商品列表</a></span>
-        <strong>{if $G[a]=='edit'}编辑商品{else}发布商品{/if}</strong>
+	<div class="seller-tab-bar">
+    	<div class="item"><a href="/?m=$G[m]&c=$G[c]&a=showlist">商品列表</a></div>
+        <div class="item{if $G[a]=='publish'} on{/if}"><a href="/?m=$G[m]&c=$G[c]&a=publish">发布商品</a></div>
+        {if $G[a]=='edit'}<div class="item on"><a href="">编辑商品</a></div>{/if}
+        
+        <div class="item"><a href="/?m=$G[m]&c=sold">订单管理</a></div>
+        <div class="item"><a href="/?m=$G[m]&c=ticket">返券管理</a></div>
     </div>
+    <div class="blank"></div>
     <div class="tableView">
-      <form method="post" id="goodsForm">
+      <form method="post" id="goodsForm" autocomplete="off">
       <input type="hidden" name="formsubmit" value="yes">
       <input type="hidden" name="formhash" value="{FORMHASH}">
+      <input type="hidden" name="goodsnew[shopid]" value="$shop[shopid]">
       <div class="row">
           <div class="cell cell-name">商品名称</div>
           <div class="cell cell-input"><input type="text" class="input-text" maxlength="60"  name="goodsnew[name]" value="$goods[name]" id="goodsname"></div>
@@ -16,11 +22,18 @@
       
       <div class="row">
           <div class="cell cell-name">商品类目</div>
-          <div class="cell cell-input">
-              <select name="goodsnew[catid]" class="input-select" id="catid">
+          <div class="cell cell-content">
+          	  {eval $categorylist=category_get_tree('goods');}
+              <select id="cat1" class="input-select" id="catid" size="5" style="height:120px; width:150px; margin-right:10px;">
               <option value="0">请选择类目</option>
-              {$categoryoptions}
-             </select>
+              {loop $categorylist[0] $c}
+              <option value="$c[catid]">$c[cname]</option>
+              {/loop}
+              </select>
+              <select id="cat2" class="input-select" id="catid" size="5" style="height:120px; width:150px; margin-right:10px;">
+              </select>
+              <select name="goodsnew[catid]" id="cat3" class="input-select" id="catid" size="5" style="height:120px; width:150px;">
+              </select>
           </div>
           <div class="cell error" id="tips_catid">请选择商品类目</div>
       </div>
@@ -86,61 +99,6 @@
 <form id="uploadForm" method="post" enctype="multipart/form-data" action="/?m=common&c=upload&a=uploadimage">
 <input name="filedata" id="filedata" type="file" title="选择商品图片" class="j-filedata">
 </form>
-<script type="text/javascript">
-$("#selectImageButton").mouseover(function(){
-	$("#filedata").css({'left':$(this).offset().left,'top':$(this).offset().top})
-	.width($(this).width()).height($(this).height());
-});
-
-var imagenum = 0;
-var imagekey = 0;
-$("#filedata").change(function(){
-	var picItem;
-	$("#uploadForm").ajaxSubmit({
-		dataType:'json',
-		beforeSend:function(){
-			picItem = $('<div class="imageUploadItem"></div>').insertBefore("#selectImageButton");
-		},
-		success:function(json){
-			if(json.errno == 0){
-				var del = $('<a class="icon del" href="javascript:;" title="删除">&#xf00b3;</a>').on('click',function(){
-					$(this).parent().remove();
-					imagenum--;
-				});
-				picItem.append('<img src="'+json.data.imageurl+'" />');
-				picItem.append('<input type="hidden" name="piclist['+imagekey+'][image]" value="'+json.data.image+'">');
-				picItem.append('<input type="hidden" name="piclist['+imagekey+'][thumb]" value="'+json.data.thumb+'">');
-				picItem.append(del);
-				imagenum++;
-				imagekey++;
-			}else {
-				alert('上传失败('+json.error+')');
-			}
-		}
-	});
-});
-$("#goodsForm").submit(function(){
-	if(($("#goodsname").val()).length < 2){
-		$("#tips_name").show();
-		return false;
-	}else {
-		$("#tips_name").hide();
-	}
-	
-	if(!$("#catid").val()){
-		$("#tips_catid").show();
-		return false;
-	}else {
-		$("#tips_catid").hide();
-	}
-	
-	if(!$("#price").val()){
-		$("#tips_price").show();
-		return false;
-	}else {
-		$("#tips_price").hide();
-	}
-	return true;
-});
-</script>
+<script type="text/javascript">var categoryoptions={echo json_encode($categorylist);};</script>
+<script src="/static/js/goos_pub.js"></script>
 {template footer_seller}

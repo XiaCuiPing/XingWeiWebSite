@@ -66,6 +66,19 @@ display:inline-block; padding:0 10px; margin:0 2px; border:1px #ddd solid; color
 .pages a:hover{color:#000; border-color:#999; text-decoration:none;}
 .pages .cur{background:#049985; color:#fff; border-color:#049985;}
 
+.button,a.button{background-color:#D6146C; color:#fff; border:0; border-radius:3px; cursor:pointer;
+height:28px; line-height:28px; display:inline-block; font-size:13px; padding:0 15px;}
+.button:hover{background-color:#B6166D;}
+.input-text, textarea, select{width:300px; font-size:12px;}
+.w30{width:30px;}
+.w60{width:60px;}
+.w100{width:100px;}
+.w120{width:120px;}
+.w200{width:200px;}
+.w300{width:300px;}
+.w400{width:400px;}
+.w500{width:500px;}
+
 /**列表表格**/
 .listtable{background:#fff; clear:both;}
 .listtable th,.listtable td{padding:5px; background:#fff; height:30px; text-align:left;}
@@ -91,7 +104,7 @@ display:inline-block; padding:0 10px; margin:0 2px; border:1px #ddd solid; color
 .tableView{}
 .tableView .itemRow{overflow:hidden; display:block; line-height:50px;}
 .tableView .itemRow:after{content:" "; display:block; clear:both; overflow:hidden;}
-.tableView .itemRow .item-name{width:80px; float:left; margin-right:20px; text-align:right;}
+.tableView .itemRow .item-name{width:70px; float:left; margin-right:20px; text-align:right;}
 .tableView .itemRow .item-input{width:350px; float:left; margin-right:10px;}
 .tableView .itemRow .item-tips{overflow:hidden; font-size:12px; display:none;}
 .tableView .itemRow .item-content{overflow:hidden; float:left; margin-right:10px;}
@@ -113,4 +126,47 @@ overflow:hidden; border:1px #ccc solid; position:relative; background-image:url(
 .tableView .cell-name{width:80px; text-align:right;}
 .tableView .cell-input{width:360px; overflow:hidden;}
 .tableView .tfooter{padding:20px 0;}
+.tableView .dist{width:auto;}
 .j-filedata{opacity:0; visibility:visible; position:absolute; z-index:200; cursor:pointer;}
+
+/**订单列表**/
+.order-tab-bar{display:block; border-bottom:1px #CCC solid;}
+.order-tab-bar .item{height:28px; line-height:28px; border:1px #CCC solid; margin-right:10px; background:#fefefe;
+border-bottom:0; box-sizing:border-box; float:left; border-radius:1px 1px 0 0;}
+.order-tab-bar .item a{display:inline-block; padding:0 15px;}
+.order-tab-bar .item a:hover{color:#000;}
+.order-tab-bar .on{background-color:#D6146C; color:#fff; border-color:#B6166D;}
+.order-tab-bar .on a,.order-tab-bar .on a:hover{color:#fff;}
+
+.order-table-header{background-color:#DBDCDC; border:1px #DDD solid; margin:10px 0;}
+.order-table-header td{padding:7px 5px; text-align:center; font-size:12px; box-sizing:border-box;}
+.order-tbar{display:block; margin-bottom:10px; padding:5px;}
+
+.order-item{display:block; margin-bottom:10px; border:1px #DDD solid;}
+.order-item:hover{border-color:#333;}
+.order-item .table-header{background:#E5E5E5; overflow:hidden;}
+.order-item .table-header td{padding:7px 5px; box-sizing:border-box; font-size:12px;}
+.order-item .table-header td.t-right{text-align:right; padding-right:10px;}
+.order-item .table-goods{display:block;}
+.order-item .table-goods td{padding:10px 5px; box-sizing:border-box; font-size:13px; vertical-align:top; text-align:center;}
+.order-item .table-goods .g-pic{width:80px; height:80px; float:left; margin:0 10px 0 5px; overflow:hidden;}
+.order-item .table-goods .g-pic img{display:block; width:100%; height:100%;}
+.order-item .table-goods .g-con{overflow:hidden; text-align:left;}
+.order-item .table-goods .g-con h3{font-size:13px; font-weight:400; line-height:1.2;}
+.order-item .table-goods .g-con .attr{margin:5px 0; display:block; color:#888; font-size:12px;}
+.order-item .table-goods .price{font-size:14px; color:#777;}
+.order-item .table-goods .discount{font-size:13px; margin-top:5px;}
+.order-item .table-goods .td-number{font-weight:bold;}
+.order-item .table-goods .amount{color:#F63; font-size:14px; font-weight:bold;}
+.order-item .table-goods .freight{color:#777; font-size:12px; margin-top:5px;}
+.order-item .table-goods .btn{height:28px; line-height:28px; display:block; padding:0 10px; background-color:#B6166D;
+color:#fff; font-size:12px; border-radius:3px; cursor:pointer;}
+.order-item .table-goods .td-right{vertical-align:middle; text-align:center;}
+
+/**返券记录查询**/
+.ticket-table{clear:both; margin:10px 0; border:0.5px #E0E0E0 solid;}
+.ticket-table th,.ticket-table th{padding:7px 10px; font-size:12px;}
+.ticket-table thead th{background:#E5E5E5;}
+.ticket-table tbody td{text-align:center; border-top:0.5px #E0E0E0 solid; border-left:0.5px #E0E0E0 solid;}
+.ticket-table tbody .no{font-size:14px; text-align:left; border-left:none;}
+.ticket-table tbody tr:hover td{background-color:#f5f5f5;}

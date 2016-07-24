@@ -16,7 +16,7 @@
                 {loop $shoplist[hot] $shopid $slist}
                 <li>
                 	<div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">
-                    <img src="$slist[thumburl]"></a></div>
+                    <img src="{echo image($slist[logo]);}"></a></div>
                     <h3 class="name"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">$slist[shopname]</a></h3>
                     <p>30元代金券一张,免包房费</p>
                     <div class="fan">满100返20</div>
@@ -35,7 +35,8 @@
             {eval $no=1;}
             {loop $shoplist[best] $shopid $slist}
             <li>
-                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank"><img src="$slist[thumburl]"></a></div>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">
+                <img src="{echo image($slist[logo]);}"></a></div>
                 <h3 class="name"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">$slist[shopname]</a></h3>
                 <div class="fan"><i>50评</i>满100返20</div>
             </li>
@@ -53,7 +54,8 @@
         <ul class="shangList">
         	{loop $shoplist[new] $shopid $slist}
             <li>
-                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank"><img src="$slist[thumburl]"></a></div>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">
+                <img src="{echo image($slist[logo])}"></a></div>
                 <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
             </li>
             {/loop}
@@ -68,7 +70,8 @@
         <ul class="shangList">
         	{loop $shoplist[new] $shopid $slist}
             <li>
-                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank"><img src="$slist[thumburl]"></a></div>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">
+                <img src="{echo image($slist[logo])}"></a></div>
                 <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
             </li>
             {/loop}
@@ -83,7 +86,8 @@
         <ul class="shangList">
         	{loop $shoplist[new] $shopid $slist}
             <li>
-                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank"><img src="$slist[thumburl]"></a></div>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">
+                <img src="{echo image($slist[logo])}"></a></div>
                 <h3 class="name"><span>满100返20</span>$slist[shopname]</h3>
             </li>
             {/loop}

@@ -1,0 +1,27 @@
+{template header_member}
+<div class="mainFrame">
+	<div class="order-tab-bar">
+    	<div class="item"><a href="/?m=$G[m]&c=$G[c]&a=index">全部记录</a></div>
+        <div class="item"><a href="">进行中</a></div>
+        <div class="item"><a href="">已完成</a></div>
+        <div class="item on"><a href="/?m=$G[m]&c=$G[c]&a=newticket">添加返券</a></div>
+    </div>
+    
+    <div class="blank"></div>
+    <div class="tableView">
+    	<div class="row">
+    		<div class="cell cell-name">返券号码:</div>
+        	<div class="cell"><input type="text" class="input-text w200"></div>
+        </div>
+        <div class="row">
+        	<div class="cell cell-name">密码:</div>
+        	<div class="cell"><input type="text" class="input-text w200"></div>
+        </div>
+        <div class="tfooter">
+        	<div class="cell cell-name">&nbsp;</div>
+        	<div class="cell"><input type="button" value="提交" class="button"></div>
+        	
+        </div>
+    </div>
+</div>
+{template footer_member}

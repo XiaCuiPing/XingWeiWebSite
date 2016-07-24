@@ -40,7 +40,7 @@
           {eval $opentime=@date('Y-m-d', $shop[dateline]);}
           <tr>
             <td><input type="checkbox" class="checkbox" name="shopid[]" value="$shopid"></td>
-            <td><img src="{echo image($shop[thumb]);}" width="50" height="50" style="display:block;"></td>
+            <td><img src="{echo image($shop[logo]);}" width="50" height="50" style="display:block;"></td>
             <th><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">$shop[shopname]</a></th>
             <td>{$userlist[$shop[uid]][username]}</td>
             <td>{$shop[province]}</td>
@@ -54,7 +54,7 @@
           <tfoot>
           <tr>
             <td colspan="10">
-                <label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'id[]')"> $lang[selectall]</label>
+                <label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'shopid[]')"> $lang[selectall]</label>
                 <label><input type="radio" class="radio" name="option" value="delete" checked="checked"> 删除</label>
                 <label><input type="radio" class="radio" name="option" value="closed"> 关闭</label>
             </td>

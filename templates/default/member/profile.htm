@@ -1,9 +1,13 @@
 {template header_member}
 <script type="text/javascript" src="/static/DatePicker/WdatePicker.js"></script>
 <div id="mainFrame" class="tableView">
-	<div class="topbar">
-        <span>修改资料</span>
+	<div class="order-tab-bar">
+    	<div class="item on"><a href="">修改资料</a></div>
+        <div class="item"><a href="">修改密码</a></div>
+        <div class="item"><a href="">账号绑定</a></div>
+        <div class="item"><a href="">安全中心</a></div>
     </div>
+    <div class="blank"></div>
   <form id="form" method="post" action="" autocomplete="off">
   <input type="hidden" name="formsubmit" value="yes" />
   <input type="hidden" name="formhash" value="{FORMHASH}" />

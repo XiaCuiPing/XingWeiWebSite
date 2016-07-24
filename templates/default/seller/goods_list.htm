@@ -1,10 +1,13 @@
 {template header_seller}
 <div class="mainFrame">
-	<div class="topbar">
-    	<span class="right"><a class="button" href="/?m=$G[m]&c=$G[c]&a=publish">发布商品</a></span>
-        <span>商品管理</span>
+	<div class="seller-tab-bar">
+    	<div class="item on"><a href="/?m=$G[m]&c=$G[c]&a=showlist">商品列表</a></div>
+        <div class="item"><a href="/?m=$G[m]&c=$G[c]&a=publish">发布商品</a></div>
+        <div class="item"><a href="/?m=$G[m]&c=sold">订单管理</a></div>
+        <div class="item"><a href="/?m=$G[m]&c=ticket">返券管理</a></div>
     </div>
-    {if $goodslist}
+    <div class="blank"></div>
+	{if $goodslist}
 	<form method="post" autocomplete="off">
     <input type="hidden" name="formsubmit" value="yes">
     <input type="hidden" name="formhash" value="{FORMHASH}">
@@ -60,7 +63,8 @@
     </table>
     </form>
     {else}
-    <div class="noaccess">你还未发布过任何商品信息信息，<a href="/?m=$G[m]&c=$G[c]&a=publish">马上发布</a></div>
+    <div class="noaccess" style="margin:50px 0; text-align:center; font-size:16px; color:#666;">
+    你还未发布过任何商品信息信息，<a href="/?m=$G[m]&c=$G[c]&a=publish">马上发布</a></div>
     {/if}
 </div>
 {template footer_seller}

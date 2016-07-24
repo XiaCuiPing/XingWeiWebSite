@@ -138,19 +138,20 @@ function category_get_childs($fid=0, $type='article'){
  */
 function category_get_options($fid=0, $selected=0, $showenable=0, $type='article'){
 	static $separater;
+	static $categorylist;
 	$optionlist = '';
 	$separater2 = $separater;
-	$categorylist = category_get_all($type);
-	if ($categorylist && is_array($categorylist)) {
-		foreach ($categorylist as $list){
-			if ($list['fid'] == $fid){
+	!$categorylist && $categorylist = category_get_tree($type);
+	if ($categorylist[$fid] && is_array($categorylist[$fid])) {
+		foreach ($categorylist[$fid] as $list){
+			//if ($list['fid'] == $fid){
 				$s = $list['catid'] == $selected ? ' selected="selected"' : '';
 				$a = $showenable ? ($list['enable'] ? '' : ' disabled') : '';
 				$optionlist.= '<option value="'.$list['catid'].'"'.$s.$a.'>'.$separater.$list['cname'].'</option>';
 				$separater.= '|--';
-				//$optionlist.= category_get_options($list['catid'], $selected, $showenable, $type);
+				$optionlist.= category_get_options($list['catid'], $selected, $showenable, $type);
 				$separater = $separater2;
-			}
+			//}
 		}
 	}
 	return $optionlist;

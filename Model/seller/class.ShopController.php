@@ -2,61 +2,58 @@
 namespace Seller;
 class ShopController extends BaseController{
 	public function index(){
-		global $G, $lang;
 		$shop = shop_get_data(array('uid'=>$this->uid));
-		include template('my_shop');
-	}
-	
-	public function create(){
-		global $G,$lang;
-		if ($this->checkFormSubmit()) {
-			$shopnew = $_GET['shopnew'];
-			if ($shopnew['shopname']) {
-				if (shop_get_num(array('uid'=>$this->uid))) {
-					$this->showError('');
-				}else {
-					$shopnew['uid'] = $this->uid;
-					$shopnew['dateline']  = TIMESTAMP;
-					$shopnew['longitude'] = floatval($shopnew['longitude']);
-					$shopnew['latitude']  = floatval($shopnew['latitude']);
-					shop_add_data($shopnew);
-					$this->showSuccess('save_succeed', '', array(
-							array('text'=>'back', 'url'=>'/?m='.$G['m'].'&c='.$G['c'])
-					));
-				}
-			}else {
-				$this->showError('undefined_action');
-			}
+		if ($shop) {
+			$this->setting();
 		}else {
-			
-			$categoryoptions = category_get_options(0,0,0,'shop');
-			$location = getLocationByIP();
-			include template('my_shop_form');
+			global $G,$lang;
+			$G['title'] = '店铺设置';
+			include template('shop_empty');
 		}
 	}
 	
-	public function edit(){
-		global $G,$lang;
-		if ($this->checkFormSubmit()) {
+	public function setting(){
+		global $G, $lang;
+		$shop = shop_get_data(array('uid'=>$this->uid));
+		if ($this->checkFormSubmit()){
 			$shopnew = $_GET['shopnew'];
 			if ($shopnew['shopname']) {
-				$shopnew['longitude'] = floatval($shopnew['longitude']);
-				$shopnew['latitude']  = floatval($shopnew['latitude']);
-				shop_update_data(array('uid'=>$this->uid), $shopnew);
-				$this->showSuccess('update_succeed', '', array(
+				if ($filedata = photo_upload_data()){
+					$shopnew['logo'] = $filedata['image'];
+				}
+				if ($shop) {
+					$shopid = $shop['shopid'];
+					shop_update_data(array('uid'=>$this->uid), $shopnew);
+				}else {
+					$shopnew['uid'] = $this->uid;
+					$shopnew['dateline'] = TIMESTAMP;
+					$shopid = shop_add_data($shopnew);
+				}
+				$description = $_GET['description'];
+				shop_add_desc(array('uid'=>$this->uid,'shopid'=>$shopid, 'description'=>$description));
+				$this->showSuccess('save_succeed', '', array(
 						array('text'=>'back', 'url'=>'/?m='.$G['m'].'&c='.$G['c'])
 				));
 			}else {
 				$this->showError('undefined_action');
 			}
 		}else {
-			$shop = shop_get_data(array('uid'=>$this->uid));
-			$categoryoptions = category_get_options(0,$shop['catid'],0,'shop');
-			$location = array(
-					'longitude'=>$shop['longitude'],
-					'latitude'=>$shop['latitude']
-			);
-			include template('my_shop_form');
+			$description = shop_get_desc(array('uid'=>$this->uid, 'shopid'=>$shop['shopid']));
+			$categoryoptions = category_get_options(0, 0, 0, 'shop');
+			include template('shop_setting');
+		}
+	}
+	
+	public function mark(){
+		global $G,$lang;
+		$shop = shop_get_data(array('uid'=>$this->uid));
+		if ($this->checkFormSubmit()) {
+			$shopnew = $_GET['shopnew'];
+			shop_update_data(array('uid'=>$this->uid), $shopnew);
+			$this->showSuccess('save_succeed');
+		}else {
+			$G['title'] = '位置标注';
+			include template('shop_mark');
 		}
 	}
 }

@@ -173,3 +173,40 @@ function shop_get_image_list($shopids){
 		return array();
 	}
 }
+
+/**
+ * 添加店铺描述
+ * @param array $data
+ */
+function shop_add_desc($data){
+	return M('shop_desc')->insert($data, 0 , 1);
+}
+
+/**
+ * 删除店铺描述
+ * @param mixed $condition
+ */
+function shop_delete_desc($condition){
+	if ($condition){
+		return M('shop_desc')->where($condition)->delete();
+	}else {
+		return false;
+	}
+}
+
+/**
+ * 更新店铺描述
+ * @param mixed $condition
+ * @param array $data
+ */
+function shop_update_desc($condition,$data){
+	return M('shop_desc')->where($condition)->update($data);
+}
+
+/**
+ * 获取店铺描述
+ * @param mixed $condition
+ */
+function shop_get_desc($condition){
+	return M('shop_desc')->where($condition)->getOne();
+}

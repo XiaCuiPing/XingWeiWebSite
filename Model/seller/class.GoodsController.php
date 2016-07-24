@@ -56,8 +56,6 @@ class GoodsController extends BaseController{
 		if ($this->checkFormSubmit()) {
 			$goodsnew = $_GET['goodsnew'];
 			if ($goodsnew['name'] && $goodsnew['price']) {
-				$shop = shop_get_data(array('uid'=>$this->uid));
-				$goodsnew['shopid'] = $shop['shopid'];
 				$goodsnew['no'] = goods_create_no();
 				$goodsnew['uid'] = $this->uid;
 				$goodsnew['dateline'] = TIMESTAMP;
@@ -81,8 +79,12 @@ class GoodsController extends BaseController{
 				$this->showSuccess('save_succeed');
 			}
 		}else {
-			$categoryoptions = category_get_options(0, 0, 0, 'goods');
-			include template('goods_form');
+			$shop = shop_get_data(array('uid'=>$this->uid));
+			if (!$shop) {
+				$this->redirect('/?m='.$G['m'].'&c=shop');
+			}else {
+				include template('goods_form');
+			}
 		}
 	}
 	
@@ -117,7 +119,6 @@ class GoodsController extends BaseController{
 			$goods = goods_get_data($condition);
 			$description = goods_get_desc($id);
 			$piclist = image_get_list($id, 'goods');
-			$categoryoptions = category_get_options(0, $goods['catid'], 0, 'goods');
 			include template('goods_form');
 		}
 	}

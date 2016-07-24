@@ -6,4 +6,11 @@ class FanController extends BaseController{
 		
 		include template('fan');
 	}
+	
+	public function newticket(){
+		global $G,$lang;
+		
+		$G['title'] = '添加返券';
+		include template('fan_newticket');
+	}
 }
