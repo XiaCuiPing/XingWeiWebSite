@@ -79,6 +79,22 @@ function member_encrypt_password($password){
 }
 
 /**
+ * 更新cookie
+ * @param int $uid
+ * @return boolean
+ */
+function member_update_cookie($uid){
+	$member = member_get_data(array('uid'=>$uid));
+	unset($member['password']);
+	cookie('dsxcms_member', authcode(serialize($member)));
+	cookie('dsxcms_group', serialize(usergroup_get_data(array('gid'=>$member['gid']))));
+	cookie('dsxcms_profile', serialize(member_get_profile($member['uid'])));
+	cookie('dsxcms_status', serialize(member_get_status($member['uid'])));
+	cookie('dsxcms_count', serialize(member_get_count($member['uid'])));
+	return true;
+}
+
+/**
  * 用户登录
  * @param string $username
  * @param string $password
@@ -101,12 +117,7 @@ function member_login($username, $password, $field='username'){
 					'lastvisit'=>TIMESTAMP,
 					'lastvisitip'=>getIp()
 			));
-			unset($member['password']);
-			cookie('dsxcms_member', authcode(serialize($member)));
-			cookie('dsxcms_group', serialize(usergroup_get_data(array('gid'=>$member['uid']))));
-			cookie('dsxcms_profile', serialize(member_get_profile($member['uid'])));
-			cookie('dsxcms_status', serialize(member_get_status($member['uid'])));
-			cookie('dsxcms_count', serialize(member_get_count($member['uid'])));
+			member_update_cookie($member['uid']);
 			return $member;
 		}
 	}
