@@ -288,12 +288,12 @@ function cart_get_num($condition, $field='*'){
  */
 function cart_get_list($condition, $num=20, $limit=0, $order=''){
 	$limit = $num ? "$limit,$num" : ($limit ? $limit : '');
-	!$order && $order = 'cartid DESC';
+	!$order && $order = 'id DESC';
 	$cartlist = M('cart')->where($condition)->limit($limit)->order($order)->select();
 	if ($cartlist) {
 		$datalist = array();
 		foreach ($cartlist as $list){
-			$datalist[$list['cartid']] = $list;
+			$datalist[$list['id']] = $list;
 		}
 		return $datalist;
 	}else {

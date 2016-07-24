@@ -1,6 +1,43 @@
-<h3>账号</h3>
-<div><input type="text" class="input-text w300" placeholder="用户名/手机号/邮箱"></div>
-<h3>密码</h3>
-<div><input type="text" class="input-text w300" placeholder="密码"></div>
-<h3>验证码</h3>
-<div><input type="text" class="input-text w300" placeholder="验证"></div>
+<div class="ajaxlogin">
+	<form method="post" autocomplete="off" action="/?m=member&c=login&a=ajaxlogin" id="ajaxLoginForm">
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <input type="hidden" name="formsubmit" value="yes">
+        <h3 class="h3">账号</h3>
+        <div class="inputdiv"><input type="text" class="input-text" name="account_{FORMHASH}" placeholder="用户名/手机号/邮箱"></div>
+        <h3 class="h3">密码</h3>
+        <div class="inputdiv"><input type="password" class="input-text" name="password_{FORMHASH}" placeholder="密码"></div>
+        <div class="linkdiv">
+        	<span class="f-right"><a href="">免费注册</a></span>
+            <span><a href="">忘记密码?</a></span>
+        </div>
+        <div class="buttondiv">
+        	<button class="button" type="button" id="ajaxLoginButton">登录</button>
+        </div>
+        <div class="blank"></div>
+    </form>
+</div>
+<script type="text/javascript">
+$("#ajaxLoginButton").click(function(e) {
+	var account  = $("[name=account_{FORMHASH}]").val();
+	var password = $("[name=password_{FORMHASH}]").val();
+	if(!DSXCMS.IsUserName(account) && !DSXCMS.IsMobile(account) && !DSXCMS.IsEmail(account)){
+		alert('账号输入错误');
+		return;
+	}
+	
+	if(!DSXCMS.IsPassword(password)){
+		alert('密码输入错误');
+		return;
+	}
+    $("#ajaxLoginForm").ajaxSubmit({
+		dataType:'json',
+		success:function(json){
+			if(json && json.errno == 0){
+				window.location = window.location.href;
+			}else {
+				alert('密码错误')
+			}
+		}
+	});
+});
+</script>

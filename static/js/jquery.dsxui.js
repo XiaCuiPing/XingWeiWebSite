@@ -31,7 +31,8 @@ function Dialog(content, options)
     /* 对话框的布局及标题内容。*/
 	var headHtml = !options.showTitle ? '' : '<div class="dialog-title" node="bar"><strong>'+options.title+'</strong><span class="icon close" node="close">&#xf00b3;</span></div>';
 	var footerHtml = !options.showButtons ? '' : '<div class="dialog-footer"><div class="button submit" tabindex="1" node="submit">确定</div><div class="button cancel" tabindex="1" node="cancel">取消</div></div>';
-	var dialog = $('<div id="' + options.id + '" class="ui-dialog">'+headHtml+'<div class="dialog-content" node="content"></div>'+footerHtml+'</div>').hide();
+	var dialog = $('<div id="' + options.id + '" class="ui-dialog"><div class="inner">'+headHtml+
+	'<div class="dialog-content" node="content"></div>'+footerHtml+'</div></div>').hide();
 	$("body").append(dialog);
     /**
      * 重置对话框的位置。

@@ -82,6 +82,8 @@
         }
 	});
 })(jQuery);
+
+/****/
 var DSXCMS = {
 	mb_cutstr : function(str, maxlen, dot) {
 		var len = 0;
@@ -182,6 +184,28 @@ var DSXCMS = {
 					$(selector).html(optionhtml).change();
 				}
 			}
+		});
+	},
+	
+	checkLogin:function(){
+		var flag = false;
+		$.ajax({
+			url:'/?m=member&c=checklogin',
+			async:false,
+			dataType:"json",
+			success: function(json){
+				if(json.errno == 0){
+					flag = true;
+				}else {
+					flag = false;
+				}
+			}
+		});
+		return flag;
+	},
+	showAjaxLogin:function(){
+		$.get('/?m=member&c=login&a=ajaxlogin',function(c){
+			var dlg = dialog(c,{width:340,title:'登录星微超市'});
 		});
 	}
 }

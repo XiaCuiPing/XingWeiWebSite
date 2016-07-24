@@ -47,8 +47,8 @@
             </div>
             
             <div class="btn-container">
-            	<a href="javascript:;" class="btn btn-buy">立即购买</a>
-                <a href="javascript:;" class="btn btn-cart">加入购物车</a>
+            	<a class="btn btn-buy" onclick="Buy($goods[id])">立即购买</a>
+                <a class="btn btn-cart" onclick="addToCart($goods[id])">加入购物车</a>
                 <a href="javascript:;" class="btn btn-phone">客户端购买</a>
                 <p class="p">商品数量有限，下单后需在30分钟内付款，否则无货哦。</p>
             </div>
@@ -92,4 +92,5 @@
         <div class="desc">$description[description]</div>
     </div>
 </div>
+<script src="/static/js/goods_buy.js"></script>
 {template footer_common}

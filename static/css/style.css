@@ -22,7 +22,7 @@ font-size:14px; line-height:20px; text-align:center; float:left; margin-right:3p
 border:1px #CCC solid; text-align:center; font-size:12px;}
 .goodsDetail .goodsAttr .btn-container{display:block; text-align:right; padding:10px 20px;}
 .goodsDetail .goodsAttr .btn{height:36px; line-height:36px; display:inline-block; color:#fff; 
-width:90px; font-size:13px; text-align:center; margin-left:5px;}
+width:90px; font-size:13px; text-align:center; margin-left:5px; cursor:pointer;}
 .goodsDetail .goodsAttr .btn-buy{background-color:#B6166D;}
 .goodsDetail .goodsAttr .btn-cart{background-color:#F7B52B;}
 .goodsDetail .goodsAttr .btn-phone{background-color:#C8C9CA;}

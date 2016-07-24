@@ -4,8 +4,9 @@ html,body{padding:0; margin:0; height:100%; font-size:13px; font-family:arial,"å
 color:#333; word-break:break-all; word-wrap:break-word;}
 html *{word-wrap:break-word; word-break:break-all;}
 ul,li,p,form,dd,dl,dt,h1,h2,h3,h4,h5{padding:0; margin:0; list-style:none;}
-a:link,a:visited,a:active{color:#333; text-decoration:none;}
+a:link,a:visited,a:active{color:#333; text-decoration:none; cursor:pointer;}
 a:hover{text-decoration:none; color:#F00;}
+a{cursor:pointer;}
 img{border:0;}
 input[type="checkbox"], input[type="radio"],.checkbox,.radio
 {height:16px; width:16px; display:inline-block; vertical-align:0;}
@@ -19,6 +20,8 @@ h1:after,h2:after,h3:after,h4:after,h5:after{display:block; clear:both; overflow
 .input-text,textarea,select{border-width:1px; border-color:#666 #ccc #ccc #666; border-style:solid; box-sizing:border-box;}
 .input-text,select{height:26px; line-height:26px; padding:2px 3px; font-size:13px; width:200px;}
 select option{padding:5px; border-bottom:0.5px #DDD solid;}
+.button,a.button{display:block; background-color:#D6146C; height:26px; line-height:26px; padding:0 15px; box-sizing:border-box; color:#fff; font-size:12px; border:none; cursor:pointer;}
+.button:hover,a.button:hover{background-color:#B6166D;}
 .w30{width:30px;}
 .w60{width:60px;}
 .w100{width:100px;}
@@ -77,3 +80,13 @@ color:#fff; float:left;}
 #footer .copyright{color:#fff; text-align:center; line-height:30px;}
 
 .sitepath{display:block; padding:10px 0; font-size:14px;}
+
+/**ajax login**/
+.ajaxlogin{display:block; margin:0 20px;}
+.ajaxlogin .h3{padding:5px 0; display:block; font-size:15px; margin-top:10px;}
+.ajaxlogin .inputdiv{padding:0; display:block;}
+.ajaxlogin .input-text{height:35px; line-height:35px; font-size:13px; font-weight:bold; width:100%; box-sizing:border-box;}
+.ajaxlogin .buttondiv{display:block; margin:15px 0;}
+.ajaxlogin .buttondiv .button{width:100%; box-sizing:border-box; font-size:14px; height:38px;}
+.ajaxlogin .linkdiv{padding:10px 0; font-size:12px; display:block;}
+.ajaxlogin .linkdiv *{color:#666;}
