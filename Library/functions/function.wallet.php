@@ -135,3 +135,51 @@ function trade_get_page($condition, $page=1, $pagesize=20, $order=''){
 	$limit = ($page - 1) * $pagesize;
 	return trade_get_list($condition, $pagesize, $limit, $order);
 }
+
+/**
+ * 添加用户积分记录
+ * @param array $data
+ */
+function score_add_data($data){
+	return M('score')->insert($data, false, true);
+}
+
+/**
+ * 删除用户积分记录
+ * @param mixed $condition
+ */
+function score_delete_data($condition){
+	if ($condition) {
+		return M('score')->where($condition)->delete();
+	}else {
+		return false;
+	}
+}
+
+/**
+ * 更新积分记录
+ * @param mixed $condition
+ * @param array $data
+ * @return boolean
+ */
+function score_update_data($condition, $data){
+	return M('score')->where($condition)->update($data);
+}
+
+/**
+ * 获取用户积分信息
+ * @param int $uid
+ * @return array
+ */
+function score_get_data($uid){
+	$data = M('score')->where(array('uid'=>$uid))->getOne();
+	if ($data) {
+		return $data;
+	}else {
+		score_add_data(array(
+				'uid'=>$uid,
+				'score'=>0
+		));
+		return score_get_data($uid);
+	}
+}

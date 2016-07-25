@@ -9,6 +9,9 @@ class CartController extends BaseController{
 		}
 	}
 	
+	/**
+	 * 显示购物车列表
+	 */
 	public function index(){
 		global $G,$lang;
 		
@@ -43,6 +46,9 @@ class CartController extends BaseController{
 		include template('cart_list');
 	}
 	
+	/**
+	 * 添加商品到购物车
+	 */
 	public function add(){
 		$id = intval($_GET['id']);
 		$goods = goods_get_data(array('id'=>$id));
@@ -67,8 +73,13 @@ class CartController extends BaseController{
 		
 	}
 	
-	public function delete(){
-		
+	/**
+	 * 从购物车移除商品
+	 */
+	public function remove(){
+		$goods_id = intval($_GET['goods_id']);
+		cart_delete_data(array('uid'=>$this->uid, 'goods_id'=>$goods_id));
+		$this->showAjaxReturn(array('result'=>'SUCCESS'));
 	}
 	
 }

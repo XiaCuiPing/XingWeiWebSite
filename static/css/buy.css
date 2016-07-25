@@ -1,0 +1,15 @@
+/* CSS Document */
+.buy{display:block; padding:20px 0;}
+.buy .h3-title{padding:7px 0; font-size:15px; display:block;}
+.buy .address-div{display:block;}
+.buy .address-div li{background-image:url(/static/images/common/addressbg.png); background-position:-240px 0; 
+width:240px; height:160px; position:relative; overflow:hidden; display:block; float:left; margin-right:10px; 
+padding:10px 15px; box-sizing:border-box; cursor:pointer;}
+.buy .address-div li.cur{background-position:0 0;}
+.buy .address-div li:hover{background-position:-480px 0;}
+.buy .address-div li h3{padding:5px 0; font-size:14px;}
+.buy .address-div li p{padding:3px 0; font-size:12px; color:#666;}
+.buy .address-form-table{}
+.buy .address-form-table td{padding:5px; font-size:12px;}
+.buy .address-form-table .item-name{text-align:right; width:100px; color:#666;}
+.buy .address-form-table .item-name i{color:#F00; font-size:14px; vertical-align:-3px;}

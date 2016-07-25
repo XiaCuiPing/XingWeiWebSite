@@ -53,4 +53,49 @@ class ShopController extends BaseController{
 			include template('shop_list');
 		}
 	}
+	
+	/**
+	 * 添加分公司
+	 */
+	public function add(){
+		global $G,$lang;
+		if ($this->checkFormSubmit()){
+			$shopnew = $_GET['shopnew'];
+			if ($shopnew['shopname']) {
+				$shopnew['uid'] = $this->uid;
+				$shopnew['dateline'] = TIMESTAMP;
+				$shopid = shop_add_data($shopnew);
+				$description = $_GET['description'];
+				shop_add_desc(array('uid'=>$this->uid,'shopid'=>$shopid, 'description'=>$description));
+				$this->showSuccess('save_succeed');
+			}else {
+				$this->showError('undefined_action');
+			}
+		}else {
+			include template('shop_form');
+		}
+	}
+	
+	/**
+	 * 编辑公司
+	 */
+	public function edit(){
+		global $G,$lang;
+		$shopid = intval($_GET['shopid']);
+		if ($this->checkFormSubmit()){
+			$shopnew = $_GET['shopnew'];
+			if ($shopnew['shopname']) {
+				shop_update_data(array('shopid'=>$shopid), $shopnew);
+				$description = $_GET['description'];
+				shop_update_desc(array('shopid'=>$shopid), array('description'=>$description));
+				$this->showSuccess('update_succeed');
+			}else {
+				$this->showError('undefined_action');
+			}
+		}else {
+			$shop = shop_get_data(array('shopid'=>$shopid));
+			$description = shop_get_desc(array('shopid'=>$shopid));
+			include template('shop_form');
+		}
+	}
 }

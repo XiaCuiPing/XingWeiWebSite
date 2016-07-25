@@ -17,12 +17,11 @@
        <th width="40">选项</th>
     </thead>
        {loop $categorylist[0] $lv1}
-       {eval $lv1[image]=image($lv1[image])}
        <tbody>
         <tr>
           <td><input type="checkbox" class="checkbox" name="delete[]" value="$lv1[catid]" /></td>
           <td>$lv1[catid]</td>
-          <td><img src="{$lv1[image]}" width="50" height="50" onclick="openUploadWindow(this,$lv1[catid]);"></td>
+          <td><img src="{echo image($lv1[image])}" width="50" height="50" onclick="openUploadWindow(this,$lv1[catid]);"></td>
           <td>
           <input type="text" class="text text200" name="categorylist[{$lv1[catid]}][cname]" value="{$lv1[cname]}" maxlength="10" style="font-weight:bold;">
           </td>
@@ -34,11 +33,10 @@
         </tbody>
         <tbody id="group_$lv1[catid]">
         {loop $categorylist[$lv1[catid]] $lv2}
-        {eval $lv2[image]=image($lv2[image])}
          <tr id="row_$lv2[catid]">
           <td><input type="checkbox" class="checkbox" name="delete[]" value="$lv2[catid]" /></td>
           <td>$lv2[catid]</td>
-          <td><img src="{$lv2[image]}" width="50" height="50" onclick="openUploadWindow(this,$lv2[catid]);"></td>
+          <td><img src="{echo image($lv2[image])}" width="50" height="50" onclick="openUploadWindow(this,$lv2[catid]);"></td>
           <td>
           <div class="join"></div>
           <input type="text" class="text text200" name="categorylist[{$lv2[catid]}][cname]" value="{$lv2[cname]}" maxlength="10">
@@ -50,11 +48,10 @@
           <td><a href="/?m=$G[m]&c=$G[c]&a=edit&catid=$lv2[catid]" class="edit">编辑</a></td>
         </tr>
             {loop $categorylist[$lv2[catid]] $lv3}
-            {eval $lv3[image]=image($lv3[image])}
              <tr>
               <td><input type="checkbox" class="checkbox" name="delete[]" value="$lv3[catid]" /></td>
-              <td>$lv2[catid]</td>
-              <td><img src="{$lv3[image]}" width="50" height="50" onclick="openUploadWindow(this,$lv3[catid]);"></td>
+              <td>$lv3[catid]</td>
+              <td><img src="{echo image($lv3[image])}" width="50" height="50" onclick="openUploadWindow(this,$lv3[catid]);"></td>
               <td>
               <div class="join"></div><div class="join"></div>
               <input type="text" class="text text200" name="categorylist[{$lv3[catid]}][cname]" value="{$lv3[cname]}" maxlength="10">

@@ -1,5 +1,5 @@
 /* CSS Document */
-.redback{background-color:#F43E36; height:410px; display:block; width:100%;}
+.redback{background-color:#fff; height:410px; display:block; width:100%;}
 .slideHD{height:410px; position:relative;}
 .multimenu{position:absolute; left:0; top:0; padding:0; margin:0; display:block; z-index:100; width:180px; height:410px; background:#F7F7F7;}
 .multimenu li{display:block; padding:8px 0 8px 10px; font-size:12px; border-top:1px #e8e8e8 solid; margin-top:-1px;}

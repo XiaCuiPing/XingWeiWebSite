@@ -12,20 +12,20 @@
     
     <div class="box">
     	<h3 class="u-title">账户余额</h3>
-        <div class="u-amount">1500</div>
+        <div class="u-amount">¥{echo @number_format($wallet[balance], 2)}</div>
         <div class="u-status">充值</div>
     </div>
     
     <div class="box">
     	<h3 class="u-title">我的积分</h3>
-        <div class="u-amount">1500</div>
+        <div class="u-amount">{$score[score]}</div>
         <div class="u-status">获取积分</div>
     </div>
     
     <div class="box">
-    	<h3 class="u-title">邀请奖励</h3>
-        <div class="u-amount">500</div>
-        <div class="u-status">邀请人数20</div>
+    	<h3 class="u-title">累计返现</h3>
+        <div class="u-amount">¥{echo @number_format($wallet[total_back], 2)}</div>
+        <div class="u-status">返现记录</div>
     </div>
     
     <div class="box" style="border:none;"><a href="" class="btn-sign">签到</a></div>

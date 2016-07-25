@@ -111,27 +111,27 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
             </div>
         </div>
     </div>
+    
     <!--==================-->
     <div class="blank"></div>
     <div class="area">
         <div class="titlediv">
-            <strong>生鲜特产</strong>
+            <strong>食品饮料</strong>
         </div>
         <div class="goodsLeft" style="background-color:#298BE2;">
         	<div class="pic"><img src="/static/images/test/01.jpg"></div>
             <div class="menus">
-            	<a href="/">水果</a>
-                <a href="/">牛排</a>
-                <a href="/">海鲜水产</a>
-                <a href="/">肉类</a>
-                <a href="/">熟食</a>
-                <a href="/">腌腊制品</a>
-                <a href="/">海参</a>
-                <a href="/">禽蛋</a>
+            	<a href="/">泡菜</a>
+                <a href="/">甜酒</a>
+                <a href="/">韭菜根</a>
+                <a href="/">腌肉、腌鱼</a>
+                <a href="/">葛根片</a>
+                <a href="/">葛根精粉</a>
+                <a href="/">蓝莓果肉饮</a>
             </div>
         </div>
         <div class="goodsListHD">
-        	{eval $goodslist[hot]=goods_get_list(0,8);}
+        	{eval $goodslist[hot]=goods_get_list(array('catid'=>array('IN','231,237,239,240,703,704,705,706,701,708')),8);}
         	<ul class="goodsList">
             	{loop $goodslist[hot] $glist}
                 <li>
@@ -150,23 +150,18 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
     <div class="blank"></div>
     <div class="area">
         <div class="titlediv">
-            <strong>休闲零食</strong>
+            <strong>粮油副食</strong>
         </div>
         <div class="goodsLeft" style="background-color:#FF8B01;">
         	<div class="pic"><img src="/static/images/test/02.jpg"></div>
             <div class="menus">
-            	<a href="/">水果</a>
-                <a href="/">牛排</a>
-                <a href="/">海鲜水产</a>
-                <a href="/">肉类</a>
-                <a href="/">熟食</a>
-                <a href="/">腌腊制品</a>
-                <a href="/">海参</a>
-                <a href="/">禽蛋</a>
+            	<a href="/">食用油</a>
+                <a href="/">面条</a>
+                <a href="/">葛根面条</a>
             </div>
         </div>
         <div class="goodsListHD">
-        	{eval $goodslist[hot]=goods_get_list(0,8);}
+        	{eval $goodslist[hot]=goods_get_list(array('catid'=>array('IN','232,307,308,333,707')),8);}
         	<ul class="goodsList">
             	{loop $goodslist[hot] $glist}
                 <li>
@@ -180,6 +175,38 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
         </div>
     </div>
     
+    <!--==================-->
+    <div class="blank"></div>
+    <div class="area">
+        <div class="titlediv">
+            <strong>美容洗护</strong>
+        </div>
+        <div class="goodsLeft" style="background-color:#298BE2;">
+        	<div class="pic"><img src="/static/images/test/01.jpg"></div>
+            <div class="menus">
+            	<a href="/">洗发水</a>
+                <a href="/">护发润发</a>
+                <a href="/">套装</a>
+                <a href="/">卫生巾</a>
+                <a href="/">护垫</a>
+                <a href="/">玉轻松</a>
+                <a href="/">七味清宫丸</a>
+            </div>
+        </div>
+        <div class="goodsListHD">
+        	{eval $goodslist[hot]=goods_get_list(array('catid'=>array('IN','233,334,336,337,338,345,346,347,348,349')),8);}
+        	<ul class="goodsList">
+            	{loop $goodslist[hot] $glist}
+                <li>
+                	<div class="pic"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">
+                    <img src="$glist[thumburl]"></a></div>
+                    <h2 class="name"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">$glist[name]</a></h2>
+                    <div class="price">￥:$glist[price]</div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
     
 </div>
 {template footer_common} 

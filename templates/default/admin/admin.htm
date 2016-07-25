@@ -12,7 +12,8 @@
 <body style="overflow:hidden;">
 <div class="header">
     <div class="item account" id="account">
-        <a href="/?m=admin" class="menuitem">您好,$G[member][username] <img src="/?m=member&c=avatar&size=small&uid=$G[uid]" border="0" /></a>
+        <a href="/?m=admin" class="menuitem">您好,$G[member][username] 
+        <img src="/?m=member&c=avatar&size=small&uid=$G[uid]" border="0" /></a>
         <ul class="profile">
             <li>
             	<div class="atvar"><a href="/?m=home"><img src="{echo avatar($G[uid],'big');}" /></a></div>
@@ -78,14 +79,16 @@
           <li><a rel="item" href="/?m=$G[m]&c=postcat" target="main">分类管理</a></li>
           <li><a rel="item" href="/?m=$G[m]&c=postcat&a=merge" target="main">合并分类</a></li>
       </ul>
-      <h3><a href="javascript:;"><i class="icon">&#xf0135;</i>商家管理</a></h3>
+      <h3><a href="javascript:;"><i class="icon">&#xf0135;</i>分公司管理</a></h3>
       <ul>
-          <li><a rel="item" href="/?m=$G[m]&c=shop" target="main">商家列表</a></li>
-          <li><a rel="item" href="/?m=$G[m]&c=shopcat" target="main">商家分类</a></li>
+      	  <li><a rel="item" href="/?m=$G[m]&c=shop&a=add" target="main">添加分公司</a></li>
+          <li><a rel="item" href="/?m=$G[m]&c=shop" target="main">分公司列表</a></li>
+          <!--<li><a rel="item" href="/?m=$G[m]&c=shopcat" target="main">商家分类</a></li>-->
           <li><a rel="item" href="/?m=$G[m]&c=brand" target="main">品牌管理</a></li>
       </ul>
       <h3><a href="javascript:;"><i class="icon">&#xf01ba;</i>商品管理</a></h3>
       <ul>
+      	  <li><a rel="item" href="/?m=$G[m]&c=goods&a=add" target="main">添加商品</a></li>
           <li><a rel="item" href="/?m=$G[m]&c=goods" target="main">商品列表</a></li>
           <li><a rel="item" href="/?m=$G[m]&c=goodscat" target="main">商品分类</a></li>
           <li><a rel="item" href="/?m=$G[m]&c=goodscat&a=merge" target="main">合并分类</a></li>

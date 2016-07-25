@@ -1,16 +1,12 @@
 {template header_common}
 <link rel="stylesheet" type="text/css" href="/static/css/homepage.css">
 <div class="redback">
-	<div class="area slideHD">
+	<div class="slideHD">
         <!--幻灯片-->
         <script src="/static/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
         <div class="slideDiv">
         	<div class="slideBox" id="slideBox">
             	{eval $sliderlist=slider_get_image(1);}
-                {eval $sliderno=1;}
-                <div class="hd">
-                    <ul>{loop $sliderlist $list}<li>$sliderno</li>{eval $sliderno++;}{/loop}</ul>
-                </div>
                 <div class="bd">
                     <ul>
                         {loop $sliderlist $list}
@@ -59,7 +55,7 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
     	<li>
         	<div class="pic"><a href="/?m=goods&c=detail&id=$id" target="_blank"><img src="{echo image($goods[image]);}"></a></div>
             <div class="name"><a href="/?m=goods&c=detail&id=$id" target="_blank">$goods[name]</a></div>
-            <div class="fan"><i>返现{$goods[back_amount]}元</i> ￥: $goods[price]</div>
+            <div class="fan"><i>返现{$goods[back_amount]}元</i> ￥: {echo number_format($goods[price],2);}</div>
         </li>
         {/loop}
     </ul>
@@ -84,7 +80,7 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
     </div>
 </div>
 
-<div class="area bannerAD"><img src="/data/attachment/photo/2016/05/1463647250931474.jpg"></div>
+<div class="area bannerAD"><!--<img src="/data/attachment/photo/2016/05/1463647250931474.jpg">--></div>
 
 <div class="area">
 	<div class="titleDiv" style="border:none;">
@@ -99,7 +95,7 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
                 <div class="pic"><a href="/?m=goods&c=detail&id=$id" target="_blank">
                 <img src="{echo image($goods[image]);}"></a></div>
                 <div class="name"><a href="/?m=goods&c=detail&id=$id" target="_blank">$goods[name]</a></div>
-                <div class="fan"><i>返现{$goods[back_amount]}元</i> ￥: {$goods[price]}</div>
+                <div class="fan"><i>返现{$goods[back_amount]}元</i> ￥: {echo number_format($goods[price],2);}</div>
             </li>
             {/loop}
         </ul>
@@ -117,7 +113,7 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
         	{eval $shoplist=shop_get_list(0,8);}
             {loop $shoplist $shopid $shop}
         	<li>
-                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid"><img src="{echo image($shop[image]);}"></a></div>
+                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid"><img src="{echo image($shop[logo]);}"></a></div>
                 <div class="name"><a href="/?m=shop&c=detail&shopid=$shopid">{$shop[shopname]}</a></div>
                 <div class="comm"><img src="/static/images/common/stars.png" class="stars"> 50评价</div>
                 <div class="address">{$shop[address]}</div>

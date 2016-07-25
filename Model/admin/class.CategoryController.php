@@ -52,7 +52,8 @@ class CategoryController extends BaseController{
 		}else {
 			global $G,$lang;
 			category_update_cache($this->type);
-			$categorylist = category_get_list($this->type, false, true);
+			//$categorylist = category_get_list($this->type, false, true);
+			$categorylist = category_get_tree($this->type, true, false);
 			include template('category_list');
 		}
 	}

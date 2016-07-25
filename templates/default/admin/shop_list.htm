@@ -6,16 +6,17 @@
                 <input type="hidden" name="m" value="$G[m]">
                 <input type="hidden" name="c" value="$G[c]">
                 <input type="hidden" name="a" value="$G[a]">
-                <select name="catid" id="catid">
+                <!--<select name="catid" id="catid">
                     <option value="0" class="bold">所有分类</option>
                     $categoryoptions
-                </select>
+                </select>-->
                 <input type="text" class="input-text" name="keyword" value="$keyword">
                 <input type="submit" class="button search" value="$lang[search]">
             </form>
         	
         </div>
     	<strong>店铺管理</strong>
+        <a href="/?m=$G[m]&c=$G[c]&a=add" class="baritem">添加分公司</a>
 	</div>
     <div class="table-hd">
         <form method="post">
@@ -27,7 +28,7 @@
             <th width="20" class="center">选?</th>
             <th width="50">图片</th>
             <th>店铺名称</th>
-            <th width="160">店掌柜</th>
+            <th width="160">联系电话</th>
             <th width="100">省</th>
             <th width="100">市</th>
             <th width="100">县</th>
@@ -37,16 +38,15 @@
          </thead>
          <tbody>
           {loop $shoplist $shopid $shop}
-          {eval $opentime=@date('Y-m-d', $shop[dateline]);}
           <tr>
             <td><input type="checkbox" class="checkbox" name="shopid[]" value="$shopid"></td>
             <td><img src="{echo image($shop[logo]);}" width="50" height="50" style="display:block;"></td>
             <th><a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">$shop[shopname]</a></th>
-            <td>{$userlist[$shop[uid]][username]}</td>
+            <td>{$shop[tel]}</td>
             <td>{$shop[province]}</td>
             <td>{$shop[city]}</td>
             <td>{$shop[county]}</td>
-            <td>{$opentime}</td>
+            <td>{echo @date('Y-m-d', $shop[dateline]);}</td>
             <td><a href="/?m=$G[m]&c=$G[c]&a=edit&shopid=$shopid">编辑</a></td>
           </tr>
           {/loop}

@@ -247,7 +247,7 @@ function image_delete_data($condition){
  * @param mixed $condition
  */
 function image_get_data($condition){
-	$image = M('image')->where($condition)->selectOne();
+	$image = M('image')->where($condition)->getOne();
 	if ($image) {
 		$image['imageurl'] = image($image['image']);
 		$image['thumburl'] = image($image['thumb']);

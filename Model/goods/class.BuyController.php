@@ -14,7 +14,7 @@ class BuyController extends BaseController{
 		
 		$id = intval($_GET['id']);
 		$goods = goods_get_data(array('id'=>$id));
-		
+		$addresslist = address_get_list(array('uid'=>$this->uid));
 		include template('buy');
 	}
 }

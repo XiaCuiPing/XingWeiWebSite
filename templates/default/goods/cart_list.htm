@@ -11,47 +11,52 @@
             <td width="120">操作</td>
         </tr>
     </table>
-    {loop $cartlist $goodslist}
-    {loop $goodslist $goods}
+    <form aotucomplete="off">
+    {loop $cartlist $shopid $goodslist}
     <div class="goods-item">
     	<table cellpadding="0" cellspacing="0" width="100%" class="goods-shop-table">
             <tr>
                 <td>
                 	<div class="f-right">满100返50</div>
-                	<input type="checkbox">{$shoplist[$goods[shopid]][shopname]}
+                	<input type="checkbox" class="shopmark" autocomplete="off" value="$shopid">{$shoplist[$shopid][shopname]}
                 </td>
             </tr>
         </table>
-        <table cellpadding="0" cellspacing="0" width="100%" class="goods-item-table">
+        {loop $goodslist $goods}
+        <table cellpadding="0" cellspacing="0" width="100%" class="goods-item-table" id="item-$goods[id]">
             <tr>
-                <td width="20"><input type="checkbox"></td>
+                <td width="20"><input type="checkbox" class="mark shop_$goods[shopid]" value="$goods[id]" autocomplete="off"></td>
                 <td class="td-name">
                 	<div class="pic"><img src="{echo image($goods[image])}"></div>
                     <h3 class="name">$goods[name]</h3>
                 </td>
-                <td width="120" class="amount">￥{echo number_format($goods[price], 2);}</td>
+                <td width="120" class="amount" id="price_$goods[id]" value="$goods[price]">
+                ￥{echo number_format($goods[price], 2);}</td>
                 <td width="100">
                 	<div class="number">
-                		<a>-</a>
-                        <input type="text" value="$goods[number]">
-                        <a>+</a>
+                		<a onclick="changeNumber($goods[id], 0)">-</a>
+                        <input type="text" value="$goods[number]" id="number_$goods[id]" autocomplete="off">
+                        <a onclick="changeNumber($goods[id], 1)">+</a>
                 	</div>
                 </td>
-                <td width="120" class="amount">￥{echo number_format($goods[total], 2);}</td>
-                <td width="120"><a>移除购物车</a></td>
+                <td width="120" class="amount" id="total_$goods[id]" value="$goods[total]">
+                ￥{echo number_format($goods[total], 2);}</td>
+                <td width="120"><a onclick="removeFromCart($goods[id])">移除购物车</a></td>
             </tr>
         </table>
+        {/loop}
     </div>
-    {/loop}
     {/loop}
     
     <div class="cart-bottom-div">
     	<a class="settlement">去结算</a>
         <div class="amount">
-        	<p>总价(含运费)：￥100.00</p>
+        	<p>总价(含运费)：<span id="total_amount">￥100.00</span></p>
             <p>已选购3件商品，共为你节省30元</p>
         </div>
-        <div class="checkall"><input type="checkbox"> 全选 <a>删除选中商品</a></div>
+        <div class="checkall"><input type="checkbox" id="checkall"> 全选 <a>删除选中商品</a></div>
     </div>
+    </form>
 </div>
+<script src="/static/js/cart.js"></script>
 {template footer_common}

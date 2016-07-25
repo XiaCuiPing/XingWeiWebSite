@@ -5,6 +5,9 @@ class GoodsController extends BaseController{
 		$this->showlist();
 	}
 	
+	/**
+	 * 显示商品列表
+	 */
 	public function showlist(){
 		global $G,$lang;
 		if ($this->checkFormSubmit()) {
@@ -52,18 +55,90 @@ class GoodsController extends BaseController{
 				}
 				unset($piclist, $pic);
 				
-				$uids = $comma = '';
+				$shopids = $comma = '';
 				foreach ($goodslist as $goods) {
-					$uids.= $comma.$goods['uid'];
+					$shopids.= $comma.$goods['shopid'];
 					$comma = ',';
 				}
-				$userlist = member_get_list(array('uid'=>array('IN', $uids)), $pagesize);
-				unset($uids, $comma);
+				$shoplist = shop_get_list(array('shopid'=>array('IN', $shopids)), $pagesize);
 			}
 			$pages = $this->showPages($G['page'], $pagecount, $totalnum, "catid=$catid&keyword=$keyword", 1);
-			//$categoryoptions = category_get_options(0, $catid, 0, 'goods');
-			category_set_options($categoryoptions, 0, $catid, 0, 'goods');
+			$categoryoptions = category_get_options(0, $catid, 0, 'goods');
 			include template('goods_list');
+		}
+	}
+	
+	/**
+	 * 添加商品
+	 */
+	public function add(){
+		global $G,$lang;
+		if ($this->checkFormSubmit()){
+			$goodsnew = $_GET['goodsnew'];
+			if ($goodsnew['name'] && $goodsnew['price']) {
+				$goodsnew['no'] = goods_create_no();
+				$goodsnew['uid'] = $this->uid;
+				$goodsnew['dateline'] = TIMESTAMP;
+				$id = goods_add_data($goodsnew);
+			
+				$description = $_GET['description'];
+				goods_add_desc(array('gid'=>$id, 'description'=>$description));
+			
+				$piclist = $_GET['piclist'];
+				if ($piclist && is_array($piclist)) {
+					foreach ($piclist as $pic) {
+						image_add_data(array(
+								'dataid'=>$id,
+								'datatype'=>'goods',
+								'image'=>$pic['image'],
+								'thumb'=>$pic['thumb'],
+								'isremote'=>0
+						));
+					}
+				}
+				$this->showSuccess('save_succeed');
+			}
+		}else {
+			$shoplist = shop_get_list(0,10000);
+			include template('goods_form');
+		}
+	}
+	
+	/**
+	 * 编辑商品信息
+	 */
+	public function edit(){
+		global $G,$lang;
+		$id = intval($_GET['id']);
+		$condition = array('id'=>$id);
+		if ($this->checkFormSubmit()){
+			$goodsnew = $_GET['goodsnew'];
+			if ($goodsnew['name'] && $goodsnew['price']) {
+				goods_update_data($condition, $goodsnew);
+				$description = $_GET['description'];
+				goods_add_desc(array('gid'=>$id, 'description'=>$description));
+					
+				$piclist = $_GET['piclist'];
+				image_delete_data(array('dataid'=>$id, 'datatype'=>'goods'));
+				if ($piclist && is_array($piclist)) {
+					foreach ($piclist as $pic) {
+						image_add_data(array(
+								'dataid'=>$id,
+								'datatype'=>'goods',
+								'image'=>$pic['image'],
+								'thumb'=>$pic['thumb'],
+								'isremote'=>0
+						));
+					}
+				}
+				$this->showSuccess('update_succeed');
+			}
+		}else {
+			$goods = goods_get_data($condition);
+			$description = goods_get_desc($id);
+			$piclist = image_get_list($id, 'goods');
+			$shoplist = shop_get_list(0,10000);
+			include template('goods_form');
 		}
 	}
 	

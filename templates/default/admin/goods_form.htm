@@ -1,0 +1,138 @@
+{template header_admin}
+<style type="text/css">
+#imageUploadQueue{width:auto; float:left;}
+#imageUploadQueue:after{display:block; overflow:hidden; content:" "; clear:both;}
+.imageUploadItem{width:100px; height:80px; float:left; margin-right:10px; display:block; 
+overflow:hidden; border:1px #ccc solid; position:relative; background-image:url(/static/images/common/loading32.gif); background-repeat:no-repeat; background-position:center center;}
+.imageUploadItem img{width:100%; height:100%; display:block;}
+.imageUploadItem .del{position:absolute; top:0px; right:0px; line-height:1.0; color:#333; font-size:14px; padding:3px; margin:0; width:auto; height:auto;}
+.imageUploadItem .del:hover{background:#333; color:#fff;}
+.selectImageButton{width:100px; height:80px; padding:0; position:relative; border:1px #ccc solid; background:#f0f0f0; float:left;}
+.selectImageButton a{line-height:80px; display:block; font-size:14px; text-align:center; color:#333;}
+.j-filedata{opacity:0; visibility:visible; position:absolute; z-index:200; cursor:pointer;}
+</style>
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<a class="baritem" href="/?m=$G[m]&c=$G[c]&a=showlist">返回列表</a>
+        </div>
+    	<strong>添加商品</strong>
+    </div>
+	<div class="area">
+        <form method="post" id="goodsForm" action="">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td><input type="text" class="input-text input-title" placeholder="在这里输入商品名称" name="goodsnew[name]" value="$goods[name]" id="goodsname"></td>
+        </tr>
+        </table>
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td width="70">所属公司</td>
+          <td>
+          		<select name="goodsnew[shopid]" class="w200">
+                	{loop $shoplist $shopid $shop}
+                    <option value="$shopid"{if $shopid==$goods[shopid]} selected{/if}>$shop[shopname]</option>
+                    {/loop}
+                </select>
+          </td>
+          <td width="70">商品分类</td>
+          <td>
+          		<select name="goodsnew[catid]" class="w200">{echo category_get_options(0, $goods[catid], 1, 'goods');}</select>
+          </td>
+          <td rowspan="4" width="160">
+            	<input type="submit" class="submit button-publish f-right" value="{if $G[a]=='edit'}更新{else}提交{/if}" id="publishButton">
+          </td>
+        </tr>
+        <tr>
+              <td>商品价格</td>
+              <td><input type="text" class="input-text" name="goodsnew[price]" value="$goods[price]"></td>
+              <td>商品库存</td>
+              <td><input type="text" class="input-text" name="goodsnew[stock]" value="$goods[stock]"></td>          
+         </tr>
+         <tr>
+              <td>是否折扣</td>
+              <td>
+              		<input type="radio" class="radio" name="goodsnew[isdiscount]" value="1"{if $goods[isdiscount]} checked{/if}>是
+                    <input type="radio" class="radio" name="goodsnew[isdiscount]" value="0"{if !$goods[isdiscount]} checked{/if}>否
+              </td>
+              <td>折扣价</td>
+              <td><input type="text" class="input-text" name="goodsnew[discount_price]" value="$goods[discount_price]"></td>
+          </tr>
+        <tr>
+          <td>返现金额</td>
+          <td colspan="3"><input type="text" class="input-text" name="goodsnew[back_amount]" value="$goods[back_amount]"></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+      		<tr>
+            	<td width="70">商品图片</td>
+                <td>上传JPG,JPEG,PNG,GIF格式的图片，大小不要超过5MB。</td>
+            </tr>
+            <tr>
+            	<td></td>
+                <td>
+                	<div id="imageUploadQueue">
+                        {loop $piclist $plist}
+                        <div class="imageUploadItem"><img src="{$plist[thumburl]}">
+                            <input type="hidden" name="piclist[{$plist[id]}][image]" value="{$plist[image]}">
+                            <input type="hidden" name="piclist[{$plist[id]}][thumb]" value="{$plist[thumb]}">
+                            <a class="icon del" href="javascript:;" title="删除" onclick="$(this).parent().remove();">&#xf00b3;</a>
+                        </div>
+                        {/loop}
+                        <div class="selectImageButton" id="selectImageButton"><a href="javascript:;">添加图片</a></div>
+                    </div>
+                </td>
+            </tr>
+      </table>
+      {eval $editorname='description';}
+      {eval $editorcontent=$description[description];}
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+        	<td width="70">商品描述</td>
+          	<td><div style="box-sizing:border-box">{template editor}</div></td>
+        </tr>
+      </table>
+      </form>
+    </div>
+</div>
+<form id="uploadForm" method="post" enctype="multipart/form-data" action="/?m=common&c=upload&a=uploadimage">
+<input name="filedata" id="filedata" type="file" title="选择商品图片" class="j-filedata">
+</form>
+<script type="text/javascript">
+$("#selectImageButton").mouseover(function(){
+	$("#filedata").css({'left':$(this).offset().left,'top':$(this).offset().top})
+	.width($(this).width()).height($(this).height());
+});
+
+var imagenum = 0;
+var imagekey = 0;
+$("#filedata").change(function(){
+	var picItem;
+	$("#uploadForm").ajaxSubmit({
+		dataType:'json',
+		beforeSend:function(){
+			picItem = $('<div class="imageUploadItem"></div>').insertBefore("#selectImageButton");
+		},
+		success:function(json){
+			if(json.errno == 0){
+				var del = $('<a class="icon del" href="javascript:;" title="删除">&#xf00b3;</a>').on('click',function(){
+					$(this).parent().remove();
+					imagenum--;
+				});
+				picItem.append('<img src="'+json.data.imageurl+'" />');
+				picItem.append('<input type="hidden" name="piclist['+imagekey+'][image]" value="'+json.data.image+'">');
+				picItem.append('<input type="hidden" name="piclist['+imagekey+'][thumb]" value="'+json.data.thumb+'">');
+				picItem.append(del);
+				imagenum++;
+				imagekey++;
+			}else {
+				alert('上传失败('+json.error+')');
+			}
+		}
+	});
+});
+</script>
+</div>
+{template footer_admin}

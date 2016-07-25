@@ -18,12 +18,12 @@
             <div class="cell">
             	<a href="" class="cur">全部</a>
                 <a href="">北京</a>
-                <a href="/">上海</a>
-                <a href="/">广州</a>
-                <a href="/">深圳</a>
-                <a href="/">成都</a>
-                <a href="/">重庆</a>
-                <a href="/">西安</a>
+                <a href="">上海</a>
+                <a href="">广州</a>
+                <a href="">深圳</a>
+                <a href="">成都</a>
+                <a href="">重庆</a>
+                <a href="">西安</a>
                 <a href="">昆明</a>
             </div>
         </div>
@@ -31,17 +31,16 @@
     
     <div class="blank"></div>
     <div class="area viewList">
-    	<div class="tit">共为你查询到100条信息</div>
+    	<div class="tit">共为你查询到{$totalnum}条信息</div>
         <div class="LList">
         	<ul>
-            	{eval $goodslist[hot]=goods_get_list(0,10);}
-                {loop $goodslist[hot] $glist}
+                {loop $goodslist[list] $goods}
                 <li>
                 	<div class="bd">
-                	<div class="pic"><img src="$glist[thumburl]"></div>
-                    <h2 class="title">$glist[name]</h2>
+                	<div class="pic"><img src="{echo image($goods[image])}"></div>
+                    <h2 class="title">$goods[name]</h2>
                     <div class="fan">免费赠送门票一张</div>
-                    <div class="price">￥:100.00</div>
+                    <div class="price">￥:{echo @number_format($goods[price], 2)}</div>
                     </div>
                 </li>
                 {/loop}

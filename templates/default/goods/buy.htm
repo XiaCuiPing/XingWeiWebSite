@@ -1,0 +1,88 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/buy.css">
+<div class="area buy">
+	<div class="buy">
+    	<h3 class="h3-title">选择收货地址</h3>
+    	<div class="address-div">
+        	<ul id="addrlist">
+            	{loop $addresslist $addr}
+            	<li{if $addr[isdefault]} class="cur"{/if}>
+                	<h3>$addr[consignee]</h3>
+                    <p>$addr[street]</p>
+                    <p>$addr[province] $addr[city] $addr[county] $addr[postnum]</p>
+                    <p>$addr[phone]</p>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+        <div class="blank"></div>
+        <h3 class="h3-title">使用新收货地址</h3>
+        <div>
+        	<form method="post" id="addressForm" action="/?m=$G[m]&c=address&a=add">
+            	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="address-form-table">
+                  <tr>
+                    <td class="item-name">省<i>*</i></td>
+                    <td>
+                    	<select id="province" name="addressnew[province]" style="width:auto;">
+                          <option value="">请选择</option>
+                        </select> 市:
+                        <select id="city" name="addressnew[city]" style="width:auto;">
+                            <option value="">请选择</option>
+                        </select> 区:
+                        <select id="county" name="addressnew[county]" style="width:auto;">
+                            <option value="">请选择</option>
+                        </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="item-name">邮政编码<i>*</i></td>
+                    <td><input type="text" name="addressnew[postnum]" class="input-text"></td>
+                  </tr>
+                  <tr>
+                    <td class="item-name">街道地址<i>*</i></td>
+                    <td><textarea class="w500" name="addressnew[street]"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td class="item-name">收货人姓名<i>*</i></td>
+                    <td><input type="text" name="addressnew[consignee]" class="input-text"></td>
+                  </tr>
+                  <tr>
+                    <td class="item-name">手机号码<i>*</i></td>
+                    <td><input type="text" name="addressnew[phone]" class="input-text"></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td><button class="button" type="button" id="addaddress">确认地址</button></td>
+                  </tr>
+                </table>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<script type="text/javascript">
+DSXCMS.showDistrict(0, '#province', '$profile[province]', '选择省份');
+$("#province").change(function(e) {
+	var fid = parseInt($(this).find(":selected").attr("idvalue"));
+    if(fid) DSXCMS.showDistrict(fid, '#city', '$profile[city]', '选择城市');
+});
+$("#city").change(function(e) {
+	var fid = parseInt($(this).find(":selected").attr("idvalue"));
+    if(fid) DSXCMS.showDistrict(fid, '#county', '$profile[county]', '选择区县');
+});
+$("#addaddress").click(function(e) {
+    $("#addressForm").ajaxSubmit({
+		dataType:'json',
+		success:function(json){
+			if(json.errno == 0){
+				window.location = window.location.href;
+			}else {
+			}
+		}
+	});
+});
+$("#addrlist li").click(function(e) {
+    $(this).addClass('cur').siblings().removeClass();
+});
+</script>
+{template footer_common}

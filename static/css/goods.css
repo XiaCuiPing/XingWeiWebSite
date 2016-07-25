@@ -13,12 +13,12 @@
 
 .goods-list-div .viewList{display:block; border:0.5px #CCC solid;}
 .goods-list-div .viewList .tit{padding:10px; display:block; background:#EEEEEF; border-bottom:0.5px #CCC solid;}
-.goods-list-div .viewList .LList{width:750px; float:left; overflow:hidden; border-right:0.5px #CCC solid;}
+.goods-list-div .viewList .LList{width:750px; float:left; overflow:hidden; border-right:0.5px #CCC solid; min-height:1300px;}
 .goods-list-div .viewList .LList ul{display:block; width:755px;}
 .goods-list-div .viewList .LList ul li{width:375px; float:left; margin:-1px 0 0 -1px; border-top:0.5px #CCC solid;
 border-left:0.5px #CCC solid;}
 .goods-list-div .viewList .LList ul li .bd{padding:20px 20px 10px; display:block;}
-.goods-list-div .viewList .LList ul li .pic{width:335px; height:200px; display:block; overflow:hidden;}
+.goods-list-div .viewList .LList ul li .pic{width:335px; height:335px; display:block; overflow:hidden;}
 .goods-list-div .viewList .LList ul li .pic img{display:block; width:100%; height:100%;}
 .goods-list-div .viewList .LList ul li .title{height:30px; line-height:30px; font-size:14px; overflow:hidden;}
 .goods-list-div .viewList .LList ul li .fan{height:20px; line-height:20px; color:#999; overflow:hidden; display:block; font-size:12px;}

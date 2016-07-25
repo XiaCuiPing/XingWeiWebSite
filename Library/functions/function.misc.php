@@ -683,6 +683,75 @@ function favorite_get_page($condition, $page=1, $pagesize=20, $order=''){
 	return favorite_get_list($condition, $pagesize, $limit, $order);
 }
 
+/**
+ * 添加收货地址
+ * @param array $data
+ * @param number $return
+ */
+function address_add_data($data, $return=0){
+	$id = M('address')->insert($data, true);
+	if ($return) {
+		return address_get_data(array('id'=>$id));
+	}else {
+		return $id;
+	}
+}
+
+/**
+ * 删除收货地址
+ * @param mixed $condition
+ */
+function address_delete_data($condition){
+	if ($condition) {
+		return M('address')->where($condition)->delete();
+	}else {
+		return false;
+	}
+}
+
+/**
+ * 更新收货地址
+ * @param mixed $condition
+ * @param array $data
+ */
+function address_update_data($condition, $data){
+	return M('address')->where($condition)->update($data);
+}
+
+/**
+ * 获取收货地址
+ * @param mixed $condition
+ */
+function address_get_data($condition){
+	$data = M('address')->where($condition)->getOne();
+	if ($data) {
+		return $data;
+	}else {
+		return array();
+	}
+}
+
+/**
+ * 获取收货地址数目
+ * @param mixed $condition
+ */
+function address_get_num($condition){
+	return M('address')->where($condition)->count();
+}
+
+/**
+ * 获取收货地址列表
+ * @param mixed $condition
+ */
+function address_get_list($condition){
+	$addresslist = M('address')->where($condition)->order('isdefault DESC,id ASC')->select();
+	if ($addresslist) {
+		return $addresslist;
+	}else {
+		return array();
+	}
+}
+
 
 /**
  * 添加数据

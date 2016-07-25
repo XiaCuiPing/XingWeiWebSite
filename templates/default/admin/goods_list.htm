@@ -16,6 +16,7 @@
         	
         </div>
     	<strong>商品管理</strong>
+        <a href="/?m=$G[m]&c=$G[c]&a=add" class="baritem">添加商品</a>
 	</div>
     <div class="table-hd">
         <form method="post">
@@ -27,27 +28,28 @@
             <th width="20" class="center">选?</th>
             <th width="50">图片</th>
             <th>商品名称</th>
-            <th width="160">店掌柜</th>
-            <th width="90">原价</th>
-            <th width="90">折扣价</th>
-            <th width="90">返现</th>
+            <th width="160">商家</th>
+            <th width="60">原价</th>
+            <th width="60">折扣价</th>
+            <th width="60">返现</th>
             <th width="140">发布时间</th>
             <th width="64">状态</th>
+            <th width="40">编辑</th>
           </tr>
          </thead>
          <tbody>
           {loop $goodslist $id $goods}
-          {eval $pubtime=@date('Y-m-d H:i', $goods[dateline]);}
           <tr>
             <td><input type="checkbox" class="checkbox" name="id[]" value="$id"></td>
             <td><img src="{echo image($goods[thumb]);}" width="50" height="50" style="display:block;"></td>
             <th><a href="/?m=goods&c=detail&id=$id" target="_blank">$goods[name]</a></th>
-            <td>{$userlist[$goods[uid]][username]}</td>
-            <td>{$goods[price]}</td>
-            <td>{$goods[discount_price]}</td>
-            <td>{$goods[back_amount]}</td>
-            <td>{$pubtime}</td>
+            <td>{$shoplist[$goods[shopid]][shopname]}</td>
+            <td>{echo @number_format($goods[price],2)}</td>
+            <td>{echo @number_format($goods[discount_price],2)}</td>
+            <td>{echo @number_format($goods[back_amount],2)}</td>
+            <td>{echo @date('Y-m-d H:i', $goods[dateline]);}</td>
             <td>{$lang[goods_status][$goods[status]]}</td>
+            <td><a href="/?m=$G[m]&c=$G[c]&a=edit&id=$id">编辑</a></td>
           </tr>
           {/loop}
           </tbody>
