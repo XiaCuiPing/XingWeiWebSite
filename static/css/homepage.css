@@ -1,7 +1,7 @@
 /* CSS Document */
 .redback{background-color:#fff; height:410px; display:block; width:100%;}
 .slideHD{height:410px; position:relative;}
-.multimenu{position:absolute; left:0; top:0; padding:0; margin:0; display:block; z-index:100; width:180px; height:410px; background:#F7F7F7;}
+.multimenu{position:absolute; left:0; top:1px; padding:0; margin:0; display:block; z-index:100; width:180px; height:410px; background:#F7F7F7;}
 .multimenu li{display:block; padding:8px 0 8px 10px; font-size:12px; border-top:1px #e8e8e8 solid; margin-top:-1px;}
 .multimenu li a{display:inline-block; white-space:nowrap; margin-right:8px;}
 
@@ -49,7 +49,7 @@
 .goodsList-5 li .pic{margin:10px; width:178px; height:178px; display:block; overflow:hidden;}
 .goodsList-5 li .pic img{width:100%; height:100%; display:block;}
 .goodsList-5 li .name{margin:0 10px; line-height:1.2; font-size:12px; height:28px; overflow:hidden; color:#444; font-weight:bold;}
-.goodsList-5 li .fan{height:30px; margin:10px 10px 5px; font-size:16px; color:#666; font-weight:bold; clear:both; overflow:hidden;}
+.goodsList-5 li .fan{height:30px; margin:10px 10px 5px; font-size:16px; color:#F00; font-weight:bold; clear:both; overflow:hidden;}
 .goodsList-5 li .fan i{font-style:normal; background:#F00; color:#fff; font-size:12px; padding:2px 8px; float:right;}
 
 .brandDiv{display:block; clear:both; margin-top:10px;}
@@ -74,7 +74,7 @@
 
 .lianmengDiv{display:block; margin-top:10px; overflow:hidden;}
 .lianmengDiv ul{display:block; width:1010px;}
-.lianmengDiv ul li{width:240.5px; float:left; border:1px #DDD solid; margin:0 10px 10px 0;}
+.lianmengDiv ul li{width:240.5px; float:left; border:1px #DDD solid; margin:0 10px 10px 0; padding-bottom:5px;}
 .lianmengDiv ul li .pic{height:240.5px; display:block;}
 .lianmengDiv ul li .pic img{width:100%; height:100%; display:block;}
 .lianmengDiv ul li .name{margin:10px 10px 5px; font-size:14px; height:20px; overflow:hidden;}

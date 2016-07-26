@@ -7,9 +7,9 @@
 .goodsDetail .goodsInfo{overflow:hidden;}
 .goodsDetail .goodsInfo .h1-title{padding:20px; font-size:16px; line-height:1.2; border-bottom:1px #CCC solid;}
 .goodsDetail .goodsAttr{width:400px; float:left; border-right:1px #CCC solid;}
-.goodsDetail .goodsAttr .price{background:#D41D6D; color:#fff; padding:20px; position:relative;}
-.goodsDetail .goodsAttr .price .p1{font-size:12px; height:30px;}
-.goodsDetail .goodsAttr .price .p2{display:block; font-size:14px;}
+.goodsDetail .goodsAttr .price{background:#D41D6D; color:#fff; padding:15px 20px; position:relative;}
+.goodsDetail .goodsAttr .price .p1{font-size:14px; height:30px; font-weight:bold;}
+.goodsDetail .goodsAttr .price .p2{display:block; font-size:16px; font-weight:bold;}
 .goodsDetail .goodsAttr .price .p2 strong{font-size:16px;}
 .goodsDetail .goodsAttr .discounting{background:#efefef; padding:5px 10px; font-size:14px; margin-top:10px; font-weight:500;}
 .goodsDetail .goodsAttr .attrbox{display:block; padding:10px 20px;}
@@ -32,12 +32,12 @@ width:90px; font-size:13px; text-align:center; margin-left:5px; cursor:pointer;}
 .goodsDetail .shopbox h3{font-size:16px;}
 
 .goodsdiv{display:block; border:1px #DBDCDC solid;}
-.goodsdiv .bar{background-color:#DBDCDC; height:30px; font-size:12px; position:relative;}
-.goodsdiv .bar .tab{height:31px; margin-top:-1px; display:block; float:left; line-height:31px; 
+.goodsdiv .bar{background-color:#DBDCDC; height:40px; font-size:12px; position:relative;}
+.goodsdiv .bar .tab{height:41px; margin-top:-1px; display:block; float:left; line-height:41px; 
 font-size:12px; width:100px; text-align:center; cursor:pointer;}
 .goodsdiv .bar .tab-on{background:#fff; border-top:3px #B6166D solid; box-sizing:border-box;}
 .goodsdiv .hot-sale{display:block; margin:30px 10px;}
 .goodsdiv .hot-sale li{float:left; width:163px; overflow:hidden;}
 .goodsdiv .hot-sale li img{display:block; width:130px; height:130px; margin:0 auto;}
-.goodsdiv .desc{display:block; padding:20px; overflow:hidden;}
+.goodsdiv .desc{display:block; padding:20px; overflow:hidden; font-size:14px; line-height:1.5;}
 .goodsdiv .desc img{max-width:100%;}

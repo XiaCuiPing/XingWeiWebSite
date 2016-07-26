@@ -1,0 +1,11 @@
+<ul>
+    {eval $goodslist[hot]=goods_get_list(0,10,0,'RAND()');}
+    {loop $goodslist[hot] $glist}
+    <li>
+        <h2 class="name"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">$glist[name]</a></h2>
+        <div class="price">￥:{echo @number_format($glist[price],2)}</div>
+        <div class="pic"><a href="/?m=goods&c=detail&id=$glist[id]" target="_blank">
+        <img src="$glist[thumburl]"></a></div>
+    </li>
+    {/loop}
+</ul>

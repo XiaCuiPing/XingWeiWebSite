@@ -18,8 +18,8 @@
     	<h1 class="h1-title">$goods[name]</h1>
         <div class="goodsAttr">
         	<div class="price">
-            	<p class="p1">原价:<s>$goods[price]</s></p>
-            	<p class="p2">折扣价:<strong>$goods[discount_price]</strong></p>
+            	<p class="p1">原价: <s>{echo @number_format($goods[price],2)}</s></p>
+            	<p class="p2">折扣价: <strong>{echo @number_format($goods[discount_price],2)}</strong></p>
             </div>
             <div class="discounting">正在促销 可返现20%</div>
             <div class="attrbox">
@@ -90,7 +90,25 @@
         </div>
         
         <div class="desc">$description[description]</div>
+      <div class="desc" style="display:none;">$description[description]</div>
+        <div class="desc" style="display:none;">
+              <h2>72小时发货</h2>
+              <p>付款后72小时内发货</p>
+              <div class="blank"></div>
+              <h2>7天无理由退货</h2>
+              <p>该商品支持 7 天无理由退货，自商品签收之日起 7 天内：</p>
+              <p>1、商品外包装完整，相关附（配）件齐全；（若有）要求吊牌完整；（若有）唯一性三包卡不能缺失或撕损；</p>
+              <p>2、商品无显著穿戴、无洗涤、无破损等痕迹；如商品使用留下记录参数，则不支持退；</p>
+              <p>3、限量版商品的退货条件以官网说明为准（是否限量以官网说明为准）；</p>
+              <p>可申请无理由退货，包邮商品需要买家承担退货邮费，非包邮商品需要买家承担发货和退货邮费。</p>
+        </div>
     </div>
 </div>
+<script type="text/javascript">
+$(".tab").click(function(e) {
+    $(this).addClass('tab-on').siblings().removeClass('tab-on');
+	$(".desc").eq($(this).index()).show().siblings('.desc').hide();
+});
+</script>
 <script src="/static/js/goods_buy.js"></script>
 {template footer_common}

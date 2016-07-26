@@ -1,2 +1,35 @@
 {template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/shop.css">
+<div class="area" style="margin-top:30px;">
+	<div class="shop-pic"><img src="{echo image($shop[logo])}"></div>
+    <div class="shop-info">
+    	<h2>$shop[shopname]</h2>
+        <div class="item"><i>电话:</i><span>$shop[tel]</span></div>
+        <div class="item"><i>区域:</i><span>$shop[province] $shop[city] $shop[county]</span></div>
+        <div class="item"><i>地址:</i><span>$shop[address]</span></div>
+        <div class="item"><i>主营项目:</i><span>$shop[summary]</span></div>
+    </div>
+</div>
+<div class="blank"></div>
+<div class="area shop-desc">
+	<div class="shop-tabbar">
+    	<a class="tab tab-on">公司介绍</a>
+        <a class="tab">热销产品</a>
+    </div>
+    
+    <div class="shop-con"><div class="desc">$description[description]</div></div>
+    <div class="shop-con" style="display:none;">
+    	<ul class="goods-list">
+        	{loop $goodslist $id $goods}
+            <li><img src="{echo image($goods[image])}"></li>
+            {/loop}
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+$(".tab").click(function(e) {
+    $(this).addClass('tab-on').siblings().removeClass('tab-on');
+	$(".shop-con").eq($(this).index()).show().siblings('.shop-con').hide();
+});
+</script>
 {template footer_common}

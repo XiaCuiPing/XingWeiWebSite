@@ -28,4 +28,8 @@ class IndexController extends BaseController{
 	public function fan(){
 		$this->index();
 	}
+	
+	public function showhot(){
+		include template('hot_sale');
+	}
 }

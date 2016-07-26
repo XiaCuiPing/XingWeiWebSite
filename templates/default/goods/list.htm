@@ -37,7 +37,8 @@
                 {loop $goodslist[list] $goods}
                 <li>
                 	<div class="bd">
-                	<div class="pic"><img src="{echo image($goods[image])}"></div>
+                	<div class="pic"><a href="/?m=goods&c=detail&id=$goods[id]" target="_blank">
+                    <img src="{echo image($goods[image])}"></a></div>
                     <h2 class="title">$goods[name]</h2>
                     <div class="fan">免费赠送门票一张</div>
                     <div class="price">￥:{echo @number_format($goods[price], 2)}</div>
@@ -50,11 +51,12 @@
         <div class="RList">
         	<ul>
             	{eval $goodslist[hot]=goods_get_list(0,6);}
-                {loop $goodslist[hot] $glist}
+                {loop $goodslist[hot] $goods}
                 <li>
                 	<div class="bd">
-                	<div class="pic"><img src="$glist[thumburl]"></div>
-                    <h2 class="title">$glist[name]</h2>
+                	<div class="pic"><a href="/?m=goods&c=detail&id=$goods[id]" target="_blank">
+                    <img src="{echo image($goods[image])}"></a></div>
+                    <h2 class="title">$goods[name]</h2>
                     <div class="fan"><span>50评</span>满100f返20</div>
                     </div>
                 </li>

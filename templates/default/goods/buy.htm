@@ -2,6 +2,7 @@
 <link rel="stylesheet" type="text/css" href="/static/css/buy.css">
 <div class="area buy">
 	<div class="buy">
+    	{if $addresslist}
     	<h3 class="h3-title">选择收货地址</h3>
     	<div class="address-div">
         	<ul id="addrlist">
@@ -16,6 +17,7 @@
             </ul>
         </div>
         <div class="blank"></div>
+        {/if}
         <h3 class="h3-title">使用新收货地址</h3>
         <div>
         	<form method="post" id="addressForm" action="/?m=$G[m]&c=address&a=add">
