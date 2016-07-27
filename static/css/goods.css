@@ -15,7 +15,7 @@
 .goods-list-div .viewList .tit{padding:10px; display:block; background:#EEEEEF; border-bottom:0.5px #CCC solid;}
 .goods-list-div .viewList .LList{width:750px; float:left; overflow:hidden; border-right:0.5px #CCC solid; min-height:1300px;}
 .goods-list-div .viewList .LList ul{display:block; width:755px;}
-.goods-list-div .viewList .LList ul li{width:250px; float:left; margin:-1px 0 0 -1px; border-right:0.5px #CCC solid;
+.goods-list-div .viewList .LList ul li{width:251px; float:left; margin:-1px 0 0 -1px; border-right:0.5px #CCC solid;
 border-bottom:0.5px #CCC solid;}
 .goods-list-div .viewList .LList ul li .bd{padding:20px 20px 10px; display:block;}
 .goods-list-div .viewList .LList ul li .pic{height:210px; display:block; overflow:hidden;}

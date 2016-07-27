@@ -1,20 +1,31 @@
 {template header_common}
 <link rel="stylesheet" type="text/css" href="/static/css/about.css">
 <div class="area about">
-	<!--<div class="brandlist">
-    	<ul>
-        	{eval $shoplist[hot]=shop_get_list(0,4);}
-            {loop $shoplist[hot] $shopid $slist}
-            <li>
-                <a href="/?m=shop&c=detail&shopid=$shopid" target="_blank">
-                <img src="{echo image($slist[thumb]);}"></a>
-            </li>
-            {/loop}
-        </ul>
-    </div>-->
+	<div class="slideHD">
+        <!--幻灯片-->
+        <script src="/static/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
+        <div class="slideDiv">
+        	<div class="slideBox" id="slideBox">
+            	{eval $sliderlist=slider_get_image(1);}
+                <div class="bd">
+                    <ul>
+                        {loop $sliderlist $list}
+                        <li><a href="$list[url]" target="_blank"><img src="{echo image($list[image]);}"></a></li>
+                        {/loop}
+                    </ul>
+                </div>
+                <!-- 下面是前/后按钮代码，如果不需要删除即可 -->
+                <!--<a href="javascript:void(0)" class="prev"></a>-->
+                <!--<a href="javascript:void(0)" class="next"></a>-->
+    
+        	</div>
+        </div>
+        <script type="text/javascript">jQuery(".slideBox").slide({mainCell:".bd ul",autoPlay:true,delayTime:1000});</script>
+    </div>
+    
     <div class="blank"></div>
 	<div class="titlediv">
-    	<strong>联盟企业</strong>
+    	<strong>关于星微</strong>
     </div>
     
     <div class="content">
@@ -23,42 +34,47 @@
         </div>
         <div class="vbox">
         	<ul>
+            	{eval $shoplist=shop_get_list(0,5)}
+                {loop $shoplist $shopid $shop}
             	<li>
-                	<h3>力爱迪科技企业宣传片</h3>
-                    <div>六盘水力爱迪科技有限公司</div>
+                	<h3><a href="/?m=shop&c=detail&shopid=$shopid">$shop[shopname]</a></h3>
+                    <div>$shop[summary]</div>
                 </li>
-                <li>
-                	<h3>力爱迪科技企业宣传片</h3>
-                    <div>六盘水力爱迪科技有限公司</div>
-                </li>
-                <li>
-                	<h3>力爱迪科技企业宣传片</h3>
-                    <div>六盘水力爱迪科技有限公司</div>
-                </li>
-                <li>
-                	<h3>力爱迪科技企业宣传片</h3>
-                    <div>六盘水力爱迪科技有限公司</div>
-                </li>
-                <li>
-                	<h3>力爱迪科技企业宣传片</h3>
-                    <div>六盘水力爱迪科技有限公司</div>
-                </li>
+                {/loop}
             </ul>
         </div>
     </div>
-    
+    <div class="blank"></div>
     <div class="titlediv">
     	<strong>星微动态</strong>
     </div>
     <div class="content">
     	<ul class="newslist">
-        	{eval $newslist=post_get_list(array('catid'=>699), 10);}
+        	{eval $newslist=page_get_list(array('catid'=>12), 10);}
             {loop $newslist $id $news}
-        	<li><span>{echo date('Y/m/d', $news[pubtime])}</span>
-            <a href="/?m=post&c=detail&id=$news[id]" target="_blank">$news[title]</a></li>
+        	<li><span>{echo @date('Y/m/d', $news[pubtime])}</span>
+            <a href="/?m=$G[m]&c=page&a=detail&pageid=$news[pageid]" target="_blank">$news[title]</a></li>
             {/loop}
         </ul>
     </div>
+    <div class="blank"></div>
+    <div class="titlediv">
+    	<strong>联盟企业</strong>
+    </div>
+    <div class="content">
+    	<div class="company-list">
+        	<ul>
+            	{eval $comanylist=company_get_list(0,10);}
+            	{loop $comanylist $list}
+                <li>
+                	<div class="pic"><img src="{echo image($list[logo])}"></div>
+                    <div class="name">$list[name]</div>
+                </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+    <div class="blank"></div>
     <div class="titlediv">
     	<strong>关于我们</strong>
     </div>

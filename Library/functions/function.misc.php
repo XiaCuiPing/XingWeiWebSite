@@ -134,7 +134,13 @@ function ad_update_data($condition,$data){
  * @param mixed $condition
  */
 function ad_get_data($condition){
-	return M('ad')->where($condition)->getOne();
+	$ad = M('ad')->where($condition)->getOne();
+	if ($ad) {
+		$ad['data'] = unserialize($ad['data']);
+		return $ad;
+	}else {
+		return array();
+	}
 }
 
 /**

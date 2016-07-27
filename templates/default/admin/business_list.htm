@@ -1,0 +1,74 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<form name="search" action="/?">
+                <input type="hidden" name="m" value="$G[m]">
+                <input type="hidden" name="c" value="$G[c]">
+                <input type="hidden" name="a" value="$G[a]">
+                <!--<select name="catid" id="catid">
+                    <option value="0" class="bold">所有分类</option>
+                    $categoryoptions
+                </select>-->
+                <input type="text" class="input-text" name="keyword" value="$keyword">
+                <input type="submit" class="button search" value="$lang[search]">
+            </form>
+        	
+        </div>
+    	<strong>联盟商家</strong>
+        <a href="/?m=$G[m]&c=$G[c]&a=add" class="baritem">添加商家</a>
+	</div>
+    <div class="table-hd">
+        <form method="post">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="listtable">
+        <thead>
+          <tr>
+            <th width="20" class="center">选?</th>
+            <th width="50">图片</th>
+            <th>商家名称</th>
+            <th width="160">联系电话</th>
+            <th width="100">省</th>
+            <th width="100">市</th>
+            <th width="100">县</th>
+            <th width="100">添加时间</th>
+            <th width="40">编辑</th>
+          </tr>
+         </thead>
+         <tbody>
+          {loop $businesslist $list}
+          {eval $id=$list[id]}
+          <tr>
+            <td><input type="checkbox" class="checkbox" name="delete[]" value="$id"></td>
+            <td><img src="{echo image($list[logo]);}" width="50" height="50" style="display:block;"></td>
+            <th><a href="/?m=lianmeng&c=detail&id=$id" target="_blank">$list[name]</a></th>
+            <td>{$list[tel]}</td>
+            <td>{$list[province]}</td>
+            <td>{$list[city]}</td>
+            <td>{$list[county]}</td>
+            <td>{echo @date('Y-m-d', $list[dateline]);}</td>
+            <td><a href="/?m=$G[m]&c=$G[c]&a=edit&id=$id">编辑</a></td>
+          </tr>
+          {/loop}
+          </tbody>
+          <tfoot>
+          <tr>
+            <td colspan="10">
+                <label><input type="checkbox" class="checkbox" onclick="DSXCMS.checkAll(this,'delete[]')"> $lang[selectall]</label>
+                <label><input type="radio" class="radio" name="option" value="delete" checked="checked"> 删除</label>
+            </td>
+          </tr>
+          <tr>
+              <td colspan="10">
+                  <span class="pages">$pages</span>
+                  <input type="submit" class="submit" value="$lang[submit]">
+                  <input type="button" class="button" value="$lang[refresh]" onclick="window.location.reload()">
+              </td>
+          </tr>
+         </tfoot>
+        </table>
+        </form>
+     </div>
+</div>
+{template footer_admin}

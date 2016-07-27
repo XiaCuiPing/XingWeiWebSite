@@ -21,7 +21,7 @@
     <div class="shop-con" style="display:none;">
     	<ul class="goods-list">
         	{loop $goodslist $id $goods}
-            <li><img src="{echo image($goods[image])}"></li>
+            <li><a href="/?m=goods&c=detail&id=$goods[id]" target="_blank"><img src="{echo image($goods[image])}"></a></li>
             {/loop}
         </ul>
     </div>

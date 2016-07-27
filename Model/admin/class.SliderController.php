@@ -49,13 +49,18 @@ class SliderController extends BaseController{
 					slider_update_image(array('id'=>$id), $pic);
 					$displayorder++;
 				}
-				slider_delete_image(array('id'=>array('NOT IN', implodeids(array_keys($piclist)))));
 			}
 			$this->showSuccess('update_succeed');
 		}else {
 			$piclist = slider_get_image($sliderid);
 			include template('slider_image');
 		}
+	}
+	
+	public function deleteimage(){
+		$id = intval($_GET['id']);
+		slider_delete_image(array('id'=>$id));
+		$this->showAjaxReturn(array('result'=>'SUCCEESS'));
 	}
 	
 	public function uploadimage(){

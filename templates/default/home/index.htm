@@ -25,7 +25,7 @@
     </div>
 </div>
 
-<div class="blank"></div>
+<!--<div class="blank"></div>
 <div class="area scrollBanner" id="scrollBanner">
 	<div class="bd">
     	<ul>
@@ -38,7 +38,7 @@
 </div>
 <script type="text/javascript">
 jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:4,trigger:"click",delayTime:1000});
-</script>
+</script>-->
 <div class="blank"></div>
 <div class="area">
 	<div class="titleDiv">
@@ -106,13 +106,13 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
     </div>
     <div class="lianmengDiv">
     	<ul>
-        	{eval $shoplist=shop_get_list(0,8);}
-            {loop $shoplist $shopid $shop}
+        	{eval $businesslist=business_get_list(0,8);}
+            {loop $businesslist $list}
         	<li>
-                <div class="pic"><a href="/?m=shop&c=detail&shopid=$shopid"><img src="{echo image($shop[logo]);}"></a></div>
-                <div class="name"><a href="/?m=shop&c=detail&shopid=$shopid">{$shop[shopname]}</a></div>
+                <div class="pic"><a href="/?m=lianmeng&c=detail&id=$list[id]"><img src="{echo image($list[logo]);}"></a></div>
+                <div class="name"><a href="/?m=lianmeng&c=detail&id=$list[id]">{$list[name]}</a></div>
                 <div class="comm"><img src="/static/images/common/stars.png" class="stars"> 50评价</div>
-                <div class="address">{$shop[address]}</div>
+                <div class="address">{$list[address]}</div>
                 <!--<div class="fan"><i>返现20元</i> ￥: 100.00</div>-->
             </li>
             {/loop}

@@ -1,4 +1,25 @@
 @charset "UTF-8";
+/**筛选匡**/
+.filter-div{display:block; border:0.5px #CCC solid; margin:20px auto; border-bottom:0;}
+.filter-div .row{display:block; border-bottom:0.5px #CCC solid;}
+.filter-div .row .cell{padding:10px; font-size:12px; display:inline-block;}
+.filter-div .row .cell .tit{border-left:5px #D41D6D solid; font-weight:bold; padding-left:10px; font-size:16px;}
+.filter-div .row .cell-name{width:40px; color:#999; text-align:right; float:left;}
+.filter-div .row .cell-name span{padding:3px 0px; display:block;}
+.filter-div .row .cell a{display:inline-block; padding:3px 7px; margin-right:5px;}
+.filter-div .row .cell a.cur{background:#D41D6D; color:#fff;}
+.filter-div .row .cell-con{width:900px;}
+
+/**联盟商家列表**/
+.lm-business-div{display:block; overflow:visible; margin-top:10px;}
+.lm-business-list{width:1050px; display:block;}
+.lm-business-list li{float:left; margin:0 30px 30px 0; width:227px;}
+.lm-business-list li .pic{display:block; height:227px; overflow:hidden;}
+.lm-business-list li .pic img{display:block; width:100%; height:100%;}
+.lm-business-list li .name{height:30px; line-height:30px; font-size:14px; font-weight:400;}
+.lm-business-list li .name span{font-size:14px; color:#F00; float:right; font-weight:100;}
+
+/*商品详细*/
 .goodsDetail{border:1px #ccc solid;}
 .goodsDetail .picBox{width:400px; float:left; border-right:1px #CCC solid;}
 .goodsDetail .picBox .image{height:400px; display:block; overflow:hidden;}
@@ -6,7 +27,7 @@
 .goodsDetail .picBox .thumbs{}
 .goodsDetail .goodsInfo{overflow:hidden;}
 .goodsDetail .goodsInfo .h1-title{padding:20px; font-size:16px; line-height:1.2; border-bottom:1px #CCC solid;}
-.goodsDetail .goodsAttr{width:400px; float:left; border-right:1px #CCC solid;}
+/*.goodsDetail .goodsAttr{width:400px; float:left; border-right:1px #CCC solid;}*/
 .goodsDetail .goodsAttr .price{background:#D41D6D; color:#fff; padding:15px 20px; position:relative;}
 .goodsDetail .goodsAttr .price .p1{font-size:14px; height:30px; font-weight:bold;}
 .goodsDetail .goodsAttr .price .p2{display:block; font-size:16px; font-weight:bold;}

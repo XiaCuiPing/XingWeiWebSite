@@ -105,7 +105,8 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
             <strong>家庭清洁</strong>
         </div>
         <div class="goodsLeft" style="background-color:#FF8B01;">
-        	<div class="pic"><img src="/static/images/ad/jtqj.png"></div>
+        	{eval $ad=ad_get_data(array('id'=>104))}
+        	<div class="pic"><img src="{$ad[data][image]}"></div>
             <div class="menus">
             	<a href="/?m=goods&c=list&catid=532">洗衣液</a>
                 <a href="/?m=goods&c=list&catid=534">洗衣皂</a>
@@ -138,7 +139,8 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
             <strong>家居家电</strong>
         </div>
         <div class="goodsLeft" style="background-color:#298BE2;">
-        	<div class="pic"><img src="/static/images/ad/jjjd.png"></div>
+        	{eval $ad=ad_get_data(array('id'=>105))}
+        	<div class="pic"><img src="{$ad[data][image]}"></div>
             <div class="menus">
             	<a href="/?m=goods&c=list&catid=440">家纺布艺</a>
                 <a href="/?m=goods&c=list&catid=451">餐具水具</a>
@@ -170,7 +172,8 @@ jQuery("#scrollBanner").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,
             <strong>食品饮料</strong>
         </div>
         <div class="goodsLeft" style="background-color:#298BE2;">
-        	<div class="pic"><img src="/static/images/test/01.jpg"></div>
+        	{eval $ad=ad_get_data(array('id'=>106))}
+        	<div class="pic"><img src="{$ad[data][image]}"></div>
             <div class="menus">
             	<a href="/">泡菜</a>
                 <a href="/">甜酒</a>

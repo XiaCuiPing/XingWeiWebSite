@@ -1,11 +1,11 @@
 @charset "UTF-8";
 @import url(ui.css);
-html,body{padding:0; margin:0; height:100%; font-size:13px; font-family:arial,"宋体",sans-serif; 
-color:#333; word-break:break-all; word-wrap:break-word;}
+html,body{padding:0; margin:0; height:100%; font-size:13px; font-family:arial; 
+color:#666; word-break:break-all; word-wrap:break-word;}
 html *{word-wrap:break-word; word-break:break-all;}
 ul,li,p,form,dd,dl,dt,h1,h2,h3,h4,h5{padding:0; margin:0; list-style:none;}
-a:link,a:visited,a:active{color:#333; text-decoration:none; cursor:pointer;}
-a:hover{text-decoration:none; color:#F00;}
+a:link,a:visited,a:active{color:#666; text-decoration:none; cursor:pointer;}
+a:hover{text-decoration:none; color:#333;}
 a{cursor:pointer;}
 img{border:0;}
 input[type="checkbox"], input[type="radio"],.checkbox,.radio
@@ -90,3 +90,10 @@ color:#fff; float:left;}
 .ajaxlogin .buttondiv .button{width:100%; box-sizing:border-box; font-size:14px; height:38px;}
 .ajaxlogin .linkdiv{padding:10px 0; font-size:12px; display:block;}
 .ajaxlogin .linkdiv *{color:#666;}
+
+/**分页**/
+.pages{clear:both; padding:10px 0; text-align:right; display:block; font-size:12px;}
+.pages a,.pages span{display:inline-block; height:22px; line-height:22px; padding:0 6px; 
+margin:0 3px; color:#333; background:#f8f8f8; border:1px #999 solid;}
+.pages a:hover{border-color:#B6166D; text-decoration:none;}
+.pages .cur{color:#fff; background:#B6166D; border-color:#B6166D;}

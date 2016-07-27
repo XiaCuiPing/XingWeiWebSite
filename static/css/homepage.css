@@ -48,7 +48,7 @@
 .goodsList-5 li{width:199px; border:1px #DDD solid; margin:0 0px 10px -1px; float:left; position:relative;}
 .goodsList-5 li .pic{margin:10px; width:178px; height:178px; display:block; overflow:hidden;}
 .goodsList-5 li .pic img{width:100%; height:100%; display:block;}
-.goodsList-5 li .name{margin:0 10px; line-height:1.2; font-size:12px; height:28px; overflow:hidden; color:#444; font-weight:bold;}
+.goodsList-5 li .name{margin:0 10px; line-height:1.2; font-size:12px; height:28px; overflow:hidden; color:#444; font-weight:400;}
 .goodsList-5 li .fan{height:30px; margin:10px 10px 5px; font-size:16px; color:#F00; font-weight:bold; clear:both; overflow:hidden;}
 .goodsList-5 li .fan i{font-style:normal; background:#F00; color:#fff; font-size:12px; padding:2px 8px; float:right;}
 
@@ -68,7 +68,7 @@
 .likeList ul li{float:left; width:165.5px; border:1px #DDD solid; margin-left:-1px;}
 .likeList ul li .pic{margin:10px; width:145px; height:145px; display:block; overflow:hidden;}
 .likeList ul li .pic img{width:100%; height:100%; display:block;}
-.likeList ul li .name{margin:0 10px; line-height:1.2; font-size:12px; height:30px; overflow:hidden; color:#444; font-weight:bold;}
+.likeList ul li .name{margin:0 10px; line-height:1.2; font-size:12px; height:30px; overflow:hidden; color:#444; font-weight:400;}
 .likeList ul li .fan{height:30px; margin:10px 10px 2px; font-size:14px; color:#F00; font-weight:bold; clear:both; overflow:hidden;}
 .likeList ul li .fan i{font-style:normal; background:#F00; color:#fff; font-size:12px; padding:2px 8px; float:right;}
 
@@ -98,7 +98,8 @@ font-size:12px; font-weight:bold; box-sizing:border-box; height:40px; line-heigh
 .lianmengpage .menudiv .hot ul li{float:left; width:263px; margin-right:10px;}
 .lianmengpage .menudiv .hot ul .pic{width:263px; height:180px; display:block; overflow:hidden;}
 .lianmengpage .menudiv .hot ul .pic img{width:100%; height:100%; display:block;}
-.lianmengpage .menudiv .hot ul .name{padding:0px 8px; font-size:14px; height:24px; line-height:24px; overflow:hidden;}
+.lianmengpage .menudiv .hot ul .name{padding:0px 8px; font-size:14px; height:24px; line-height:24px; 
+overflow:hidden; font-weight:400;}
 .lianmengpage .menudiv .hot ul p{padding:0px 8px; font-size:10px; color:#888; height:18px; line-height:18px; overflow:hidden;}
 .lianmengpage .menudiv .hot ul .fan{font-size:14px; color:#F00; padding:0px 8px; height:20px; line-height:20px; overflow:hidden;}
 .lianmengpage .titlediv{display:block; clear:both; padding:7px 0px; border-bottom:1px #ddd solid;}
@@ -108,26 +109,27 @@ font-size:12px; font-weight:bold; box-sizing:border-box; height:40px; line-heigh
 .lianmengpage .mdlist li{width:184px; float:left; margin-right:20px;}
 .lianmengpage .mdlist .pic{display:block; height:120px; overflow:hidden;}
 .lianmengpage .mdlist .pic img{display:block; width:100%; height:100%;}
-.lianmengpage .mdlist .name{height:24px; line-height:24px; font-size:14px; overflow:hidden;}
+.lianmengpage .mdlist .name{height:24px; line-height:24px; font-size:14px; overflow:hidden; font-weight:400;}
 .lianmengpage .mdlist .fan{height:24px; line-height:24px; font-size:13px; color:#F00; overflow:hidden;}
 .lianmengpage .mdlist .fan i{float:right; font-size:11px; color:#888; font-style:normal;}
 .lianmengpage .mdbd{display:block; overflow:hidden;}
 
 .lianmengpage .shangHD{display:block; overflow:hidden; margin-top:10px;}
 .lianmengpage .shangList{width:1010px; display:block;}
-.lianmengpage .shangList li{float:left; margin:0 9px 9px 0; width:243px;}
-.lianmengpage .shangList li .pic{display:block; height:160px; overflow:hidden;}
+.lianmengpage .shangList li{float:left; margin:0 19px 19px 0; width:233px;}
+.lianmengpage .shangList li .pic{display:block; height:230px; overflow:hidden;}
 .lianmengpage .shangList li .pic img{display:block; width:100%; height:100%;}
-.lianmengpage .shangList li .name{height:30px; line-height:30px; font-size:12px;}
+.lianmengpage .shangList li .name{height:30px; line-height:30px; font-size:14px; font-weight:400;}
 .lianmengpage .shangList li .name span{font-size:14px; color:#F00; float:right; font-weight:100;}
 
 
 /**超市首页**/
 .marketpage{}
-.marketpage .slideDiv,.marketpage .slideBox{width:820px; left:180px;}
+.marketpage .slideDiv,.marketpage .slideBox{width:820px; left:180px; height:300px;}
+.marketpage .redback,.marketpage .slideHD, .marketpage .multimenu,.marketpage .slideDiv{height:300px;}
 .marketpage .menuPannel{position:absolute; z-index:100; border-right:0.5px #F7F7F7 solid; border-bottom:1px #F7F7F7 solid; 
 background:#fff; width:500px; padding:5px; display:none; left:180px; 
-min-height:410px; box-sizing:border-box; overflow:hidden;}
+min-height:300px; box-sizing:border-box; overflow:hidden;}
 .marketpage .menuPannel ul{display:block; margin:0; padding:0;}
 .marketpage .menuPannel ul li{border:0; padding:3px 10px;}
 .marketpage .menuPannel ul h3{display:block; padding:5px 0; font-size:14px;}
@@ -141,7 +143,7 @@ min-height:410px; box-sizing:border-box; overflow:hidden;}
 
 .marketpage .hotbest{background:#D41D6D; padding:10px; display:block;}
 .marketpage .hotbest h3{overflow:hidden; color:#fff; font-size:14px; margin-bottom:10px;}
-.marketpage .hotbest h3 i{float:right; font-size:12px; font-style:normal;}
+.marketpage .hotbest h3 i{float:right; font-size:12px; font-style:normal; cursor:pointer;}
 .marketpage .hotbest .container{background:#fff; display:block;}
 .marketpage .hotbest  dl{width:160px; height:330px; float:left; border-right:1px #DDD solid; position:relative;}
 .marketpage .hotbest  dl dd{padding:10px;}
@@ -170,7 +172,7 @@ right:10px; bottom:10px; overflow:hidden; z-index:10;}
 .marketpage .goodsList{width:810px; display:block;}
 .marketpage .goodsList li{width:200px; height:200px; float:left; border-right:1px #DDD solid; border-bottom:1px #DDD solid;
 margin:-1px 0 0 -1px; overflow:hidden;}
-.marketpage .goodsList li .pic{margin:30px 30px 20px; width:140px; height:100px;}
+.marketpage .goodsList li .pic{margin:20px 20px 10px; width:160px; height:120px;}
 .marketpage .goodsList li .pic img{width:100%; height:100%; display:block;}
 .marketpage .goodsList li .name,.marketpage .goodsList li .price{height:20px;
 line-height:20px; font-size:12px; padding:0 20px; overflow:hidden;}

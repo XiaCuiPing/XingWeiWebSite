@@ -31,7 +31,7 @@ class AdController extends BaseController{
 			$pagesize  = 30;
 			$totalnum  = ad_get_num(0);
 			$pagecount = $totalnum < $pagesize ? 1 : ceil($totalnum/$pagesize);
-			$adlist = ad_get_page(0, $G['page'], $pagesize, 'id DESC');
+			$adlist = ad_get_page(0, $G['page'], $pagesize, 'id ASC');
 			$pages = $this->showPages($G['page'], $pagecount, $totalnum);
 			include template('ad_list');
 		}
@@ -81,7 +81,7 @@ class AdController extends BaseController{
 		}else {
 			global $G,$lang;
 			$ad = ad_get_data(array('id'=>$id));
-			$addata[$ad['type']] = unserialize($ad['data']);
+			$addata[$ad['type']] = $ad['data'];
 			include template('ad_form');
 		}
 	}

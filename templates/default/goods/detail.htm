@@ -18,10 +18,14 @@
     	<h1 class="h1-title">$goods[name]</h1>
         <div class="goodsAttr">
         	<div class="price">
+            	{if $goods[discount_price]}
             	<p class="p1">原价: <s>{echo @number_format($goods[price],2)}</s></p>
             	<p class="p2">折扣价: <strong>{echo @number_format($goods[discount_price],2)}</strong></p>
+                {else}
+                <p class="p2">价格: <strong>{echo @number_format($goods[price],2)}</strong></p>
+                {/if}
             </div>
-            <div class="discounting">正在促销 可返现20%</div>
+            <div class="discounting">正在促销 可返现50%</div>
             <div class="attrbox">
                 <div class="row">
                 	<div class="name">送至</div>
@@ -56,11 +60,11 @@
             
         </div>
         
-        <div class="shopbox">
+        <!--<div class="shopbox">
         	<div class="con">
             	<h3>$shop[shopname]</h3>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 <div class="blank"></div>

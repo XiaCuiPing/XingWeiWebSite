@@ -32,7 +32,7 @@
                             <p><span>链接:</span><input type="text" class="input-text w300" name="piclist[$id][url]" value="$pic[url]"></p>
                             <p><span>描述:</span><textarea class="textarea w300" name="piclist[$id][description]">$pic[description]</textarea></p>
                         </div>
-                        <a href="javascript:;" class="del" onclick="$(this).parent().remove()" title="删除">×</a>
+                        <a href="javascript:;" class="del" onclick="deleteImage(this,$id)" title="删除">×</a>
                     </div>
                     {/loop}
                     </div>
@@ -73,5 +73,18 @@ $("#j-file").change(function(e) {
 		}
 	});
 });
+function deleteImage(o,id){
+	if(confirm('确定要删除吗?')){
+		$.ajax({
+			url:'/?m=$G[m]&c=$G[c]&a=deleteimage&id='+id,
+			dataType:"json",
+			success: function(json){
+				if(json.errno == 0){
+					$(o).parent().remove();
+				}
+			}
+		});	
+	}
+}
 </script>
 {template footer_admin}

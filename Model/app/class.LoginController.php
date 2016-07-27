@@ -9,16 +9,12 @@ class LoginController extends BaseController{
 		
 		if (ismobile($account)){
 			$res = member_login($account, $password, 'mobile');
-		}
-		
-		if (isemail($account)){
+		}elseif (isemail($account)){
 			$res = member_login($account, $password, 'email');
+		}else {
+			$res = member_login($account, $password, 'username');
 		}
-		
-		if (is_numeric($res)){
-			$res = member_login($account, $password);
-		}
-		
+
 		if (is_array($res)) {
 			$this->showAppData($res);
 		}else {

@@ -1,0 +1,35 @@
+{template header_common}
+<div class="area filter-div">
+    <div class="row"><div class="cell"><strong class="tit">筛选</strong></div></div>
+    <div class="row">
+        <div class="cell cell-name"><span>分类</span></div>
+        <div class="cell cell-con">
+        	<a href="/?m=$G[m]&c=$G[c]&a=$G[a]&catid=0&province=$province"{if !$catid} class="cur"{/if}>不限</a>
+        	{loop $categorylist[0] $clist}
+            <a href="/?m=$G[m]&c=$G[c]&a=$G[a]&catid=$clist[catid]&province=$province"{if $clist[catid]==$catid} class="cur"{/if}>$clist[cname]</a>
+            {/loop}
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell cell-name"><span>省份</span></div>
+        <div class="cell cell-con">
+        	<a href="/?m=$G[m]&c=$G[c]&a=$G[a]&catid=$catid&province=0"{if !$province} class="cur"{/if}>不限</a>
+        	{loop $provincelist $plist}
+            <a href="/?m=$G[m]&c=$G[c]&a=$G[a]&catid=$catid&province=$plist[name]"{if $plist[name]==$province} class="cur"{/if}>$plist[name]</a>
+            {/loop}
+        </div>
+    </div>
+</div>
+<div class="area lm-business-div">
+    <ul class="lm-business-list">
+        {loop $businesslist $list}
+        <li>
+            <div class="pic"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">
+            <img src="{echo image($list[logo])}"></a></div>
+            <h3 class="name">$list[name]</h3>
+        </li>
+        {/loop}
+    </ul>
+</div>
+<div class="area pages">$pages</div>
+{template footer_common}

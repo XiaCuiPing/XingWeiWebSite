@@ -1,0 +1,130 @@
+{template header_common}
+<link rel="stylesheet" type="text/css" href="/static/css/homepage.css">
+<div class="lianmengpage area">
+	<div class="menudiv">
+    	<ul class="menulist">
+        	{eval $categorylist=category_get_all('shop');}
+            {loop $categorylist $clist}
+            <li><span>></span><a href="/?m=$G[m]&c=list&catid=$clist[catid]">$clist[cname]</a></li>
+            {/loop}
+        </ul>
+        
+        <div class="hot">
+        	<div class="titlediv"><strong>热门商家推荐</strong></div>
+            <ul>
+            	{eval $businesslist[hot]=business_get_list(0,3,0,'RAND()');}
+                {loop $businesslist[hot] $list}
+                <li>
+                	<div class="pic"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">
+                    <img src="{echo image($list[logo]);}"></a></div>
+                    <h3 class="name"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">$list[name]</a></h3>
+                    <p>30元代金券一张</p>
+                    <!--<div class="fan">满100返20</div>-->
+                </li>
+                {/loop}
+            </ul>
+        </div>
+    </div>
+    
+    <!--名店推荐-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>名店推荐</strong></div>
+    {eval $businesslist[best]=business_get_list(0,10,0,'RAND()');}
+    <div class="mdbd">
+        <ul class="mdlist">
+            {eval $no=1;}
+            {loop $businesslist[best] $list}
+            <li>
+                <div class="pic"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">
+                <img src="{echo image($list[logo]);}"></a></div>
+                <h3 class="name"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">$list[name]</a></h3>
+                <!--<div class="fan"><i>50评</i>满100返20</div>-->
+            </li>
+            <!--{if $no%5==0&&$no<10}</ul><ul class="mdlist">{/if}-->
+            {eval $no++;}
+            {/loop}
+        </ul>
+    </div>
+    
+    <!--家居家纺-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>家居家纺</strong></div>
+    <div class="shangHD">
+    	{eval $businesslist[new]=business_get_list(array('catid'=>array('IN','116')),8);}
+        <ul class="shangList">
+        	{loop $businesslist[new] $list}
+            <li>
+                <div class="pic"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">
+                <img src="{echo image($list[logo])}"></a></div>
+                <h3 class="name"><span><!--满100返20--></span>$list[name]</h3>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    
+    <!--家电办公-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>家电办公</strong></div>
+    <div class="shangHD">
+    	{eval $businesslist[new]=business_get_list(array('catid'=>array('IN','117')),8);}
+        <ul class="shangList">
+        	{loop $businesslist[new] $list}
+            <li>
+                <div class="pic"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">
+                <img src="{echo image($list[logo])}"></a></div>
+                <h3 class="name"><span><!--满100返20--></span>$list[name]</h3>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    
+    <!--珠宝黄金-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>珠宝黄金</strong></div>
+    <div class="shangHD">
+    	{eval $businesslist[new]=business_get_list(array('catid'=>array('IN','118')),8);}
+        <ul class="shangList">
+        	{loop $businesslist[new] $list}
+            <li>
+                <div class="pic"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">
+                <img src="{echo image($list[logo])}"></a></div>
+                <h3 class="name"><span><!--满100返20--></span>$list[name]</h3>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    
+    <!--婴儿用品-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>婴儿用品</strong></div>
+    <div class="shangHD">
+    	{eval $businesslist[new]=business_get_list(array('catid'=>array('IN','119')),8);}
+        <ul class="shangList">
+        	{loop $businesslist[new] $list}
+            <li>
+                <div class="pic"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">
+                <img src="{echo image($list[logo])}"></a></div>
+                <h3 class="name"><span><!--满100返20--></span>$list[name]</h3>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    
+    <!--日用品-->
+    <div class="blank"></div>
+    <div class="titlediv"><strong>日用品</strong></div>
+    <div class="shangHD">
+    	{eval $businesslist[new]=business_get_list(array('catid'=>array('IN','120')),8);}
+        <ul class="shangList">
+        	{loop $businesslist[new] $list}
+            <li>
+                <div class="pic"><a href="/?m=$G[m]&c=detail&id=$list[id]" target="_blank">
+                <img src="{echo image($list[logo])}"></a></div>
+                <h3 class="name"><span><!--满100返20--></span>$list[name]</h3>
+            </li>
+            {/loop}
+        </ul>
+    </div>
+    
+</div>
+{template footer_common}

@@ -1,0 +1,116 @@
+{template header_admin}
+<div id="pagecontainer">
+	<div class="toolbar">
+    	<div class="f-right">
+        	<a class="baritem" href="/?m=$G[m]&c=$G[c]&a=showlist">返回列表</a>
+        </div>
+    	<strong>添加联盟企业</strong>
+    </div>
+	<div class="area">
+        <form method="post" id="companyForm" action="">
+        <input type="hidden" name="formsubmit" value="yes" />
+        <input type="hidden" name="formhash" value="{FORMHASH}">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td width="70">商家名称</td>
+          <td><input type="text" class="input-text w300" maxlength="20" name="companynew[name]" value="$company[name]"></td>
+        </tr>
+        <tr>
+          <td>商家分类</td>
+          <td><select name="companynew[catid]" class="w300">$categoryoptions</select></td>
+        </tr>
+        <tr>
+        	<td>联系电话</td>
+          	<td>
+            	<input type="text" class="input-text" maxlength="11"  name="companynew[tel]" value="$company[tel]">
+            	官方网站 
+                <input type="text" class="input-text w300" name="companynew[website]" value="$company[website]">
+            </td>
+        </tr>
+        <tr>
+            <td>所在区域</td>
+            <td colspan="3">
+            	<select class="input-select dist select" id="province" name="companynew[province]">
+                    <option value="">请选择</option>
+                </select>
+                <select class="input-select dist select" id="city" name="companynew[city]">
+                    <option value="">请选择</option>
+                </select>
+                <select class="input-select dist select" id="county" name="companynew[county]">
+                    <option value="">请选择</option>
+                </select>
+            </td>
+          
+         </tr>
+         <tr>
+              <td>街道地址</td>
+              <td colspan="3"><input type="text" class="input-text w500" name="companynew[street]" value="$company[street]"></td>
+          </tr>
+          <tr>
+          	<td>微信公众号</td>
+          	<td><input type="text" class="input-text w300" maxlength="20"  name="companynew[weixin]" value="$company[weixin]"></td>
+          </tr>
+          
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+      		<tr>
+          	<td width="70">微信二维码</td>
+          	<td width="200"><input type="hidden" id="qrcode" name="companynew[weixin_qrcode]" value="$company[weixin_qrcode]">
+            <div class="post-image-box" title="点击更换图片">
+            <img src="{echo image($business[weixin_qrcode])}" onclick="setImage(this,'#qrcode')"></div></td>
+          	<td width="70">企业标志</td>
+          	<td><input type="hidden" id="logo" name="companynew[logo]" value="$company[logo]">
+            <div class="post-image-box" title="点击更换图片">
+            <img src="{echo image($business[logo])}" onclick="setImage(this,'#logo')"></div></td>
+          </tr>
+      </table>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+          <td width="70">主营项目</td>
+          <td><textarea style="width:100%;" name="companynew[summary]">$company[summary]</textarea></td>
+          <td width="200"><input type="submit" class="submit button-publish f-right" value="{if $G[a]=='edit'}更新{else}提交{/if}" id="publishButton"></td>
+        </tr>
+      </table>
+      {eval $editorname='description';}
+      {eval $editorcontent=$description[description];}
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="formtable">
+        <tr>
+        	<td width="70">详细介绍</td>
+          	<td><div style="box-sizing:border-box">{template editor}</div></td>
+        </tr>
+      </table>
+      </form>
+    </div>
+</div>
+<script type="text/javascript">
+DSXCMS.showDistrict(0, '#province', '$company[province]', '选择省份');
+$("#province").change(function(e) {
+	var fid = parseInt($(this).find(":selected").attr("idvalue"));
+    if(fid) DSXCMS.showDistrict(fid, '#city', '$company[city]', '选择城市');
+});
+$("#city").change(function(e) {
+	var fid = parseInt($(this).find(":selected").attr("idvalue"));
+    if(fid) {
+		DSXCMS.showDistrict(fid, '#county', '$company[county]', '选择区县');
+	}
+});
+$("#shopForm").submit(function(e) {
+    var shopname = $.trim($("#shopname").val());
+	if(shopname.length > 1) {
+		return true;
+	}else {
+		DSXUI.error('商家名称不能为空');
+		return false;
+	}
+});
+function setImage(o,input){
+	DSXUI.showImgUploadWindow({},function(c){
+		if(c.errno == 0){
+			$(o).attr('src', c.data.imageurl);
+			$(input).val(c.data.image);
+		}
+	});
+}
+</script>
+</div>
+{template footer_admin}
